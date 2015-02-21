@@ -21,23 +21,11 @@ module Repeatable
       end
 
       def start_month_include?(date)
-        if date.month != start_month
-          false
-        elsif start_day == 0
-          true
-        else
-          date.day >= start_day
-        end
+        date.month == start_month && (start_day == 0 || date.day >= start_day)
       end
 
       def end_month_include?(date)
-        if date.month != end_month
-          false
-        elsif end_day == 0
-          true
-        else
-          date.day <= end_day
-        end
+        date.month == end_month && (end_day == 0 || date.day <= end_day)
       end
     end
   end
