@@ -13,7 +13,7 @@ module Repeatable
     def next_occurrence(start_date = Date.today)
       date = start_date
       until occurring?(date)
-        date += 1
+        date = date.next_day
       end
       date
     end
