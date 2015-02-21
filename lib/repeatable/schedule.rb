@@ -7,11 +7,13 @@ module Repeatable
     end
 
     def occurrences(start_date, end_date)
+      start_date = Date(start_date)
+      end_date = Date(end_date)
       (start_date..end_date).select { |date| occurring?(date) }
     end
 
     def next_occurrence(start_date = Date.today)
-      date = start_date
+      date = Date(start_date)
       until occurring?(date)
         date = date.next_day
       end
@@ -19,6 +21,7 @@ module Repeatable
     end
 
     def occurring?(date = Date.today)
+      date = Date(date)
       expression.include?(date)
     end
 

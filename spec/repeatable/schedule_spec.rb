@@ -28,9 +28,33 @@ module Repeatable
     subject { described_class.new(args) }
 
     describe '#occurrences' do
-      context 'simple range expression' do
-        let(:args) { simple_range }
+      let(:args) { simple_range }
 
+      context 'with convertible non-Date arguments' do
+        expected_results = [
+          Date.new(2015, 11, 30),
+          Date.new(2015, 12, 1),
+          Date.new(2015, 12, 2),
+        ]
+        argument_pairs = [
+          ['2015-11-30', '2015-12-2'],
+          [DateTime.new(2015, 11, 30), DateTime.new(2015, 12, 2)],
+        ]
+
+        argument_pairs.each do |args|
+          it "can handle #{args.first.class} arguments" do
+            expect(subject.occurrences(*args)).to eq(expected_results)
+          end
+        end
+      end
+
+      context 'with non convertible arguments' do
+        it 'raises an exception' do
+          expect { subject.occurrences('asdf', 'xyz') }.to raise_error(TypeError)
+        end
+      end
+
+      context 'simple range expression' do
         it 'returns all matching dates within the range given' do
           expect(
             subject.occurrences(Date.new(2015, 11, 28), Date.new(2015, 12, 3))
@@ -84,9 +108,26 @@ module Repeatable
     end
 
     describe '#next_occurrence' do
-      context 'simple range expression' do
-        let(:args) { simple_range }
+      let(:args) { simple_range }
 
+      context 'with convertible non-Date argument' do
+        expected_result = Date.new(2015, 10, 1)
+        arguments = ['2015-1-1', DateTime.new(2015, 1, 1)]
+
+        arguments.each do |arg|
+          it "can handle #{arg.class} argument" do
+            expect(subject.next_occurrence(arg)).to eq(expected_result)
+          end
+        end
+      end
+
+      context 'with non convertible argument' do
+        it 'raises an exception' do
+          expect { subject.next_occurrence('asdf') }.to raise_error(TypeError)
+        end
+      end
+
+      context 'simple range expression' do
         it 'returns the next occurrence matching the range' do
           expect(subject.next_occurrence(Date.new(2015, 1, 1))).to eq(Date.new(2015, 10, 1))
         end
@@ -110,9 +151,25 @@ module Repeatable
     end
 
     describe '#occuring?' do
-      context 'simple range expression' do
-        let(:args) { simple_range }
+      let(:args) { simple_range }
 
+      context 'with convertible non-Date argument' do
+        arguments = ['2015-10-1', DateTime.new(2015, 10, 1)]
+
+        arguments.each do |arg|
+          it "can handle #{arg.class} argument" do
+            expect(subject.occurring?(arg)).to eq(true)
+          end
+        end
+      end
+
+      context 'with non convertible argument' do
+        it 'raises an exception' do
+          expect { subject.occurring?('asdf') }.to raise_error(TypeError)
+        end
+      end
+
+      context 'simple range expression' do
         it 'returns true for dates within the range' do
           expect(subject.occurring?(Date.new(2015, 10, 1))).to eq(true)
           expect(subject.occurring?(Date.new(2015, 11, 15))).to eq(true)
