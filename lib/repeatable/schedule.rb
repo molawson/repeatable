@@ -3,7 +3,6 @@ require 'active_support/core_ext/string/inflections'
 module Repeatable
   class Schedule
     def initialize(args)
-      @args = args
       @expression = build_expression(args)
     end
 
@@ -25,7 +24,7 @@ module Repeatable
 
     private
 
-    attr_reader :args, :expression
+    attr_reader :expression
 
     def build_expression(hash)
       if hash.length != 1
