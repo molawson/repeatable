@@ -158,27 +158,27 @@ module Repeatable
 
         arguments.each do |arg|
           it "can handle #{arg.class} argument" do
-            expect(subject.occurring?(arg)).to eq(true)
+            expect(subject.include?(arg)).to eq(true)
           end
         end
       end
 
       context 'with non convertible argument' do
         it 'raises an exception' do
-          expect { subject.occurring?('asdf') }.to raise_error(TypeError)
+          expect { subject.include?('asdf') }.to raise_error(TypeError)
         end
       end
 
       context 'simple range expression' do
         it 'returns true for dates within the range' do
-          expect(subject.occurring?(Date.new(2015, 10, 1))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 11, 15))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 12, 31))).to eq(true)
+          expect(subject.include?(Date.new(2015, 10, 1))).to eq(true)
+          expect(subject.include?(Date.new(2015, 11, 15))).to eq(true)
+          expect(subject.include?(Date.new(2015, 12, 31))).to eq(true)
         end
 
         it 'returns false for dates outside of the range' do
-          expect(subject.occurring?(Date.new(2015, 9, 30))).to eq(false)
-          expect(subject.occurring?(Date.new(2015, 2, 23))).to eq(false)
+          expect(subject.include?(Date.new(2015, 9, 30))).to eq(false)
+          expect(subject.include?(Date.new(2015, 2, 23))).to eq(false)
         end
       end
 
@@ -186,19 +186,19 @@ module Repeatable
         let(:args) { set_expression }
 
         it 'returns true for dates that match the full expression' do
-          expect(subject.occurring?(Date.new(2015, 9, 23))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 10, 2))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 10, 23))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 11, 3))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 11, 23))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 12, 23))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 12, 24))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 1, 23))).to eq(true)
+          expect(subject.include?(Date.new(2015, 9, 23))).to eq(true)
+          expect(subject.include?(Date.new(2015, 10, 2))).to eq(true)
+          expect(subject.include?(Date.new(2015, 10, 23))).to eq(true)
+          expect(subject.include?(Date.new(2015, 11, 3))).to eq(true)
+          expect(subject.include?(Date.new(2015, 11, 23))).to eq(true)
+          expect(subject.include?(Date.new(2015, 12, 23))).to eq(true)
+          expect(subject.include?(Date.new(2015, 12, 24))).to eq(true)
+          expect(subject.include?(Date.new(2015, 1, 23))).to eq(true)
         end
 
         it 'returns true for dates that do not match the full expression' do
-          expect(subject.occurring?(Date.new(2015, 9, 2))).to eq(false)
-          expect(subject.occurring?(Date.new(2015, 1, 2))).to eq(false)
+          expect(subject.include?(Date.new(2015, 9, 2))).to eq(false)
+          expect(subject.include?(Date.new(2015, 1, 2))).to eq(false)
         end
       end
 
@@ -206,17 +206,17 @@ module Repeatable
         let(:args) { nested_set_expression }
 
         it 'returns true for dates that match the full expression' do
-          expect(subject.occurring?(Date.new(2015, 10, 23))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 11, 23))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 12, 23))).to eq(true)
-          expect(subject.occurring?(Date.new(2015, 12, 24))).to eq(true)
+          expect(subject.include?(Date.new(2015, 10, 23))).to eq(true)
+          expect(subject.include?(Date.new(2015, 11, 23))).to eq(true)
+          expect(subject.include?(Date.new(2015, 12, 23))).to eq(true)
+          expect(subject.include?(Date.new(2015, 12, 24))).to eq(true)
         end
 
         it 'returns true for dates that do not match the full expression' do
-          expect(subject.occurring?(Date.new(2015, 9, 23))).to eq(false)
-          expect(subject.occurring?(Date.new(2015, 10, 2))).to eq(false)
-          expect(subject.occurring?(Date.new(2015, 12, 25))).to eq(false)
-          expect(subject.occurring?(Date.new(2015, 1, 23))).to eq(false)
+          expect(subject.include?(Date.new(2015, 9, 23))).to eq(false)
+          expect(subject.include?(Date.new(2015, 10, 2))).to eq(false)
+          expect(subject.include?(Date.new(2015, 12, 25))).to eq(false)
+          expect(subject.include?(Date.new(2015, 1, 23))).to eq(false)
         end
       end
     end
