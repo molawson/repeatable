@@ -4,9 +4,7 @@
 [![Code Climate](https://img.shields.io/codeclimate/github/molawson/repeatable.svg)](https://codeclimate.com/github/molawson/repeatable)
 [![Code Climate Coverage](https://img.shields.io/codeclimate/coverage/github/molawson/repeatable.svg)](https://codeclimate.com/github/molawson/repeatable)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/repeatable`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Ruby implementation of Martin Fowler's [Recurring Events for Calendars](http://martinfowler.com/apsupp/recurring.pdf) paper.
 
 ## Installation
 
@@ -26,7 +24,53 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Describe a schedule with a Hash:
+
+```ruby
+args = {
+  intersection: [                                     # All included conditions must be met
+    weekday_in_month: { weekday: 1, count: 2 }        # The second Monday of every month
+    range_in_year: { start_month: 10, end_month: 12 } # October through December
+  ]
+}
+
+schedule = Repeatable::Schedule.new(args)
+```
+
+Ask your schedule one of three questions:
+
+```ruby
+schedule.next_occurrence
+  # => Date of next occurrence
+
+schedule.occurrences(Date.new(2015, 1, 1), Date.new(2016, 6, 30))
+  # => Dates of all occurrences between Jan 1, 2015 and June 30, 2016
+
+schedule.include?(Date.new(2015, 10, 10))
+  # => Whether the schedule has an event on the date given (true/false)
+```
+
+Available time expressions:
+
+```ruby
+# Sets
+union: []         # Any conditions can be met
+intersection: []  # All conditions must be met
+
+# Dates
+weekday: { weekday: 0 }
+  # Every Sunday
+weekday_in_month: { weekday: 1, count: 3 }
+  # The 3rd Monday of every month
+day_in_month: { day: 13 }
+  # The 13th of every month
+range_in_year: { start_month: 10 }
+  # Any day in October
+range_in_year: { start_month: 10, end_month: 12 }
+  # All days from October through December
+range_in_year: { start_month: 10, end_month: 12, start_day: 1, end_day: 20 }
+  # All days from October 1 through December 20
+```
 
 ## Development
 
