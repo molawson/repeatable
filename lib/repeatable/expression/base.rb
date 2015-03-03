@@ -2,7 +2,12 @@ module Repeatable
   module Expression
     class Base
       def self.===(other)
-        other.ancestors.include?(self)
+        case other
+        when Class
+          other.ancestors.include?(self)
+        else
+          super
+        end
       end
 
       def include?(_date)

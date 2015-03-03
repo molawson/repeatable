@@ -4,12 +4,21 @@ module Repeatable
   module Expression
     describe Base do
       describe '.===' do
-        it 'returns true when described_class is an ancestor of the given class' do
-          expect(described_class === Repeatable::Expression::Set).to eq(true)
+        context 'other is a class' do
+          it 'returns true when described_class is an ancestor of the given class' do
+            expect(described_class === Repeatable::Expression::Set).to eq(true)
+          end
+
+          it 'returns false when described_class is not an ancestor of the given class' do
+            expect(described_class === Repeatable::Schedule).to eq(false)
+          end
         end
 
-        it 'returns false when described_class is not an ancestor of the given class' do
-          expect(described_class === Repeatable::Schedule).to eq(false)
+        context 'other is an instance of a class' do
+          it 'uses default ==== (is_a?) behavior' do
+            expect(described_class === Repeatable::Expression::Set.new).to eq(true)
+            expect(described_class === '').to eq(false)
+          end
         end
       end
 
