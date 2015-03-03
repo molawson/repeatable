@@ -24,7 +24,24 @@ Or install it yourself as:
 
 ## Usage
 
-Describe a schedule with a Hash:
+You can create a schedule in one of two ways.
+
+### Composed objects
+
+You can compose each of the expression objects manually:
+
+```ruby
+second_monday = Repeatabe::Expression::WeekdayInMonth.new(weekday: 1, count: 2)
+oct_thru_dec = Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
+intersection = Repeatable::Expresson::Intersection.new(second_monday, oct_thru_dec)
+
+schedule = Repeatable::Schedule.new(intersection)
+```
+
+
+### Hash
+
+Or you can describe the same structure with a `Hash`, and the gem will compose the objects for you:
 
 ```ruby
 args = {

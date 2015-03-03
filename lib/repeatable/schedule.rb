@@ -3,7 +3,14 @@ require 'active_support/core_ext/string/inflections'
 module Repeatable
   class Schedule
     def initialize(args)
-      @expression = build_expression(args)
+      case args
+      when Hash
+        @expression = build_expression(args)
+      when Repeatable::Expression::Base
+        @expression = args
+      else
+        fail ArgumentError, "Can't build a Repeatable::Schedule from #{args.class}"
+      end
     end
 
     def occurrences(start_date, end_date)

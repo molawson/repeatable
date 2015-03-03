@@ -27,6 +27,70 @@ module Repeatable
 
     subject { described_class.new(args) }
 
+    describe '#initialize' do
+      context 'with a Hash' do
+        let(:args) { simple_range }
+
+        it 'does not blow up' do
+          expect { subject }.not_to raise_error
+        end
+
+        context 'invalid hash format' do
+          context 'multiple keys in outer hash' do
+            let(:args) do
+              {
+                day_in_month: { day: 23 },
+                range_in_year: { start_month: 10, end_month: 12 }
+              }
+            end
+
+            it 'raises an invalid expression error' do
+              expect { subject }.to raise_error(RuntimeError).with_message(/Invalid expression/)
+            end
+          end
+
+          context 'multiple keys in inner hash' do
+            let(:args) do
+              {
+                union: [
+                  day_in_month: { day: 23 },
+                  range_in_year: { start_month: 10, end_month: 12 }
+                ]
+              }
+            end
+
+            it 'raises an invalid expression error' do
+              expect { subject }.to raise_error(RuntimeError).with_message(/Invalid expression/)
+            end
+          end
+
+          context 'key does not match existing class' do
+            let(:args) { { asdf: { foo: 'bar' } } }
+
+            it 'raises an unknown mapping error' do
+              expect { subject }.to raise_error(RuntimeError).with_message(/Unknown mapping/)
+            end
+          end
+        end
+      end
+
+      context 'with an Expression object' do
+        let(:args) { Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12) }
+
+        it 'does not blow up' do
+          expect { subject }.not_to raise_error
+        end
+      end
+
+      context 'with something else' do
+        let(:args) { 'a random string' }
+
+        it 'raises a ArgumentError' do
+          expect { subject }.to raise_error(ArgumentError, "Can't build a Repeatable::Schedule from String")
+        end
+      end
+    end
+
     describe '#occurrences' do
       let(:args) { simple_range }
 
@@ -103,6 +167,30 @@ module Repeatable
               Date.new(2015, 12, 24),
             ]
           )
+        end
+
+        context 'set expression given as already composed objects' do
+          let(:args) do
+            twenty_third = Repeatable::Expression::DayInMonth.new(day: 23)
+            twenty_fourth = Repeatable::Expression::DayInMonth.new(day: 24)
+            union = Repeatable::Expression::Union.new(twenty_third, twenty_fourth)
+            oct_thru_dec = Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
+
+            Repeatable::Expression::Intersection.new(union, oct_thru_dec)
+          end
+
+          it 'returns all matching dates within the range given' do
+            expect(
+              subject.occurrences(Date.new(2015, 10, 30), Date.new(2016, 1, 30))
+            ).to eq(
+              [
+                Date.new(2015, 11, 23),
+                Date.new(2015, 11, 24),
+                Date.new(2015, 12, 23),
+                Date.new(2015, 12, 24),
+              ]
+            )
+          end
         end
       end
     end
@@ -217,46 +305,6 @@ module Repeatable
           expect(subject.include?(Date.new(2015, 10, 2))).to eq(false)
           expect(subject.include?(Date.new(2015, 12, 25))).to eq(false)
           expect(subject.include?(Date.new(2015, 1, 23))).to eq(false)
-        end
-      end
-    end
-
-    describe '#initialize' do
-      context 'invalid argument format' do
-        context 'multiple keys in outer hash' do
-          let(:args) do
-            {
-              day_in_month: { day: 23 },
-              range_in_year: { start_month: 10, end_month: 12 }
-            }
-          end
-
-          it 'raises an invalid expression error' do
-            expect { subject }.to raise_error(RuntimeError).with_message(/Invalid expression/)
-          end
-        end
-
-        context 'multiple keys in inner hash' do
-          let(:args) do
-            {
-              union: [
-                day_in_month: { day: 23 },
-                range_in_year: { start_month: 10, end_month: 12 }
-              ]
-            }
-          end
-
-          it 'raises an invalid expression error' do
-            expect { subject }.to raise_error(RuntimeError).with_message(/Invalid expression/)
-          end
-        end
-
-        context 'key does not match existing class' do
-          let(:args) { { asdf: { foo: 'bar' } } }
-
-          it 'raises an unknown mapping error' do
-            expect { subject }.to raise_error(RuntimeError).with_message(/Unknown mapping/)
-          end
         end
       end
     end
