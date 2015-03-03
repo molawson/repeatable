@@ -3,9 +3,11 @@ require 'spec_helper'
 module Repeatable
   module Expression
     describe DayInMonth do
-      describe '#include?' do
-        subject { described_class.new(day: 21) }
+      subject { described_class.new(day: 21) }
 
+      it_behaves_like 'an expression'
+
+      describe '#include?' do
         it 'returns true for dates matching the day given' do
           expect(subject).to include(Date.new(2015, 1, 21))
         end

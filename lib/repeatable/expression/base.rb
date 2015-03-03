@@ -13,7 +13,7 @@ module Repeatable
       def include?(_date)
         fail(
           NotImplementedError,
-          "Don't use Expression::Base directly. Subclasses should implement `#include?`"
+          "Don't use Expression::Base directly. Subclasses must implement `#include?`"
         )
       end
     end

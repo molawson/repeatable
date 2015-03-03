@@ -3,11 +3,13 @@ require 'spec_helper'
 module Repeatable
   module Expression
     describe RangeInYear do
+      let(:args) { { start_month: 10 } }
+
+      subject { described_class.new(args) }
+
+      it_behaves_like 'an expression'
+
       describe '#include?' do
-        let(:args) { { start_month: 10 } }
-
-        subject { described_class.new(args) }
-
         context 'only start_month given' do
           it 'return true when the date falls in month given' do
             expect(subject).to include(Date.new(2015, 10, 5))

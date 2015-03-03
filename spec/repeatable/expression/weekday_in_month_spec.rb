@@ -3,10 +3,11 @@ require 'spec_helper'
 module Repeatable
   module Expression
     describe WeekdayInMonth do
+      subject { described_class.new(weekday: 0, count: 1) }
+
+      it_behaves_like 'an expression'
+
       describe '#include?' do
-
-        subject { described_class.new(weekday: 0, count: 1) }
-
         context 'weekday matches' do
           it 'returns true for dates matching the week given' do
             expect(subject).to include(Date.new(2015, 1, 4))
