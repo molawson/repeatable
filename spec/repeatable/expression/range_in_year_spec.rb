@@ -124,6 +124,30 @@ module Repeatable
           end
         end
       end
+
+      describe '#to_h' do
+        context 'with the minimum args' do
+          it 'returns a hash with the class name and only given arguments' do
+            expect(subject.to_h).to eq(range_in_year: args)
+          end
+        end
+
+        context 'with mixed args' do
+          let(:args) { { start_month: 8, end_month: 10, start_day: 20 } }
+
+          it 'returns a hash with the class name and only given arguments' do
+            expect(subject.to_h).to eq(range_in_year: args)
+          end
+        end
+
+        context 'with all args' do
+          let(:args) { { start_month: 8, end_month: 10, start_day: 20, end_day: 10 } }
+
+          it 'returns a hash with the class name and only given arguments' do
+            expect(subject.to_h).to eq(range_in_year: args)
+          end
+        end
+      end
     end
   end
 end

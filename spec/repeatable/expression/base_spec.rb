@@ -27,6 +27,12 @@ module Repeatable
           expect { subject.include?('anything') }.to raise_error(NotImplementedError)
         end
       end
+
+      describe '#to_h' do
+        it 'raises a NotImplemented Error' do
+          expect { subject.to_h }.to raise_error(NotImplementedError)
+        end
+      end
     end
   end
 end

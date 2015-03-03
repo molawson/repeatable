@@ -32,6 +32,10 @@ module Repeatable
       expression.include?(date)
     end
 
+    def to_h
+      expression.to_h
+    end
+
     private
 
     attr_reader :expression

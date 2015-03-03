@@ -10,6 +10,10 @@ module Repeatable
         day_matches?(date) && week_matches?(date)
       end
 
+      def to_h
+        { weekday_in_month: { weekday: weekday, count: count } }
+      end
+
       private
 
       attr_reader :weekday, :count

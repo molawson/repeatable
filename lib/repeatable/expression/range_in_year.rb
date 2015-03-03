@@ -12,6 +12,14 @@ module Repeatable
         months_include?(date) || start_month_include?(date) || end_month_include?(date)
       end
 
+      def to_h
+        args = { start_month: start_month }
+        args[:end_month] = end_month unless end_month == start_month
+        args[:start_day] = start_day unless start_day.zero?
+        args[:end_day] = end_day unless end_day.zero?
+        { range_in_year: args }
+      end
+
       private
 
       attr_reader :start_month, :end_month, :start_day, :end_day

@@ -10,6 +10,12 @@ module Repeatable
         self
       end
 
+      def to_h
+        hash = {}
+        hash[self.class.name.demodulize.underscore.to_sym] = elements.map(&:to_h)
+        hash
+      end
+
       private
 
       attr_reader :elements

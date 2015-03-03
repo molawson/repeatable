@@ -28,6 +28,12 @@ module Repeatable
           end
         end
       end
+
+      describe '#to_h' do
+        it 'returns a hash with the class name and arguments' do
+          expect(subject.to_h).to eq(weekday_in_month: { weekday: 0, count: 1 })
+        end
+      end
     end
   end
 end

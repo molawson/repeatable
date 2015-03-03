@@ -24,6 +24,14 @@ module Repeatable
         ]
       }
     end
+    let(:nested_set_expression_object) do
+      twenty_third = Repeatable::Expression::DayInMonth.new(day: 23)
+      twenty_fourth = Repeatable::Expression::DayInMonth.new(day: 24)
+      union = Repeatable::Expression::Union.new(twenty_third, twenty_fourth)
+      oct_thru_dec = Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
+
+      Repeatable::Expression::Intersection.new(union, oct_thru_dec)
+    end
 
     subject { described_class.new(args) }
 
@@ -170,14 +178,7 @@ module Repeatable
         end
 
         context 'set expression given as already composed objects' do
-          let(:args) do
-            twenty_third = Repeatable::Expression::DayInMonth.new(day: 23)
-            twenty_fourth = Repeatable::Expression::DayInMonth.new(day: 24)
-            union = Repeatable::Expression::Union.new(twenty_third, twenty_fourth)
-            oct_thru_dec = Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
-
-            Repeatable::Expression::Intersection.new(union, oct_thru_dec)
-          end
+          let(:args) { nested_set_expression_object }
 
           it 'returns all matching dates within the range given' do
             expect(
@@ -305,6 +306,24 @@ module Repeatable
           expect(subject.include?(Date.new(2015, 10, 2))).to eq(false)
           expect(subject.include?(Date.new(2015, 12, 25))).to eq(false)
           expect(subject.include?(Date.new(2015, 1, 23))).to eq(false)
+        end
+      end
+    end
+
+    describe '#to_h' do
+      context 'initialized with a hash' do
+        let(:args) { nested_set_expression }
+
+        it 'returns the same hash' do
+          expect(subject.to_h).to eq(args)
+        end
+      end
+
+      context 'initialized with an Expression object' do
+        let(:args) { nested_set_expression_object }
+
+        it 'returns the hash representation of that Expression' do
+          expect(subject.to_h).to eq(nested_set_expression)
         end
       end
     end

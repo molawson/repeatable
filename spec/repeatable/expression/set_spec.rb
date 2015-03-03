@@ -53,6 +53,13 @@ module Repeatable
           end
         end
       end
+
+      describe '#to_h' do
+        it 'returns to_h representation of included elements' do
+          set = described_class.new([tuesday, tenth, thursday])
+          expect(set.to_h).to eq(set: [tuesday.to_h, tenth.to_h, thursday.to_h])
+        end
+      end
     end
   end
 end

@@ -16,6 +16,12 @@ module Repeatable
           expect(subject).not_to include(Date.new(2015, 1, 22))
         end
       end
+
+      describe '#to_h' do
+        it 'returns a hash with the class name and arguments' do
+          expect(subject.to_h).to eq(day_in_month: { day: 21 })
+        end
+      end
     end
   end
 end
