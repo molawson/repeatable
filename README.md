@@ -53,23 +53,42 @@ schedule.include?(Date.new(2015, 10, 10))
 Available time expressions:
 
 ```ruby
-# Sets
-union: []         # Any conditions can be met
-intersection: []  # All conditions must be met
+# SETS
 
-# Dates
+# Any conditions can be met
+union: []
+Repeatable::Expression::Union.new(expressions)
+
+# All conditions must be met
+intersection: []
+Repeatable::Expression::Intersection.new(expressions)
+
+
+# DATES
+
+# Every Sunday
 weekday: { weekday: 0 }
-  # Every Sunday
+Repeatable::Expression::Weekday.new(weekday: 0)
+
+# The 3rd Monday of every month
 weekday_in_month: { weekday: 1, count: 3 }
-  # The 3rd Monday of every month
+Repeatable::Expression::WeekdayInMonth.new(weekday: 1, count: 3)
+
+# The 13th of every month
 day_in_month: { day: 13 }
-  # The 13th of every month
+Repeatable::Expression::DayInMonth.new(day: 13)
+
+# Any day in October
 range_in_year: { start_month: 10 }
-  # Any day in October
+Repeatable::Expression::RangeInYear.new(start_month: 10)
+
+# All days from October through December
 range_in_year: { start_month: 10, end_month: 12 }
-  # All days from October through December
+Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
+
+# All days from October 1 through December 20
 range_in_year: { start_month: 10, end_month: 12, start_day: 1, end_day: 20 }
-  # All days from October 1 through December 20
+Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12, start_day: 1, end_day: 20)
 ```
 
 ## Development
