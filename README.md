@@ -24,11 +24,13 @@ Or install it yourself as:
 
 ## Usage
 
+### Building a Schedule
+
 You can create a schedule in one of two ways.
 
-### Composed objects
+#### Composed objects
 
-You can compose each of the expression objects manually:
+You can compose each of the expression objects manually.
 
 ```ruby
 second_monday = Repeatabe::Expression::WeekdayInMonth.new(weekday: 1, count: 2)
@@ -39,9 +41,9 @@ schedule = Repeatable::Schedule.new(intersection)
 ```
 
 
-### Hash
+#### Hash
 
-Or you can describe the same structure with a `Hash`, and the gem will compose the objects for you:
+Or you can describe the same structure with a `Hash`, and the gem will compose the objects for you.
 
 ```ruby
 args = {
@@ -54,6 +56,53 @@ args = {
 schedule = Repeatable::Schedule.new(args)
 ```
 
+- - -
+
+#### Time Expressions
+
+There are a number of time expressions available which, when combined, can describe most any schedule.
+
+```ruby
+# SETS
+
+# Any conditions can be met
+{ union: [] }
+Repeatable::Expression::Union.new(expressions)
+
+# All conditions must be met
+{ intersection: [] }
+Repeatable::Expression::Intersection.new(expressions)
+
+
+# DATES
+
+# Every Sunday
+{ weekday: { weekday: 0 } }
+Repeatable::Expression::Weekday.new(weekday: 0)
+
+# The 3rd Monday of every month
+{ weekday_in_month: { weekday: 1, count: 3 } }
+Repeatable::Expression::WeekdayInMonth.new(weekday: 1, count: 3)
+
+# The 13th of every month
+{ day_in_month: { day: 13 } }
+Repeatable::Expression::DayInMonth.new(day: 13)
+
+# Any day in October
+{ range_in_year: { start_month: 10 } }
+Repeatable::Expression::RangeInYear.new(start_month: 10)
+
+# All days from October through December
+{ range_in_year: { start_month: 10, end_month: 12 } }
+Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
+
+# All days from October 1 through December 20
+{ range_in_year: { start_month: 10, end_month: 12, start_day: 1, end_day: 20 } }
+Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12, start_day: 1, end_day: 20)
+```
+
+### Getting information from a Schedule
+
 Ask your schedule one of three questions:
 
 ```ruby
@@ -65,47 +114,10 @@ schedule.occurrences(Date.new(2015, 1, 1), Date.new(2016, 6, 30))
 
 schedule.include?(Date.new(2015, 10, 10))
   # => Whether the schedule has an event on the date given (true/false)
-```
 
-Available time expressions:
-
-```ruby
-# SETS
-
-# Any conditions can be met
-union: []
-Repeatable::Expression::Union.new(expressions)
-
-# All conditions must be met
-intersection: []
-Repeatable::Expression::Intersection.new(expressions)
-
-
-# DATES
-
-# Every Sunday
-weekday: { weekday: 0 }
-Repeatable::Expression::Weekday.new(weekday: 0)
-
-# The 3rd Monday of every month
-weekday_in_month: { weekday: 1, count: 3 }
-Repeatable::Expression::WeekdayInMonth.new(weekday: 1, count: 3)
-
-# The 13th of every month
-day_in_month: { day: 13 }
-Repeatable::Expression::DayInMonth.new(day: 13)
-
-# Any day in October
-range_in_year: { start_month: 10 }
-Repeatable::Expression::RangeInYear.new(start_month: 10)
-
-# All days from October through December
-range_in_year: { start_month: 10, end_month: 12 }
-Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
-
-# All days from October 1 through December 20
-range_in_year: { start_month: 10, end_month: 12, start_day: 1, end_day: 20 }
-Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12, start_day: 1, end_day: 20)
+schedule.to_h
+  # => Hash representation of the Schedule, which is useful for storage and
+  #    can be used to recreating an identical Schedule object at a later time
 ```
 
 ## Development
