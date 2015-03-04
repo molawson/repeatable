@@ -30,7 +30,7 @@ You can create a schedule in one of two ways.
 
 #### Composed objects
 
-You can compose each of the expression objects manually.
+Instantiate and compose each of the `Repeatable::Expression` objects manually.
 
 ```ruby
 second_monday = Repeatabe::Expression::WeekdayInMonth.new(weekday: 1, count: 2)
@@ -43,13 +43,13 @@ schedule = Repeatable::Schedule.new(intersection)
 
 #### Hash
 
-Or you can describe the same structure with a `Hash`, and the gem will compose the objects for you.
+Or describe the same structure with a `Hash`, and the gem will handle instantiating and composing the objects.
 
 ```ruby
 args = {
-  intersection: [                                     # All included conditions must be met
-    weekday_in_month: { weekday: 1, count: 2 }        # The second Monday of every month
-    range_in_year: { start_month: 10, end_month: 12 } # October through December
+  intersection: [
+    { weekday_in_month: { weekday: 1, count: 2 } },
+    { range_in_year: { start_month: 10, end_month: 12 } }
   ]
 }
 
@@ -88,7 +88,7 @@ Repeatable::Expression::WeekdayInMonth.new(weekday: 1, count: 3)
 { day_in_month: { day: 13 } }
 Repeatable::Expression::DayInMonth.new(day: 13)
 
-# Any day in October
+# All days in October
 { range_in_year: { start_month: 10 } }
 Repeatable::Expression::RangeInYear.new(start_month: 10)
 
@@ -103,7 +103,7 @@ Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12, start_da
 
 ### Getting information from a Schedule
 
-Ask your schedule one of three questions:
+Ask a schedule one of three questions.
 
 ```ruby
 schedule.next_occurrence
