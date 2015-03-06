@@ -57,8 +57,12 @@ module Repeatable
         args = value.map { |hash| build_expression(hash) }
         klass.new(*args)
       else
-        klass.new(value)
+        klass.new(symbolize_keys(value))
       end
+    end
+
+    def symbolize_keys(hash)
+      hash.each_with_object({}) { |(k, v), a| a[k.to_sym] = v }
     end
   end
 end

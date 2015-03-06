@@ -11,6 +11,14 @@ module Repeatable
         ]
       }
     end
+    let(:stringified_set_expression) do
+      {
+        'union' => [
+          { 'day_in_month' => { 'day' => 23 } },
+          { 'range_in_year' => { 'start_month' => 10, 'end_month' => 12 } }
+        ]
+      }
+    end
     let(:nested_set_expression) do
       {
         intersection: [
@@ -41,6 +49,14 @@ module Repeatable
 
         it 'does not blow up' do
           expect { subject }.not_to raise_error
+        end
+
+        context 'with string keys' do
+          let(:args) { stringified_set_expression }
+
+          it 'does not blow up' do
+            expect { subject }.not_to raise_error
+          end
         end
 
         context 'invalid hash format' do
