@@ -46,14 +46,14 @@ schedule = Repeatable::Schedule.new(intersection)
 Or describe the same structure with a `Hash`, and the gem will handle instantiating and composing the objects.
 
 ```ruby
-args = {
+arg = {
   intersection: [
     { weekday_in_month: { weekday: 1, count: 2 } },
     { range_in_year: { start_month: 10, end_month: 12 } }
   ]
 }
 
-schedule = Repeatable::Schedule.new(args)
+schedule = Repeatable::Schedule.new(arg)
 ```
 
 - - -

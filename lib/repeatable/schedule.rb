@@ -2,14 +2,14 @@ require 'active_support/core_ext/string/inflections'
 
 module Repeatable
   class Schedule
-    def initialize(args)
-      case args
+    def initialize(arg)
+      case arg
       when Hash
-        @expression = build_expression(args)
+        @expression = build_expression(arg)
       when Repeatable::Expression::Base
-        @expression = args
+        @expression = arg
       else
-        fail ArgumentError, "Can't build a Repeatable::Schedule from #{args.class}"
+        fail ArgumentError, "Can't build a Repeatable::Schedule from #{arg.class}"
       end
     end
 
