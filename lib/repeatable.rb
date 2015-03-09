@@ -23,3 +23,4 @@ require 'repeatable/expression/union'
 require 'repeatable/expression/intersection'
 
 require 'repeatable/schedule'
+require 'repeatable/parser'

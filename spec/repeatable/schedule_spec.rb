@@ -2,99 +2,16 @@ require 'spec_helper'
 
 module Repeatable
   describe Schedule do
-    let(:simple_range) { { range_in_year: { start_month: 10, end_month: 12 } } }
-    let(:set_expression) do
-      {
-        union: [
-          { day_in_month: { day: 23 } },
-          { range_in_year: { start_month: 10, end_month: 12 } }
-        ]
-      }
-    end
-    let(:stringified_set_expression) do
-      {
-        'union' => [
-          { 'day_in_month' => { 'day' => 23 } },
-          { 'range_in_year' => { 'start_month' => 10, 'end_month' => 12 } }
-        ]
-      }
-    end
-    let(:nested_set_expression) do
-      {
-        intersection: [
-          {
-            union: [
-              { day_in_month: { day: 23 } },
-              { day_in_month: { day: 24 } }
-            ]
-          },
-          { range_in_year: { start_month: 10, end_month: 12 } }
-        ]
-      }
-    end
-    let(:nested_set_expression_object) do
-      twenty_third = Repeatable::Expression::DayInMonth.new(day: 23)
-      twenty_fourth = Repeatable::Expression::DayInMonth.new(day: 24)
-      union = Repeatable::Expression::Union.new(twenty_third, twenty_fourth)
-      oct_thru_dec = Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
-
-      Repeatable::Expression::Intersection.new(union, oct_thru_dec)
-    end
+    include ScheduleArguments
 
     subject { described_class.new(arg) }
 
     describe '#initialize' do
       context 'with a Hash' do
-        let(:arg) { simple_range }
+        let(:arg) { simple_range_hash }
 
         it 'does not blow up' do
           expect { subject }.not_to raise_error
-        end
-
-        context 'with string keys' do
-          let(:arg) { stringified_set_expression }
-
-          it 'does not blow up' do
-            expect { subject }.not_to raise_error
-          end
-        end
-
-        context 'invalid hash format' do
-          context 'multiple keys in outer hash' do
-            let(:arg) do
-              {
-                day_in_month: { day: 23 },
-                range_in_year: { start_month: 10, end_month: 12 }
-              }
-            end
-
-            it 'raises an invalid expression error' do
-              expect { subject }.to raise_error(Repeatable::ParseError).with_message(/Invalid expression/)
-            end
-          end
-
-          context 'multiple keys in inner hash' do
-            let(:arg) do
-              {
-                union: [
-                  day_in_month: { day: 23 },
-                  range_in_year: { start_month: 10, end_month: 12 }
-                ]
-              }
-            end
-
-            it 'raises an invalid expression error' do
-              expect { subject }.to raise_error(Repeatable::ParseError).with_message(/Invalid expression/)
-            end
-          end
-
-          context 'key does not match existing class' do
-            let(:arg) { { asdf: { foo: 'bar' } } }
-
-            it 'raises an unknown mapping error' do
-              expect { subject }.to raise_error(Repeatable::ParseError).with_message(/Unknown mapping/)
-            end
-          end
         end
       end
 
@@ -116,7 +33,7 @@ module Repeatable
     end
 
     describe '#occurrences' do
-      let(:arg) { simple_range }
+      let(:arg) { simple_range_hash }
 
       context 'with convertible non-Date arguments' do
         expected_results = [
@@ -160,7 +77,7 @@ module Repeatable
       end
 
       context 'set expression' do
-        let(:arg) { set_expression }
+        let(:arg) { set_expression_hash }
 
         it 'returns all matching dates within the range given' do
           expect(
@@ -178,7 +95,7 @@ module Repeatable
       end
 
       context 'nested set expression' do
-        let(:arg) { nested_set_expression }
+        let(:arg) { nested_set_expression_hash }
 
         it 'returns all matching dates within the range given' do
           expect(
@@ -213,7 +130,7 @@ module Repeatable
     end
 
     describe '#next_occurrence' do
-      let(:arg) { simple_range }
+      let(:arg) { simple_range_hash }
 
       context 'with convertible non-Date argument' do
         expected_result = Date.new(2015, 10, 1)
@@ -239,7 +156,7 @@ module Repeatable
       end
 
       context 'set expression' do
-        let(:arg) { set_expression }
+        let(:arg) { set_expression_hash }
 
         it 'returns the next occurrence that matches the full expression' do
           expect(subject.next_occurrence(Date.new(2015, 9, 2))).to eq(Date.new(2015, 9, 23))
@@ -247,7 +164,7 @@ module Repeatable
       end
 
       context 'nested set expression' do
-        let(:arg) { nested_set_expression }
+        let(:arg) { nested_set_expression_hash }
 
         it 'returns the next occurrence that matches the full expression' do
           expect(subject.next_occurrence(Date.new(2015, 9, 2))).to eq(Date.new(2015, 10, 23))
@@ -256,7 +173,7 @@ module Repeatable
     end
 
     describe '#occuring?' do
-      let(:arg) { simple_range }
+      let(:arg) { simple_range_hash }
 
       context 'with convertible non-Date argument' do
         arguments = ['2015-10-1', DateTime.new(2015, 10, 1)]
@@ -288,7 +205,7 @@ module Repeatable
       end
 
       context 'set expression' do
-        let(:arg) { set_expression }
+        let(:arg) { set_expression_hash }
 
         it 'returns true for dates that match the full expression' do
           expect(subject.include?(Date.new(2015, 9, 23))).to eq(true)
@@ -308,7 +225,7 @@ module Repeatable
       end
 
       context 'nested set expression' do
-        let(:arg) { nested_set_expression }
+        let(:arg) { nested_set_expression_hash }
 
         it 'returns true for dates that match the full expression' do
           expect(subject.include?(Date.new(2015, 10, 23))).to eq(true)
@@ -328,7 +245,7 @@ module Repeatable
 
     describe '#to_h' do
       context 'initialized with a hash' do
-        let(:arg) { nested_set_expression }
+        let(:arg) { nested_set_expression_hash }
 
         it 'returns the same hash' do
           expect(subject.to_h).to eq(arg)
@@ -339,7 +256,7 @@ module Repeatable
         let(:arg) { nested_set_expression_object }
 
         it 'returns the hash representation of that Expression' do
-          expect(subject.to_h).to eq(nested_set_expression)
+          expect(subject.to_h).to eq(nested_set_expression_hash)
         end
       end
     end
