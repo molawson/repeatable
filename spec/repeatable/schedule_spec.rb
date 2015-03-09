@@ -69,7 +69,7 @@ module Repeatable
             end
 
             it 'raises an invalid expression error' do
-              expect { subject }.to raise_error(RuntimeError).with_message(/Invalid expression/)
+              expect { subject }.to raise_error(Repeatable::ParseError).with_message(/Invalid expression/)
             end
           end
 
@@ -84,7 +84,7 @@ module Repeatable
             end
 
             it 'raises an invalid expression error' do
-              expect { subject }.to raise_error(RuntimeError).with_message(/Invalid expression/)
+              expect { subject }.to raise_error(Repeatable::ParseError).with_message(/Invalid expression/)
             end
           end
 
@@ -92,7 +92,7 @@ module Repeatable
             let(:args) { { asdf: { foo: 'bar' } } }
 
             it 'raises an unknown mapping error' do
-              expect { subject }.to raise_error(RuntimeError).with_message(/Unknown mapping/)
+              expect { subject }.to raise_error(Repeatable::ParseError).with_message(/Unknown mapping/)
             end
           end
         end

@@ -8,6 +8,8 @@ include Repeatable::Conversions
 module Repeatable
 end
 
+require 'repeatable/parse_error'
+
 require 'repeatable/expression'
 require 'repeatable/expression/base'
 

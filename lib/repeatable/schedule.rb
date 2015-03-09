@@ -42,7 +42,7 @@ module Repeatable
 
     def build_expression(hash)
       if hash.length != 1
-        fail "Invalid expression: '#{hash}' should have single key and value"
+        fail ParseError, "Invalid expression: '#{hash}' must have single key and value"
       else
         expression_for(*hash.first)
       end
@@ -52,7 +52,7 @@ module Repeatable
       klass = "repeatable/expression/#{key}".classify.safe_constantize
       case klass
       when nil
-        fail "Unknown mapping: Can't map key '#{key.inspect}' to an expression class"
+        fail ParseError, "Unknown mapping: Can't map key '#{key.inspect}' to an expression class"
       when Repeatable::Expression::Set
         args = value.map { |hash| build_expression(hash) }
         klass.new(*args)
