@@ -9,7 +9,7 @@ module Repeatable
       when Hash
         @expression = Parser.call(arg)
       else
-        fail(ArgumentError, "Can't build a Repeatable::Schedule from #{arg.class}")
+        fail(ParseError, "Can't build a Repeatable::Schedule from #{arg.class}")
       end
     end
 

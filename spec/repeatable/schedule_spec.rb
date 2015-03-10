@@ -27,7 +27,7 @@ module Repeatable
         let(:arg) { 'a random string' }
 
         it 'raises a ArgumentError' do
-          expect { subject }.to raise_error(ArgumentError, "Can't build a Repeatable::Schedule from String")
+          expect { subject }.to raise_error(ParseError, "Can't build a Repeatable::Schedule from String")
         end
       end
     end
