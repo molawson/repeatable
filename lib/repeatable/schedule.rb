@@ -14,6 +14,8 @@ module Repeatable
     end
 
     def occurrences(start_date, end_date)
+      fail ArgumentError, 'end_date must be after start_date' if end_date < start_date
+
       start_date = Date(start_date)
       end_date = Date(end_date)
       (start_date..end_date).select { |date| include?(date) }

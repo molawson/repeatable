@@ -74,6 +74,21 @@ module Repeatable
             ]
           )
         end
+
+        it 'allows the dates being the same' do
+          expect(
+            subject.occurrences(Date.new(2015, 11, 28), Date.new(2015, 11, 28))
+          ).to eq(
+            [ Date.new(2015, 11, 28) ]
+          )
+        end
+
+        it 'raises an ArgumentError if end_date is before start_date' do
+          expect{
+            subject.occurrences(Date.new(2015, 11, 28), Date.new(2015, 11, 27))
+          }.to raise_error(ArgumentError)
+        end
+
       end
 
       context 'set expression' do
