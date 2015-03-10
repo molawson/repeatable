@@ -103,7 +103,7 @@ Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12, start_da
 
 ### Getting information from a Schedule
 
-Ask a schedule one of three questions.
+Ask a schedule to do a number of things.
 
 ```ruby
 schedule.next_occurrence
@@ -117,7 +117,7 @@ schedule.include?(Date.new(2015, 10, 10))
 
 schedule.to_h
   # => Hash representation of the Schedule, which is useful for storage and
-  #    can be used to recreating an identical Schedule object at a later time
+  #    can be used to recreate an identical Schedule object at a later time
 ```
 
 ## Development
