@@ -101,6 +101,10 @@ Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
 Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12, start_day: 1, end_day: 20)
 ```
 
+#### Schedule Errors
+
+If something in the argument passed into `Repeatable::Schedule.new` can't be handled by the `Schedule` or `Parser` (e.g. an expression hash key that doesn't match an existing expression class), a `Repeatable::ParseError` will be raised with a (hopefully) helpful error message.
+
 ### Getting information from a Schedule
 
 Ask a schedule to do a number of things.
@@ -108,6 +112,20 @@ Ask a schedule to do a number of things.
 ```ruby
 schedule.next_occurrence
   # => Date of next occurrence
+
+# By default, it will find the next occurrence after Date.today.
+# You can also specify a start date.
+schedule.next_occurrence(Date.new(2015, 1, 1))
+  # => Date of next occurrence after Jan 1, 2015
+
+# You also have the option of including the start date as a possible result.
+schedule.next_occurrence(Date.new(2015, 1, 1), include_start: true)
+  # => Date of next occurrence on or after Jan 1, 2015
+
+# By default, searches for the next occurrence are limited to the next 36,525 days (about 100 years).
+# That limit can also be specified in number of days.
+schedule.next_occurrence(limit: 365)
+  # => Date of next occurrence within the next 365 days
 
 schedule.occurrences(Date.new(2015, 1, 1), Date.new(2016, 6, 30))
   # => Dates of all occurrences between Jan 1, 2015 and June 30, 2016
