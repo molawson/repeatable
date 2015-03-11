@@ -185,6 +185,33 @@ module Repeatable
           expect(subject.next_occurrence(Date.new(2015, 9, 2))).to eq(Date.new(2015, 10, 23))
         end
       end
+
+      context 'include_start option' do
+        # Intentionally all-inclusive range to make testing this option easier
+        let(:arg) { { range_in_year: { start_month: 1, end_month: 12 } } }
+        let(:start_date) { Date.new(2015, 11, 1) }
+
+        context 'excluding start date (default)' do
+          it 'will not return the start date even if it is part of the schedule' do
+            expect(subject.next_occurrence(start_date))
+              .to eq(Date.new(2015, 11, 2))
+            expect(subject.next_occurrence(start_date, include_start: false))
+              .to eq(Date.new(2015, 11, 2))
+          end
+        end
+
+        context 'including start date' do
+          it 'will return the start date if it is part of the schedule' do
+            expect(subject.next_occurrence(start_date, include_start: true))
+              .to eq(Date.new(2015, 11, 1))
+          end
+
+          it 'include_start can be specified without an explicit start_date' do
+            expect(subject.next_occurrence(include_start: true))
+              .to eq(Date.today)
+          end
+        end
+      end
     end
 
     describe '#occuring?' do
