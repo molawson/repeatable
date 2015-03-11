@@ -22,16 +22,17 @@ module Repeatable
       (start_date..end_date).select { |date| include?(date) }
     end
 
-    def next_occurrence(start_date = Date.today, include_start: false)
+    def next_occurrence(start_date = Date.today, include_start: false, limit: 36525)
       date = Date(start_date)
 
       return date if include_start && include?(date)
 
-      loop do
+      1.step do |i|
         date = date.next_day
-        break if include?(date)
+
+        break date if include?(date)
+        break if i == limit.to_i
       end
-      date
     end
 
     def include?(date = Date.today)

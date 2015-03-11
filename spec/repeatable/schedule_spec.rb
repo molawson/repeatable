@@ -212,6 +212,27 @@ module Repeatable
           end
         end
       end
+
+      context 'limit option' do
+        let(:arg) do
+          # Leap day
+          {
+            intersection: [
+              { day_in_month: { day: 29 } },
+              { range_in_year: { start_month: 2 } }
+            ]
+          }
+        end
+        let(:start_date) { Date.new(2012, 3, 1) }
+
+        it 'default limit is far enough away as to not interfere with infrequent events' do
+          expect(subject.next_occurrence(start_date)).to eq(Date.new(2016, 2, 29))
+        end
+
+        it 'returns nil if the limit is reached before an occurrence is found' do
+          expect(subject.next_occurrence(start_date, limit: 365.25*3)).to be_nil
+        end
+      end
     end
 
     describe '#occuring?' do
