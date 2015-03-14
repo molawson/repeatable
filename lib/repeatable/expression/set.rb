@@ -11,9 +11,7 @@ module Repeatable
       end
 
       def to_h
-        hash = {}
-        hash[self.class.name.demodulize.underscore.to_sym] = elements.map(&:to_h)
-        hash
+        Hash[self.class.name.demodulize.underscore.to_sym, elements.map(&:to_h)]
       end
 
       private
