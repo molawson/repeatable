@@ -9,10 +9,6 @@ module Repeatable
         date.wday == weekday
       end
 
-      def to_h
-        { weekday: { weekday: weekday } }
-      end
-
       private
 
       attr_reader :weekday

@@ -9,10 +9,6 @@ module Repeatable
         date.day == day
       end
 
-      def to_h
-        { day_in_month: { day: day } }
-      end
-
       private
 
       attr_reader :day
