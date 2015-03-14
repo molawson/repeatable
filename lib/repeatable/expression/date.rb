@@ -10,6 +10,10 @@ module Repeatable
         other.is_a?(self.class) && attributes == other.attributes
       end
 
+      def hash
+        [attributes.values, self.class.name].hash
+      end
+
       protected
 
       def attributes

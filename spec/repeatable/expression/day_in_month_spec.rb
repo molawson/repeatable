@@ -36,6 +36,25 @@ module Repeatable
           expect(described_class.new(day: 21)).not_to eq(Weekday.new(weekday: 2))
         end
       end
+
+      describe '#hash' do
+        let(:expression) { described_class.new(day: 21) }
+
+        it 'of two expressions with the same arguments are the same' do
+          other_expression = described_class.new(day: 21)
+          expect(expression.hash).to eq(other_expression.hash)
+        end
+
+        it 'of two expressions with different arguments are not the same' do
+          other_expression = described_class.new(day: 22)
+          expect(expression.hash).not_to eq(other_expression.hash)
+        end
+
+        it 'of two expressions of different types are not the same' do
+          other_expression = Weekday.new(weekday: 2)
+          expect(expression.hash).not_to eq(other_expression.hash)
+        end
+      end
     end
   end
 end

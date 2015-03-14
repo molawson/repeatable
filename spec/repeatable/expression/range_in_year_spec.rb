@@ -170,6 +170,33 @@ module Repeatable
             .not_to eq(DayInMonth.new(day: 1))
         end
       end
+
+      describe '#hash' do
+        let(:expression) do
+          described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4)
+        end
+
+        it 'of two expressions with the same arguments are the same' do
+          other_expression = described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4)
+          expect(expression.hash).to eq(other_expression.hash)
+        end
+
+        it 'of two expressions with the same arguments (accounting for defaults) are the same' do
+          expression = described_class.new(start_month: 1, end_month: 1, start_day: 0, end_day: 0)
+          other_expression = described_class.new(start_month: 1)
+          expect(expression.hash).to eq(other_expression.hash)
+        end
+
+        it 'of two expressions with one differing argument are not the same' do
+          other_expression = described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 5)
+          expect(expression.hash).not_to eq(other_expression.hash)
+        end
+
+        it 'of two expressions of different types are not the same' do
+          other_expression = DayInMonth.new(day: 1)
+          expect(expression.hash).not_to eq(other_expression.hash)
+        end
+      end
     end
   end
 end
