@@ -22,6 +22,20 @@ module Repeatable
           expect(subject.to_h).to eq(day_in_month: { day: 21 })
         end
       end
+
+      describe '#==' do
+        it 'returns true if the expressions have the same argument' do
+          expect(described_class.new(day: 21)).to eq(described_class.new(day: 21))
+        end
+
+        it 'returns false if the expressions do not have the same argument' do
+          expect(described_class.new(day: 21)).not_to eq(described_class.new(day: 22))
+        end
+
+        it 'returns false if the given expression is not a DayInMonth' do
+          expect(described_class.new(day: 21)).not_to eq(Weekday.new(weekday: 2))
+        end
+      end
     end
   end
 end

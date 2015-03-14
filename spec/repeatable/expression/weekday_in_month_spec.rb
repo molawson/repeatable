@@ -34,6 +34,23 @@ module Repeatable
           expect(subject.to_h).to eq(weekday_in_month: { weekday: 0, count: 1 })
         end
       end
+
+      describe '#==' do
+        it 'returns true if the expressions have the same arguments' do
+          expect(described_class.new(weekday: 1, count: 2))
+            .to eq(described_class.new(weekday: 1, count: 2))
+        end
+
+        it 'returns false if the expressions have one differing argument' do
+          expect(described_class.new(weekday: 1, count: 2))
+            .not_to eq(described_class.new(weekday: 1, count: 3))
+        end
+
+        it 'returns false if the given expression is not a WeekdayInMonth' do
+          expect(described_class.new(weekday: 1, count: 2))
+            .not_to eq(DayInMonth.new(day: 1))
+        end
+      end
     end
   end
 end

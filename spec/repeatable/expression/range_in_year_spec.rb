@@ -148,6 +148,28 @@ module Repeatable
           end
         end
       end
+
+      describe '#==' do
+        it 'returns true if the expressions have the same arguments' do
+          expect(described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4))
+            .to eq(described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4))
+        end
+
+        it 'returns true if the expressions have the same arguments (accounting for defaults)' do
+          expect(described_class.new(start_month: 1, end_month: 1, start_day: 0, end_day: 0))
+            .to eq(described_class.new(start_month: 1))
+        end
+
+        it 'returns false if the expressions have one differing argument' do
+          expect(described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4))
+            .not_to eq(described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 5))
+        end
+
+        it 'returns false if the given expression is not a RangeInYear' do
+          expect(described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4))
+            .not_to eq(DayInMonth.new(day: 1))
+        end
+      end
     end
   end
 end

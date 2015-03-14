@@ -6,7 +6,11 @@ module Repeatable
         Hash[self.class.name.demodulize.underscore.to_sym, attributes]
       end
 
-      private
+      def ==(other)
+        other.is_a?(self.class) && attributes == other.attributes
+      end
+
+      protected
 
       def attributes
         Hash[instance_variables.map { |name| [name[1..-1].to_sym, instance_variable_get(name)] }]
