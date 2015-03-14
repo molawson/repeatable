@@ -2,11 +2,11 @@ module Repeatable
   module Expression
     class Set < Base
       def initialize(*elements)
-        @elements = elements.flatten
+        @elements = elements.flatten.uniq
       end
 
       def <<(element)
-        elements << element
+        elements << element unless elements.include?(element)
         self
       end
 

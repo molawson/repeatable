@@ -6,6 +6,7 @@ module Repeatable
       let(:tuesday) { Repeatable::Expression::Weekday.new(weekday: 2)  }
       let(:thursday) { Repeatable::Expression::Weekday.new(weekday: 4)  }
       let(:tenth) { Repeatable::Expression::DayInMonth.new(day: 10) }
+      let(:another_tuesday) { Repeatable::Expression::Weekday.new(weekday: 2) }
 
       describe '#initialize' do
         context 'no arguments' do
@@ -18,6 +19,11 @@ module Repeatable
         context 'multiple arguments' do
           it 'combines all arguments into elements array' do
             set = described_class.new(tuesday, tenth, thursday)
+            expect(set.send(:elements)).to eq([tuesday, tenth, thursday])
+          end
+
+          it 'will not add multiples of equal expressions' do
+            set = described_class.new(tuesday, tenth, thursday, another_tuesday)
             expect(set.send(:elements)).to eq([tuesday, tenth, thursday])
           end
         end
@@ -50,6 +56,10 @@ module Repeatable
           it 'appends the new element to the elements array' do
             subject << tenth
             expect(subject.send(:elements)).to eq([tuesday, thursday, tenth])
+          end
+
+          it 'will not add a duplicate of an existing element' do
+            expect { subject << another_tuesday }.not_to change { subject.send(:elements) }
           end
         end
       end
