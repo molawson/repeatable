@@ -1,6 +1,6 @@
 module Repeatable
   module Expression
-    class Weekday < Base
+    class Weekday < Date
       def initialize(weekday:)
         @weekday = weekday
       end

@@ -12,13 +12,13 @@ module Repeatable
 
       describe '#include?' do
         it 'only returns true for dates that match all expressions' do
-          expect(subject.include?(Date.new(2015, 9, 23))).to eq(false)
-          expect(subject.include?(Date.new(2015, 10, 2))).to eq(false)
-          expect(subject.include?(Date.new(2015, 10, 23))).to eq(true)
-          expect(subject.include?(Date.new(2015, 11, 23))).to eq(true)
-          expect(subject.include?(Date.new(2015, 12, 23))).to eq(true)
-          expect(subject.include?(Date.new(2015, 12, 24))).to eq(false)
-          expect(subject.include?(Date.new(2015, 1, 23))).to eq(false)
+          expect(subject.include?(::Date.new(2015, 9, 23))).to eq(false)
+          expect(subject.include?(::Date.new(2015, 10, 2))).to eq(false)
+          expect(subject.include?(::Date.new(2015, 10, 23))).to eq(true)
+          expect(subject.include?(::Date.new(2015, 11, 23))).to eq(true)
+          expect(subject.include?(::Date.new(2015, 12, 23))).to eq(true)
+          expect(subject.include?(::Date.new(2015, 12, 24))).to eq(false)
+          expect(subject.include?(::Date.new(2015, 1, 23))).to eq(false)
         end
       end
     end

@@ -9,11 +9,11 @@ module Repeatable
 
       describe '#include?' do
         it 'returns true for dates matching the weekday given' do
-          expect(subject).to include(Date.new(2015, 1, 1))
+          expect(subject).to include(::Date.new(2015, 1, 1))
         end
 
         it 'returns false for dates not matching the weekday given' do
-          expect(subject).not_to include(Date.new(2015, 1, 2))
+          expect(subject).not_to include(::Date.new(2015, 1, 2))
         end
       end
 

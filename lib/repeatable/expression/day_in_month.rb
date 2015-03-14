@@ -1,6 +1,6 @@
 module Repeatable
   module Expression
-    class DayInMonth < Base
+    class DayInMonth < Date
       def initialize(day:)
         @day = day
       end

@@ -1,6 +1,6 @@
 module Repeatable
   module Expression
-    class RangeInYear < Base
+    class RangeInYear < Date
       def initialize(start_month:, end_month: start_month, start_day: 0, end_day: 0)
         @start_month = start_month
         @end_month = end_month

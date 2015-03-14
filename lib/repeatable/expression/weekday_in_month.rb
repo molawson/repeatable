@@ -1,6 +1,6 @@
 module Repeatable
   module Expression
-    class WeekdayInMonth < Base
+    class WeekdayInMonth < Date
       def initialize(weekday:, count:)
         @weekday = weekday
         @count = count
