@@ -171,6 +171,33 @@ module Repeatable
         end
       end
 
+      describe '#eql?' do
+        let(:expression) do
+          described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4)
+        end
+
+        it 'returns true if the expressions have the same arguments' do
+          other_expression = described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4)
+          expect(expression).to eql(other_expression)
+        end
+
+        it 'returns true if the expressions have the same arguments (accounting for defaults)' do
+          expression = described_class.new(start_month: 1, end_month: 1, start_day: 0, end_day: 0)
+          other_expression = described_class.new(start_month: 1)
+          expect(expression).to eql(other_expression)
+        end
+
+        it 'returns false if the expressions have one differing argument' do
+          other_expression = described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 5)
+          expect(expression).not_to eql(other_expression)
+        end
+
+        it 'returns false if the given expression is not a RangeInYear' do
+          other_expression = DayInMonth.new(day: 1)
+          expect(expression).not_to eql(other_expression)
+        end
+      end
+
       describe '#hash' do
         let(:expression) do
           described_class.new(start_month: 1, end_month: 2, start_day: 3, end_day: 4)

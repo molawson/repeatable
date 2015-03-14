@@ -37,6 +37,25 @@ module Repeatable
         end
       end
 
+      describe '#eql?' do
+        let(:expression) { described_class.new(day: 21) }
+
+        it 'returns true if the expressions have the same argument' do
+          other_expression = described_class.new(day: 21)
+          expect(expression).to eql(other_expression)
+        end
+
+        it 'returns false if the expressions do not have the same argument' do
+          other_expression = described_class.new(day: 22)
+          expect(expression).not_to eql(other_expression)
+        end
+
+        it 'returns false if the given expression is not a DayInMonth' do
+          other_expression = Weekday.new(weekday: 2)
+          expect(expression).not_to eql(other_expression)
+        end
+      end
+
       describe '#hash' do
         let(:expression) { described_class.new(day: 21) }
 

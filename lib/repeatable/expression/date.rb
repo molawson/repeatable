@@ -10,6 +10,8 @@ module Repeatable
         other.is_a?(self.class) && attributes == other.attributes
       end
 
+      alias eql? ==
+
       def hash
         [attributes.values, self.class.name].hash
       end
