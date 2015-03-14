@@ -323,5 +323,32 @@ module Repeatable
         end
       end
     end
+
+    describe '#==' do
+      it 'returns true if the schedules have the same identity' do
+        schedule = described_class.new(nested_set_expression_object)
+        expect(schedule).to eq(schedule)
+      end
+
+      it 'returns true if the schedules have the same expression' do
+        expect(described_class.new(nested_set_expression_hash))
+          .to eq(described_class.new(nested_set_expression_hash))
+      end
+
+      it 'returns true if the schedules have the same expression regardless of order' do
+        expect(described_class.new(nested_set_expression_hash))
+          .to eq(described_class.new(reordered_nested_set_expression_hash))
+      end
+
+      it 'returns false if the schedules do not have the same expression' do
+        expect(described_class.new(nested_set_expression_hash))
+          .not_to eq(described_class.new(set_expression_hash))
+      end
+
+      it 'returns false if the other object is not a Schedule' do
+        expect(described_class.new(nested_set_expression_object))
+          .not_to eq(nested_set_expression_object)
+      end
+    end
   end
 end

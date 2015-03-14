@@ -44,7 +44,11 @@ module Repeatable
       expression.to_h
     end
 
-    private
+    def ==(other)
+      other.is_a?(self.class) && expression == other.expression
+    end
+
+    protected
 
     attr_reader :expression
   end
