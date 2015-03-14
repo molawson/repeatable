@@ -11,8 +11,6 @@ module Repeatable
         let(:arg) { nested_set_expression_hash }
 
         it 'builds the expected Expression object' do
-          pending 'Need a reliable way to determine Expression equality'
-          # This is tested indirectly by the Schedule#occurrences specs
           expect(subject).to eq(nested_set_expression_object)
         end
       end

@@ -14,7 +14,13 @@ module Repeatable
         Hash[self.class.name.demodulize.underscore.to_sym, elements.map(&:to_h)]
       end
 
-      private
+      def ==(other)
+        other.is_a?(self.class) &&
+          elements.size == other.elements.size &&
+          other.elements.all? { |e| elements.include?(e) }
+      end
+
+      protected
 
       attr_reader :elements
     end

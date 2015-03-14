@@ -70,6 +70,33 @@ module Repeatable
           expect(set.to_h).to eq(set: [tuesday.to_h, tenth.to_h, thursday.to_h])
         end
       end
+
+      describe '#==' do
+        let(:set_one) { described_class.new([tuesday, tenth, thursday]) }
+        let(:set_two) { described_class.new([tuesday, tenth]) }
+        let(:set_three) { described_class.new([tuesday, thursday]) }
+        let(:set_another_one) { described_class.new([tuesday, tenth, thursday]) }
+        let(:set_reordered_one) { described_class.new([tenth, tuesday, thursday]) }
+
+        it 'returns true if both sets have the same identity' do
+          expect(set_one).to eq(set_one)
+        end
+
+        it 'returns true if both sets contain the same elements' do
+          expect(set_one).to eq(set_another_one)
+        end
+
+        it 'returns true if both sets contain the same elements regardless of order' do
+          expect(set_one).to eq(set_reordered_one)
+        end
+
+        it 'returns false if both sets do not contain the same elements' do
+          expect(set_one).not_to eq(set_two)
+          expect(set_two).not_to eq(set_one)
+          expect(set_two).not_to eq(set_three)
+          expect(set_three).not_to eq(set_two)
+        end
+      end
     end
   end
 end
