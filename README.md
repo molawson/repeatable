@@ -138,6 +138,29 @@ schedule.to_h
   #    can be used to recreate an identical Schedule object at a later time
 ```
 
+#### Equivalence
+
+Both `Repeatable::Schedule` and all `Repeatable::Expression` classes have equivalence `#==` defined according to what's appropriate for each class, so regardless of the order of arguments passed to each, you can tell whether one object is equivalent to the other in terms of whether or not, when asked the same questions, you'd receive the same results from each.
+
+```ruby
+Repeatable::Expression::DayInMonth.new(day: 1) == Repeatable::Expression::DayInMonth.new(day: 1)
+  # => true
+
+first = Repeatable::Expression::DayInMonth.new(day: 1)
+fifteenth = Repeatable::Expression::DayInMonth.new(day: 15)
+first == fifteenth
+  # => false
+
+union = Repeatable::Expression::Union.new(first, fifteenth)
+another_union = Repeatable::Expression::Union.new(fifteenth, first)
+union == another_union
+  # => true (order of Union and Intersection arguments doesn't their affect output)
+
+Repeatable::Schedule.new(union) == Repeatable::Schedule.new(another_union)
+  # => true (their expressions are equivalent, so they'll produce the same results)
+
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
