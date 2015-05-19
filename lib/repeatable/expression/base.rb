@@ -23,6 +23,15 @@ module Repeatable
           "Don't use Expression::Base directly. Subclasses must implement `#to_h`"
         )
       end
+
+      private
+
+      def hash_key
+        self.class.name.split('::').last
+          .gsub(/(?<!\b)[A-Z]/) { "_#{Regexp.last_match[0]}" }
+          .downcase
+          .to_sym
+      end
     end
   end
 end

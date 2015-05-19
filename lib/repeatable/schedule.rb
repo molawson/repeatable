@@ -1,5 +1,3 @@
-require 'active_support/core_ext/string/inflections'
-
 module Repeatable
   class Schedule
     def initialize(arg)

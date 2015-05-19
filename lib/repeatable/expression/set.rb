@@ -11,7 +11,7 @@ module Repeatable
       end
 
       def to_h
-        Hash[self.class.name.demodulize.underscore.to_sym, elements.map(&:to_h)]
+        Hash[hash_key, elements.map(&:to_h)]
       end
 
       def ==(other)

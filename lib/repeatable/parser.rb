@@ -25,7 +25,7 @@ module Repeatable
     end
 
     def expression_for(key, value)
-      klass = "repeatable/expression/#{key}".classify.safe_constantize
+      klass = expression_klass(key.to_s)
       case klass
       when nil
         fail(ParseError, "Unknown mapping: Can't map key '#{key.inspect}' to an expression class")
@@ -39,6 +39,15 @@ module Repeatable
 
     def symbolize_keys(hash)
       hash.each_with_object({}) { |(k, v), a| a[k.to_sym] = v }
+    end
+
+    def expression_klass(string)
+      camel_cased_string = string
+        .capitalize
+        .gsub(/(?:_)(?<word>[a-z\d]+)/i) { Regexp.last_match[:word].capitalize }
+      Repeatable::Expression.const_get(camel_cased_string)
+    rescue NameError => e
+      raise if e.name && e.name.to_s != camel_cased_string
     end
   end
 end

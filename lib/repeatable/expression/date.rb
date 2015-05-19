@@ -3,7 +3,7 @@ module Repeatable
     class Date < Base
 
       def to_h
-        Hash[self.class.name.demodulize.underscore.to_sym, attributes]
+        Hash[hash_key, attributes]
       end
 
       def ==(other)
