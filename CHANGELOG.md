@@ -2,13 +2,17 @@
 
 ### Unreleased
 
+[Commits](https://github.com/molawson/repeatable/compare/v0.4.0...master)
+
+### 0.4.0 (2015-06-29)
+
 Features:
 
 * Define equivalence `#==` for `Expression` and `Schedule` objects
 * Define hash equality `#eql?` for `Expression::Date` objects
 * Remove `ActiveSupport` dependency
 
-[Commits](https://github.com/molawson/repeatable/compare/v0.3.0...master)
+[Commits](https://github.com/molawson/repeatable/compare/v0.3.0...v0.4.0)
 
 ### 0.3.0 (2015-03-11)
 
