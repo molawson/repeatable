@@ -19,7 +19,19 @@ module Repeatable
       protected
 
       def attributes
-        Hash[instance_variables.map { |name| [name[1..-1].to_sym, instance_variable_get(name)] }]
+        instance_variables.each_with_object({}) do |name, hash|
+          key = name.to_s.gsub(/^@/, '').to_sym
+          hash[key] = normalize_attribute_value(instance_variable_get(name))
+        end
+      end
+
+      def normalize_attribute_value(value)
+        case value
+        when ::Date
+          value.to_s
+        else
+          value
+        end
       end
     end
   end
