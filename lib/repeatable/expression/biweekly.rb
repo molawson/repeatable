@@ -1,29 +1,27 @@
 module Repeatable
   module Expression
     class Biweekly < Date
-      def initialize(weekday:, start_date: ::Date.today)
+      def initialize(weekday:, start_after: ::Date.today)
         @weekday = weekday
-        @start_date = Date(start_date)
+        @start_after = Date(start_after)
       end
 
       def include?(date)
-        date >= start_date && (date - first_occurrence) % 14 == 0
+        date >= start_after && (date - first_occurrence) % 14 == 0
       end
 
       private
 
-      attr_reader :weekday, :start_date
+      attr_reader :weekday, :start_after
 
       def first_occurrence
         @first_occurrence ||= find_first_occurrence
       end
 
       def find_first_occurrence
-        return start_date if start_date.wday == weekday
-
-        days_away = weekday - start_date.wday
-        days_away += 7 if days_away < 0
-        start_date + days_away
+        days_away = weekday - start_after.wday
+        days_away += 7 if days_away <= 0
+        start_after + days_away
       end
     end
   end
