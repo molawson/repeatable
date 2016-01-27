@@ -2,7 +2,15 @@
 
 ### Unreleased
 
-[Commits](https://github.com/molawson/repeatable/compare/v0.4.0...master)
+[Commits](https://github.com/molawson/repeatable/compare/v0.5.0...master)
+
+### 0.5.0 (2016-01-27)
+
+Features:
+
+* Add `Expression::Biweekly` for "every other week" recurrence
+
+[Commits](https://github.com/molawson/repeatable/compare/v0.4.0...v0.5.0)
 
 ### 0.4.0 (2015-06-29)
 
