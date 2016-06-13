@@ -74,6 +74,18 @@ module Repeatable
           expect(expression.hash).not_to eq(other_expression.hash)
         end
       end
+
+      describe ':last' do
+        let(:expression) { described_class.new(day: :last) }
+
+        it 'correctly identified the last day of a 31 day month' do
+          expect(expression).to include(::Date.new(2015, 1, 31))
+        end
+
+        it 'correctly identified the last day of a 28 day month' do
+          expect(expression).to include(::Date.new(2015, 2, 28))
+        end
+      end
     end
   end
 end

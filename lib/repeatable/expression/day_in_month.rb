@@ -6,7 +6,11 @@ module Repeatable
       end
 
       def include?(date)
-        date.day == day
+        if day == :last
+          date.next_day.month != date.month
+        else
+          date.day == day
+        end
       end
 
       private
