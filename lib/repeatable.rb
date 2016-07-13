@@ -23,6 +23,7 @@ require 'repeatable/expression/range_in_year'
 require 'repeatable/expression/set'
 require 'repeatable/expression/union'
 require 'repeatable/expression/intersection'
+require 'repeatable/expression/difference'
 
 require 'repeatable/schedule'
 require 'repeatable/parser'

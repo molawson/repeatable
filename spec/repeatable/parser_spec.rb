@@ -15,6 +15,14 @@ module Repeatable
         end
       end
 
+      context 'difference set expression' do
+        let (:arg) { difference_expression_hash }
+
+        it 'builds the expected Expression object' do
+          expect(subject).to eq(difference_expression_object)
+        end
+      end
+
       context 'with string keys' do
         let(:arg) { stringified_set_expression_hash }
 
