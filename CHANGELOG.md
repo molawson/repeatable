@@ -2,6 +2,11 @@
 
 ### Unreleased
 
+Features:
+
+* Add `Expression::Difference` for set differences between 2 schedules ([@danott][])
+* Allow `Expression::DayInMonth` to take `:last` (or `'last'`) for its `day:` argument ([@PatrickLerner][])
+
 [Commits](https://github.com/molawson/repeatable/compare/v0.5.0...master)
 
 ### 0.5.0 (2016-01-27)
@@ -65,3 +70,4 @@ Initial Release
 
 
 [@danott]: https://github.com/danott
+[@PatrickLerner]: https://github.com/PatrickLerner
