@@ -14,6 +14,8 @@ require 'repeatable/expression'
 require 'repeatable/expression/base'
 
 require 'repeatable/expression/date'
+require 'repeatable/expression/date_after'
+require 'repeatable/expression/date_before'
 require 'repeatable/expression/weekday'
 require 'repeatable/expression/biweekly'
 require 'repeatable/expression/weekday_in_month'
