@@ -6,8 +6,6 @@ module Repeatable
         @excluded = excluded
       end
 
-      attr_reader :included, :excluded
-
       def include?(date)
         return false if excluded.include?(date)
         included.include?(date)
@@ -21,6 +19,10 @@ module Repeatable
         return false unless other.is_a?(self.class)
         included == other.included && excluded == other.excluded
       end
+
+      protected
+
+      attr_reader :included, :excluded
     end
   end
 end
