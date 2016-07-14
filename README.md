@@ -22,6 +22,10 @@ Or install it yourself as:
 
     $ gem install repeatable
 
+## Requirements
+
+Because this gem relies heavily on required keyword arguments, especially to make dumping and parsing of schedules simpler, this code will only work on **Ruby 2.1** and higher.
+
 ## Usage
 
 ### Building a Schedule
@@ -91,6 +95,10 @@ Repeatable::Expression::Biweekly.new(weekday: 1, start_date: Date.new(2015, 12, 
 # The 13th of every month
 { day_in_month: { day: 13 } }
 Repeatable::Expression::DayInMonth.new(day: 13)
+
+# The last day of every month
+{ day_in_month: { day: :last } }
+Repeatable::Expression::DayInMonth.new(day: :last)
 
 # All days in October
 { range_in_year: { start_month: 10 } }
