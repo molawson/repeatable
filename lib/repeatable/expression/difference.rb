@@ -20,15 +20,9 @@ module Repeatable
         included == other.included && excluded == other.excluded
       end
 
-      def difference(other)
-        Difference.new(included: included, excluded: excluded + other)
-      end
-      alias - difference
-
       protected
 
-      attr_reader :included
-      attr_accessor :excluded
+      attr_reader :included, :excluded
     end
   end
 end

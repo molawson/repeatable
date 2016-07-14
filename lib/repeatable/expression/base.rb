@@ -25,22 +25,15 @@ module Repeatable
       end
 
       def union(other)
-        if other.is_a?(Union)
-          other.union(self)
-        else
-          Union.new(self, other)
-        end
+        Union.new(self, other)
       end
       alias + union
+      alias | union
 
       def intersection(other)
-        if other.is_a?(Intersection)
-          other.intersection(self)
-        else
-          Intersection.new(self, other)
-        end
+        Intersection.new(self, other)
       end
-      alias | intersection
+      alias & intersection
 
       def difference(other)
         Difference.new(included: self, excluded: other)
