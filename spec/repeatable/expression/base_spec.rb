@@ -33,6 +33,90 @@ module Repeatable
           expect { subject.to_h }.to raise_error(NotImplementedError)
         end
       end
+
+      describe 'set operators' do
+        describe '+' do
+          let(:fridays) { Weekday.new(weekday: 5) }
+          let(:saturdays) { Weekday.new(weekday: 6) }
+          let(:sundays) { Weekday.new(weekday: 0) }
+          let(:weekends) { Union.new(saturdays, sundays) }
+          let(:summer_weekends) { Union.new(fridays, saturdays, sundays) }
+
+          it 'returns a Union of the two expressions' do
+            expect(saturdays + sundays).to eq(weekends)
+          end
+
+          it 'returns a Union without redundant nesting when receiver is a Union' do
+            expect(weekends + fridays).to eq(summer_weekends)
+          end
+
+          it 'returns a Union without redundant nesting when argument is a Union' do
+            expect(fridays + weekends).to eq(summer_weekends)
+          end
+
+          it 'returns a Union without redundant nesting when both are Unions' do
+            expect(weekends + summer_weekends).to eq(summer_weekends)
+          end
+        end
+
+        describe '|' do
+          let(:mondays) { Weekday.new(weekday: 1) }
+          let(:fourths) { DayInMonth.new(day: 4) }
+          let(:july) { RangeInYear.new(start_month: 7) }
+          let(:fourth_of_july) { Intersection.new(july, fourths) }
+          let(:three_day_wekeend) { Intersection.new(mondays, fourths, july) }
+
+          it 'returns an Intersection of the two expressions' do
+            expect(fourths | july).to eq(fourth_of_july)
+          end
+
+          it 'returns an Intersection without redundant nesting when receiver is a Intersection' do
+            expect(fourth_of_july | mondays).to eq(three_day_wekeend)
+          end
+
+          it 'returns an Intersection without redundant nesting when argument is a Intersection' do
+            expect(mondays | fourth_of_july).to eq(three_day_wekeend)
+          end
+
+          it 'returns a Intersection without redundant nesting when both are Intersections' do
+            expect(three_day_wekeend | fourth_of_july).to eq(three_day_wekeend)
+          end
+        end
+
+        describe '-' do
+          let(:mondays) { Weekday.new(weekday: 1) }
+          let(:tuesdays) { Weekday.new(weekday: 2) }
+          let(:wednesdays) { Weekday.new(weekday: 3) }
+          let(:thursdays) { Weekday.new(weekday: 4) }
+          let(:fridays) { Weekday.new(weekday: 5) }
+          let(:workdays) { Union.new(mondays, tuesdays, wednesdays, thursdays, fridays) }
+          let(:summer_workdays) { Difference.new(included: workdays, excluded: fridays) }
+          let(:three_day_work_week) {
+            Difference.new(included: workdays, excluded: Union.new(thursdays, fridays))
+          }
+
+          it 'returns a Difference of the two expressions' do
+            expect(workdays - fridays).to eq(summer_workdays)
+          end
+
+          it 'returns a Difference without redundant nesting when receiver is a Difference' do
+            expect(summer_workdays - thursdays).to eq(three_day_work_week)
+          end
+
+          it 'returns a Difference with no special transformations when argument is a Difference' do
+            expected = Difference.new(included: thursdays, excluded: summer_workdays)
+            expect(thursdays - summer_workdays).to eq(expected)
+          end
+
+          it 'returns a Difference with only receiver redundancy removed with two Differences' do
+            expected = Difference.new(
+              included: workdays,
+              excluded: Union.new(summer_workdays, thursdays, fridays),
+            )
+            expect(three_day_work_week - summer_workdays).to eq(expected)
+          end
+        end
+      end
     end
   end
 end
