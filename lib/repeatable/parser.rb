@@ -32,6 +32,10 @@ module Repeatable
       when Repeatable::Expression::Set
         args = value.map { |hash| build_expression(hash) }
         klass.new(*args)
+      when Repeatable::Expression::Difference
+        included = build_expression(value[:included] || value["included"])
+        excluded = build_expression(value[:excluded] || value["excluded"])
+        klass.new(included: included, excluded: excluded)
       else
         klass.new(symbolize_keys(value))
       end

@@ -49,6 +49,29 @@ module ScheduleArguments
     }
   end
 
+  def difference_expression_hash
+    {
+      difference: {
+        included: { weekday: { weekday: 1 } },
+        excluded: {
+          union: [
+            { day_in_month: { day: 4} },
+            { day_in_month: { day: 11} },
+          ]
+        }
+      }
+    }
+  end
+
+  def difference_expression_object
+    mondays = Repeatable::Expression::Weekday.new(weekday: 1)
+    fourths = Repeatable::Expression::DayInMonth.new(day: 4)
+    elevenths = Repeatable::Expression::DayInMonth.new(day: 11)
+    union = Repeatable::Expression::Union.new(fourths, elevenths)
+
+    Repeatable::Expression::Difference.new(included: mondays, excluded: union)
+  end
+
   def nested_set_expression_object
     twenty_third = Repeatable::Expression::DayInMonth.new(day: 23)
     twenty_fourth = Repeatable::Expression::DayInMonth.new(day: 24)
