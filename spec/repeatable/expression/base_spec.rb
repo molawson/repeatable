@@ -33,6 +33,51 @@ module Repeatable
           expect { subject.to_h }.to raise_error(NotImplementedError)
         end
       end
+
+      describe 'set operators' do
+        describe '#union, #+ and #|' do
+          let(:saturdays) { Weekday.new(weekday: 6) }
+          let(:sundays) { Weekday.new(weekday: 0) }
+          let(:weekends) { Union.new(saturdays, sundays) }
+
+          it 'returns a Union of the two expressions' do
+            expect(saturdays.union(sundays)).to eq(weekends)
+            expect(sundays.union(saturdays)).to eq(weekends)
+            expect(saturdays + sundays).to eq(weekends)
+            expect(sundays + saturdays).to eq(weekends)
+            expect(saturdays | sundays).to eq(weekends)
+            expect(sundays | saturdays).to eq(weekends)
+          end
+        end
+
+        describe '#intersection and #&' do
+          let(:fourths) { DayInMonth.new(day: 4) }
+          let(:july) { RangeInYear.new(start_month: 7) }
+          let(:fourth_of_july) { Intersection.new(july, fourths) }
+
+          it 'returns an Intersection of the two expressions' do
+            expect(fourths.intersection(july)).to eq(fourth_of_july)
+            expect(july.intersection(fourths)).to eq(fourth_of_july)
+            expect(fourths & july).to eq(fourth_of_july)
+            expect(july & fourths).to eq(fourth_of_july)
+          end
+        end
+
+        describe '#difference and #-' do
+          let(:mondays) { Weekday.new(weekday: 1) }
+          let(:tuesdays) { Weekday.new(weekday: 2) }
+          let(:wednesdays) { Weekday.new(weekday: 3) }
+          let(:thursdays) { Weekday.new(weekday: 4) }
+          let(:fridays) { Weekday.new(weekday: 5) }
+          let(:workdays) { Union.new(mondays, tuesdays, wednesdays, thursdays, fridays) }
+          let(:summer_workdays) { Difference.new(included: workdays, excluded: fridays) }
+
+          it 'returns a Difference of the two expressions' do
+            expect(workdays.difference(fridays)).to eq(summer_workdays)
+            expect(workdays - fridays).to eq(summer_workdays)
+          end
+        end
+      end
     end
   end
 end

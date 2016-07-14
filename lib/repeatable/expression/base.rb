@@ -24,6 +24,22 @@ module Repeatable
         )
       end
 
+      def union(other)
+        Union.new(self, other)
+      end
+      alias + union
+      alias | union
+
+      def intersection(other)
+        Intersection.new(self, other)
+      end
+      alias & intersection
+
+      def difference(other)
+        Difference.new(included: self, excluded: other)
+      end
+      alias - difference
+
       private
 
       def hash_key
