@@ -7,8 +7,7 @@ module Repeatable
       end
 
       def include?(date)
-        return false if excluded.include?(date)
-        included.include?(date)
+        included.include?(date) && !excluded.include?(date)
       end
 
       def to_h
@@ -16,8 +15,9 @@ module Repeatable
       end
 
       def ==(other)
-        return false unless other.is_a?(self.class)
-        included == other.included && excluded == other.excluded
+        other.is_a?(self.class) &&
+          included == other.included &&
+          excluded == other.excluded
       end
 
       protected
