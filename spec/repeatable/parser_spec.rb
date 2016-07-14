@@ -23,6 +23,31 @@ module Repeatable
         end
       end
 
+      context 'date before and date after expressions' do
+        let (:arg) {
+          {
+            intersection: [
+              { date_after:  { boundary_date: '2016-01-01', include_boundary: true } },
+              { date_before: { boundary_date: '2017-01-01', include_boundary: false } },
+            ]
+          }
+        }
+
+        it 'builds the expected expression objects' do
+          expected_expression = Repeatable::Expression::Intersection.new(
+            Repeatable::Expression::DateAfter.new(
+              boundary_date: ::Date.new(2016, 1, 1),
+              include_boundary: true
+            ),
+            Repeatable::Expression::DateBefore.new(
+              boundary_date: ::Date.new(2017, 1, 1),
+              include_boundary: false,
+            ),
+          )
+          expect(subject).to eq(expected_expression)
+        end
+      end
+
       context 'with string keys' do
         let(:arg) { stringified_set_expression_hash }
 
