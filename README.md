@@ -77,6 +77,10 @@ Repeatable::Expression::Union.new(expressions)
 { intersection: [] }
 Repeatable::Expression::Intersection.new(expressions)
 
+# Date is part of the first set (`included`) but not part of the second set (`excluded`)
+{ difference: { included: expression, excluded: another_expression } }
+Repeatable::Expression::Difference.new(included: expression, excluded: another_expression)
+
 
 # DATES
 
