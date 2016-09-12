@@ -44,6 +44,13 @@ module Repeatable
           ends_at: value[:ends_at],
           expression: build_expression(value[:expression])
         )
+      when Repeatable::Expression::EndsAfter
+        value = symbolize_keys(value)
+        klass.new(
+          count: value[:count],
+          from: value[:from],
+          expression: build_expression(value[:expression])
+        )
       else
         klass.new(symbolize_keys(value))
       end

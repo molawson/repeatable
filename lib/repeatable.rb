@@ -22,6 +22,7 @@ require 'repeatable/expression/day_in_month'
 require 'repeatable/expression/range_in_year'
 
 require 'repeatable/expression/ends_at'
+require 'repeatable/expression/ends_after'
 
 require 'repeatable/expression/set'
 require 'repeatable/expression/union'

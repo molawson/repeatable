@@ -6,6 +6,25 @@ module Repeatable
 
     subject { described_class.new(arg) }
 
+    describe '#first' do
+      let(:arg) { nested_set_expression_hash }
+
+      it 'find the first occurrences before the start_date' do
+        expected_dates = [
+          ::Date.new(2011, 10, 23),
+          ::Date.new(2011, 10, 24),
+          ::Date.new(2011, 11, 23),
+          ::Date.new(2011, 11, 24),
+          ::Date.new(2011, 12, 23),
+          ::Date.new(2011, 12, 24),
+        ]
+
+        starts_at = ::Date.new(2011, 5, 1)
+
+        expect(subject.first(starts_at, 6)).to eq(expected_dates)
+      end
+    end
+
     describe '#initialize' do
       context 'with a Hash' do
         let(:arg) { simple_range_hash }
