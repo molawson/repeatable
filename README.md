@@ -37,9 +37,9 @@ You can create a schedule in one of two ways.
 Instantiate and compose each of the `Repeatable::Expression` objects manually.
 
 ```ruby
-second_monday = Repeatabe::Expression::WeekdayInMonth.new(weekday: 1, count: 2)
+second_monday = Repeatable::Expression::WeekdayInMonth.new(weekday: 1, count: 2)
 oct_thru_dec = Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
-intersection = Repeatable::Expresson::Intersection.new(second_monday, oct_thru_dec)
+intersection = Repeatable::Expression::Intersection.new(second_monday, oct_thru_dec)
 
 schedule = Repeatable::Schedule.new(intersection)
 ```
@@ -53,7 +53,8 @@ Or describe the same structure with a `Hash`, and the gem will handle instantiat
 arg = {
   intersection: [
     { weekday_in_month: { weekday: 1, count: 2 } },
-    { range_in_year: { start_month: 10, end_month: 12 } }
+    { range_in_year: { start_month: 10, end_month: 12 } },
+    { exact_date: { date: "2015-08-01" } }
   ]
 }
 
@@ -115,6 +116,10 @@ Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
 # All days from October 1 through December 20
 { range_in_year: { start_month: 10, end_month: 12, start_day: 1, end_day: 20 } }
 Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12, start_day: 1, end_day: 20)
+
+# only December 21, 2012
+{ exact_date: { date: '2012-12-21' } }
+Repeatable::Expression::ExactDate.new(date: Date.new(2012, 12, 21)
 ```
 
 #### Schedule Errors
