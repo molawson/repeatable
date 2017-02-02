@@ -9,7 +9,13 @@ module Repeatable
       end
 
       def include?(date)
-        months_include?(date) || start_month_include?(date) || end_month_include?(date)
+        return true if months_include?(date)
+
+        if start_month == end_month
+          start_month_include?(date) && end_month_include?(date)
+        else
+          start_month_include?(date) || end_month_include?(date)
+        end
       end
 
       def to_h

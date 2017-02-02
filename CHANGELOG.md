@@ -6,6 +6,7 @@ Features:
 
 * Add `Expression::Difference` for set differences between 2 schedules ([@danott][])
 * Allow `Expression::DayInMonth` to take `:last` (or `'last'`) for its `day:` argument ([@PatrickLerner][])
+* Fix `Expression::RangeInYear` to properly handle using `start_day` and `end_day` when `start_month == end_month` ([@danielma][])
 
 [Commits](https://github.com/molawson/repeatable/compare/v0.5.0...master)
 
@@ -71,3 +72,4 @@ Initial Release
 
 [@danott]: https://github.com/danott
 [@PatrickLerner]: https://github.com/PatrickLerner
+[@danielma]: https://github.com/danielma
