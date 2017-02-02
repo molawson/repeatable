@@ -123,6 +123,20 @@ module Repeatable
             expect(subject).not_to include(::Date.new(2015, 11, 1))
           end
         end
+
+        context 'start month equals end month' do
+          let(:args) { { start_month: 8, end_month: 8, start_day: 20, end_day: 21 } }
+
+          it 'return true when the date falls on or after the start_day in the start_month' do
+            expect(subject).to include(::Date.new(2015, 8, 20))
+            expect(subject).to include(::Date.new(2015, 8, 21))
+          end
+
+          it 'return false when the date falls outside the start_day in the start_month' do
+            expect(subject).not_to include(::Date.new(2015, 8, 19))
+            expect(subject).not_to include(::Date.new(2015, 8, 22))
+          end
+        end
       end
 
       describe '#to_h' do
