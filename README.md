@@ -93,6 +93,10 @@ Repeatable::Expression::Weekday.new(weekday: 0)
 { weekday_in_month: { weekday: 1, count: 3 } }
 Repeatable::Expression::WeekdayInMonth.new(weekday: 1, count: 3)
 
+# The last Thursday of every month
+{ weekday_in_month: { weekday: 4, count: -1 } }
+Repeatable::Expression::WeekdayInMonth.new(weekday: 4, count: -1)
+
 # Every other Monday, starting from December 1, 2015
 { biweekly: { weekday: 1, start_date: '2015-12-01' } }
 Repeatable::Expression::Biweekly.new(weekday: 1, start_date: Date.new(2015, 12, 1))
