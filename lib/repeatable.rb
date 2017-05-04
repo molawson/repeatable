@@ -10,6 +10,8 @@ end
 
 require 'repeatable/parse_error'
 
+require 'repeatable/last_date_of_month'
+
 require 'repeatable/expression'
 require 'repeatable/expression/base'
 

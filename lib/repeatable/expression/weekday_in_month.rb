@@ -1,6 +1,8 @@
 module Repeatable
   module Expression
     class WeekdayInMonth < Date
+      include LastDateOfMonth
+
       def initialize(weekday:, count:)
         @weekday = weekday
         @count = count
@@ -36,12 +38,6 @@ module Repeatable
 
       def week_in_month(zero_indexed_day)
         (zero_indexed_day / 7) + 1
-      end
-
-      def last_date_of_month(date)
-        next_month = date.next_month
-        first_day_of_next_month = ::Date.new(next_month.year, next_month.month, 1)
-        first_day_of_next_month.prev_day
       end
 
       def negative_count?
