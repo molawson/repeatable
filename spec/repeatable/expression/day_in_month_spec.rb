@@ -75,27 +75,29 @@ module Repeatable
         end
       end
 
-      describe ':last' do
-        let(:expression) { described_class.new(day: :last) }
+      describe 'negative numbers' do
+        context 'last' do
+          let(:expression) { described_class.new(day: -1) }
 
-        it 'correctly identified the last day of a 31 day month' do
-          expect(expression).to include(::Date.new(2015, 1, 31))
+          it 'correctly identified the last day of a 31 day month' do
+            expect(expression).to include(::Date.new(2015, 1, 31))
+          end
+
+          it 'correctly identified the last day of a 28 day month' do
+            expect(expression).to include(::Date.new(2015, 2, 28))
+          end
         end
 
-        it 'correctly identified the last day of a 28 day month' do
-          expect(expression).to include(::Date.new(2015, 2, 28))
-        end
-      end
+        context '3rd to last' do
+          let(:expression) { described_class.new(day: -3) }
 
-      describe '"last"' do
-        let(:expression) { described_class.new(day: 'last') }
+          it 'correctly identified the 3rd to last day of a 31 day month' do
+            expect(expression).to include(::Date.new(2015, 1, 29))
+          end
 
-        it 'correctly identified the last day of a 31 day month' do
-          expect(expression).to include(::Date.new(2015, 1, 31))
-        end
-
-        it 'correctly identified the last day of a 28 day month' do
-          expect(expression).to include(::Date.new(2015, 2, 28))
+          it 'correctly identified the 3rd to last day of a 28 day month' do
+            expect(expression).to include(::Date.new(2015, 2, 26))
+          end
         end
       end
     end

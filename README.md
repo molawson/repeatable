@@ -106,8 +106,8 @@ Repeatable::Expression::Biweekly.new(weekday: 1, start_date: Date.new(2015, 12, 
 Repeatable::Expression::DayInMonth.new(day: 13)
 
 # The last day of every month
-{ day_in_month: { day: :last } }
-Repeatable::Expression::DayInMonth.new(day: :last)
+{ day_in_month: { day: -1 } }
+Repeatable::Expression::DayInMonth.new(day: -1)
 
 # All days in October
 { range_in_year: { start_month: 10 } }
