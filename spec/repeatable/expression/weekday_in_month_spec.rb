@@ -89,6 +89,36 @@ module Repeatable
           expect(expression.hash).not_to eq(other_expression.hash)
         end
       end
+
+      describe 'negative week' do
+        context 'last week' do
+          subject { described_class.new(weekday: 3, count: -1) }
+
+          it 'matches valid dates' do
+            expect(subject).to include(::Date.new(2017, 12, 27))
+            expect(subject).to include(::Date.new(2017, 5, 31))
+          end
+
+          it 'does not match invalid dates' do
+            expect(subject).not_to include(::Date.new(2017, 12, 28))
+            expect(subject).not_to include(::Date.new(2017, 5, 24))
+          end
+        end
+
+        context '2nd to last week' do
+          subject { described_class.new(weekday: 1, count: -2) }
+
+          it 'matches valid dates' do
+            expect(subject).to include(::Date.new(2017, 12, 18))
+            expect(subject).to include(::Date.new(2017, 5, 22))
+          end
+
+          it 'does not match invalid dates' do
+            expect(subject).not_to include(::Date.new(2017, 12, 27))
+            expect(subject).not_to include(::Date.new(2017, 5, 31))
+          end
+        end
+      end
     end
   end
 end
