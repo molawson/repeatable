@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Requirements
 
-Because this gem relies heavily on required keyword arguments, especially to make dumping and parsing of schedules simpler, this code will only work on **Ruby 2.1** and higher.
+Because this gem relies heavily on required keyword arguments, especially to make dumping and parsing of schedules simpler, this code will only work on **Ruby 2.2** and higher.
 
 ## Usage
 

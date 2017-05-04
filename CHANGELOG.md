@@ -2,7 +2,13 @@
 
 ### Unreleased
 
+Chores:
+
+* Remove support for Ruby 2.1.x
+* Add support for Ruby 2.4.x
+
 [Commits](https://github.com/molawson/repeatable/compare/v0.6.0...master)
+
 
 ### 0.6.0 (2017-05-04)
 
