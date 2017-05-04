@@ -19,25 +19,33 @@ module Repeatable
       end
 
       def week_matches?(date)
-        week_in_month(date) == count
+        if negative_count?
+          week_from_end(date) == count
+        else
+          week_from_beginning(date) == count
+        end
       end
 
-      def week_in_month(date)
-        negative_count = count < 0
-        zero_indexed_day = if negative_count
-                             last_date_of_month(date).day - date.day
-                           else
-                             date.day - 1
-                           end
-        zero_indexed_week = zero_indexed_day / 7
+      def week_from_beginning(date)
+        week_in_month(date.day - 1)
+      end
 
-        (negative_count ? -1 : 1) * (zero_indexed_week + 1)
+      def week_from_end(date)
+        -week_in_month(last_date_of_month(date).day - date.day)
+      end
+
+      def week_in_month(zero_indexed_day)
+        (zero_indexed_day / 7) + 1
       end
 
       def last_date_of_month(date)
         next_month = date.next_month
         first_day_of_next_month = ::Date.new(next_month.year, next_month.month, 1)
         first_day_of_next_month.prev_day
+      end
+
+      def negative_count?
+        count < 0
       end
     end
   end
