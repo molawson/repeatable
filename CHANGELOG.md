@@ -2,6 +2,10 @@
 
 ### Unreleased
 
+[Commits](https://github.com/molawson/repeatable/compare/v0.6.0...master)
+
+### 0.6.0 (2017-05-04)
+
 Features:
 
 * Add `Expression::Difference` for set differences between 2 schedules ([@danott][])
@@ -12,7 +16,7 @@ Bugfixes:
 
 * Fix `Expression::RangeInYear` to properly handle using `start_day` and `end_day` when `start_month == end_month` ([@danielma][])
 
-[Commits](https://github.com/molawson/repeatable/compare/v0.5.0...master)
+[Commits](https://github.com/molawson/repeatable/compare/v0.5.0...v0.6.0)
 
 ### 0.5.0 (2016-01-27)
 
