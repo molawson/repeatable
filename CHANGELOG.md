@@ -2,6 +2,10 @@
 
 ### Unreleased
 
+Breaking Changes:
+
+* Change `Expression::DayInMonth` to take negative numbers instead of special `:last` symbol (or string)
+
 Chores:
 
 * Remove support for Ruby 2.1.x
@@ -18,7 +22,7 @@ Features:
 * Allow `Expression::DayInMonth` to take `:last` (or `'last'`) for its `day:` argument ([@PatrickLerner][])
 * Allow `Expression::WeekdayInMonth` to take negative `count` argument for last, second-to-last, etc. of a given weekday ([@danielma][])
 
-Bugfixes:
+Bug Fixes:
 
 * Fix `Expression::RangeInYear` to properly handle using `start_day` and `end_day` when `start_month == end_month` ([@danielma][])
 
@@ -58,7 +62,7 @@ Features:
 * Add `ParseError` class for better error handling
 * Extract `Parser` class from `Schedule`
 
-Bugfixes:
+Bug Fixes:
 
 * Enable `Schedule` to take a hash with string keys
 
@@ -71,7 +75,7 @@ Features:
 * Add `Schedule#to_h` and `Expression#to_h` methods
 * Enable building a `Schedule` from composed `Expression` objects
 
-Bugfixes:
+Bug Fixes:
 
 * Fix default case equality for `Expression::Base` to work with classes and instances
 
