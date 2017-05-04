@@ -46,6 +46,17 @@ module Repeatable
       other.is_a?(self.class) && expression == other.expression
     end
 
+    # Find the first `limit` dates in this schedule
+    # after start_date
+    def first(start_date, limit)
+      dates = []
+      while dates.length < limit && (date = next_occurrence(start_date))
+        start_date = date
+        dates << date
+      end
+      dates
+    end
+
     protected
 
     attr_reader :expression

@@ -124,6 +124,18 @@ Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12, start_da
 # only December 21, 2012
 { exact_date: { date: '2012-12-21' } }
 Repeatable::Expression::ExactDate.new(date: Date.new(2012, 12, 21)
+
+
+# ENDING
+# Endings modify other expressions, causing them to exclude
+# dates after a certain ending condition
+
+# This expression stops at a certain date
+{ ends_at: { ends_at: "2020-01-01", expression: expression } }
+Repeatable::Expression::EndsAt(ends_at: "2020-01-01", expression: expression)
+
+# This expression only has a few occurrences, starting at a certain date
+{ ends_after: { count: 3, from: "2001-01-01", expression: expression } }
 ```
 
 #### Schedule Errors

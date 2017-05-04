@@ -38,6 +38,19 @@ module Repeatable
           included: build_expression(value[:included]),
           excluded: build_expression(value[:excluded])
         )
+      when Repeatable::Expression::EndsAt
+        value = symbolize_keys(value)
+        klass.new(
+          ends_at: value[:ends_at],
+          expression: build_expression(value[:expression])
+        )
+      when Repeatable::Expression::EndsAfter
+        value = symbolize_keys(value)
+        klass.new(
+          count: value[:count],
+          from: value[:from],
+          expression: build_expression(value[:expression])
+        )
       else
         klass.new(symbolize_keys(value))
       end
