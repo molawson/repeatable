@@ -6,11 +6,11 @@ module Repeatable
       let(:twenty_third) { Repeatable::Expression::DayInMonth.new(day: 23) }
       let(:oct_thru_dec) { Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12) }
 
-      subject { described_class.new(twenty_third, oct_thru_dec) }
-
       it_behaves_like 'an expression'
 
       describe '#include?' do
+        subject { described_class.new(twenty_third, oct_thru_dec) }
+
         it 'returns true for dates that match any expression' do
           expect(subject.include?(::Date.new(2015, 9, 2))).to eq(false)
           expect(subject.include?(::Date.new(2015, 9, 23))).to eq(true)
