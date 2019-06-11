@@ -1,6 +1,8 @@
 module Repeatable
   module Expression
     class Set < Base
+      attr_reader :elements
+
       def initialize(*elements)
         @elements = elements.flatten.uniq
       end
@@ -19,10 +21,6 @@ module Repeatable
           elements.size == other.elements.size &&
           other.elements.all? { |e| elements.include?(e) }
       end
-
-      protected
-
-      attr_reader :elements
     end
   end
 end
