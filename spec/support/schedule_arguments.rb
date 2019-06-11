@@ -35,6 +35,23 @@ module ScheduleArguments
     }
   end
 
+  def nested_union_expression_hash
+    {
+      union: [
+        { day_in_month: { day: 23 } },
+        union: [
+          { day_in_month: { day: 24 } },
+          union: [
+            { day_in_month: { day: 25 } },
+            union: [
+              { day_in_month: { day: 26 } }
+            ]
+          ]
+        ]
+      ]
+    }
+  end
+
   def reordered_nested_set_expression_hash
     {
       intersection: [
@@ -79,5 +96,14 @@ module ScheduleArguments
     oct_thru_dec = Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12)
 
     Repeatable::Expression::Intersection.new(union, oct_thru_dec)
+  end
+
+  def nested_union_expression_object
+    twenty_third = Repeatable::Expression::DayInMonth.new(day: 23)
+    twenty_fourth = Repeatable::Expression::DayInMonth.new(day: 24)
+    twenty_fifth = Repeatable::Expression::DayInMonth.new(day: 25)
+    twenty_sixth = Repeatable::Expression::DayInMonth.new(day: 26)
+
+    Repeatable::Expression::Union.new(twenty_third, twenty_fourth, twenty_fifth, twenty_sixth)
   end
 end
