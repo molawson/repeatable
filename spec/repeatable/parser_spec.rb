@@ -15,6 +15,14 @@ module Repeatable
         end
       end
 
+      context 'complex union expression' do
+        let(:arg) { nested_union_expression_hash }
+
+        it 'builds the expected Expression object' do
+          expect(subject).to eq(nested_union_expression_object)
+        end
+      end
+
       context 'difference set expression' do
         let (:arg) { difference_expression_hash }
 
