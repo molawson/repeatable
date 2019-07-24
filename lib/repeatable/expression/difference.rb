@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 module Repeatable
   module Expression
     class Difference < Base
@@ -12,7 +12,7 @@ module Repeatable
       end
 
       def to_h
-        Hash[hash_key, { included: included.to_h, excluded: excluded.to_h }]
+        Hash[hash_key, T.let({ included: included.to_h, excluded: excluded.to_h }, T.untyped)]
       end
 
       def ==(other)

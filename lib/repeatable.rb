@@ -1,14 +1,14 @@
-# typed: ignore
+# typed: true
 require 'date'
 require 'sorbet-runtime'
 
 require 'repeatable/version'
 
-require 'repeatable/conversions'
-include Repeatable::Conversions
-
 module Repeatable
 end
+
+require 'repeatable/conversions'
+Object.include(Repeatable::Conversions)
 
 require 'repeatable/parse_error'
 

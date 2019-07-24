@@ -1,7 +1,9 @@
-# typed: false
+# typed: true
 module Repeatable
   module Expression
     class Base
+      extend T::Sig
+
       def self.===(other)
         case other
         when Class
@@ -44,7 +46,7 @@ module Repeatable
       private
 
       def hash_key
-        self.class.name.split('::').last
+        T.must(T.must(self.class.name).split('::').last)
           .gsub(/(?<!\b)[A-Z]/) { "_#{Regexp.last_match[0]}" }
           .downcase
           .to_sym
