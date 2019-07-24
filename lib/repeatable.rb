@@ -1,4 +1,6 @@
+# typed: ignore
 require 'date'
+require 'sorbet-runtime'
 
 require 'repeatable/version'
 

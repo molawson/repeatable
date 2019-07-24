@@ -1,3 +1,4 @@
+# typed: false
 module Repeatable
   module Expression
     class Base

@@ -1,3 +1,4 @@
+# typed: true
 module Repeatable
   module Expression
     class WeekdayInMonth < Date

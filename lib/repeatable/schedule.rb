@@ -1,3 +1,4 @@
+# typed: true
 module Repeatable
   class Schedule
     def initialize(arg)
