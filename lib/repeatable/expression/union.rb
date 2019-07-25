@@ -1,8 +1,8 @@
-# typed: strict
+# typed: true
 module Repeatable
   module Expression
     class Union < Set
-      sig {params(elements: Expression::Base).void}
+      # sig {params(elements: Expression::Base).void}
       def initialize(*elements)
         other_unions, not_unions = elements.partition { |e| e.is_a?(self.class) }
         super(other_unions.flat_map(&:elements) + not_unions)

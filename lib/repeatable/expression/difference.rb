@@ -1,20 +1,24 @@
-# typed: true
+# typed: strict
 module Repeatable
   module Expression
     class Difference < Base
+      sig {params(included: Expression::Base, excluded: Expression::Base).void}
       def initialize(included:, excluded:)
-        @included = included
-        @excluded = excluded
+        @included = T.let(included, Expression::Base)
+        @excluded = T.let(excluded, Expression::Base)
       end
 
+      sig {params(date: ::Date).returns(T::Boolean)}
       def include?(date)
         included.include?(date) && !excluded.include?(date)
       end
 
+      sig {returns(T::Hash[Symbol, T::Hash[Symbol, T.untyped]])}
       def to_h
-        Hash[hash_key, T.let({ included: included.to_h, excluded: excluded.to_h }, T.untyped)]
+        { hash_key => { included: included.to_h, excluded: excluded.to_h } }
       end
 
+      sig {params(other: Object).returns(T::Boolean)}
       def ==(other)
         other.is_a?(self.class) &&
           included == other.included &&
@@ -23,7 +27,11 @@ module Repeatable
 
       protected
 
-      attr_reader :included, :excluded
+      sig {returns(Expression::Base)}
+      attr_reader :included
+
+      sig {returns(Expression::Base)}
+      attr_reader :excluded
     end
   end
 end

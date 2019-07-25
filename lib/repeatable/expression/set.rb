@@ -18,7 +18,7 @@ module Repeatable
 
       sig {returns(T::Hash[Symbol, T::Hash[T.untyped, T.untyped]])}
       def to_h
-        Hash[hash_key, elements.map(&:to_h)]
+        { hash_key => elements.map(&:to_h) }
       end
 
       sig {params(other: Object).returns(T::Boolean)}

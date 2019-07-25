@@ -1,9 +1,10 @@
-# typed: true
+# typed: strict
 module Repeatable
   module Expression
     class Base
       extend T::Sig
 
+      sig {params(other: Object).returns(T::Boolean)}
       def self.===(other)
         case other
         when Class
@@ -13,6 +14,7 @@ module Repeatable
         end
       end
 
+      sig {params(_date: ::Date).returns(T::Boolean)}
       def include?(_date)
         fail(
           NotImplementedError,
@@ -20,6 +22,7 @@ module Repeatable
         )
       end
 
+      sig {void}
       def to_h
         fail(
           NotImplementedError,
@@ -27,17 +30,20 @@ module Repeatable
         )
       end
 
+      sig {params(other: Expression::Base).returns(Expression::Union)}
       def union(other)
         Union.new(self, other)
       end
       alias + union
       alias | union
 
+      sig {params(other: Expression::Base).returns(Expression::Intersection)}
       def intersection(other)
         Intersection.new(self, other)
       end
       alias & intersection
 
+      sig {params(other: Expression::Base).returns(Expression::Difference)}
       def difference(other)
         Difference.new(included: self, excluded: other)
       end
@@ -45,6 +51,7 @@ module Repeatable
 
       private
 
+      sig {returns(Symbol)}
       def hash_key
         T.must(T.must(self.class.name).split('::').last)
           .gsub(/(?<!\b)[A-Z]/) { "_#{Regexp.last_match[0]}" }

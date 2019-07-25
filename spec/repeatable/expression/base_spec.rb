@@ -25,7 +25,7 @@ module Repeatable
 
       describe '#include?' do
         it 'raises a NotImplemented Error' do
-          expect { subject.include?('anything') }.to raise_error(NotImplementedError)
+          expect { subject.include?(::Date.today) }.to raise_error(NotImplementedError)
         end
       end
 
