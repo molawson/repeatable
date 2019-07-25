@@ -22,7 +22,7 @@ module Repeatable
         )
       end
 
-      sig {void}
+      sig {returns(T::Hash[Symbol,T.untyped])}
       def to_h
         fail(
           NotImplementedError,

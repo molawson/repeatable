@@ -3,7 +3,7 @@ module Repeatable
   module Expression
     class Date < Base
 
-      sig {returns(T::Hash[Symbol, T.untyped])}
+      sig {returns(T::Hash[Symbol,T.untyped])}
       def to_h
         { hash_key => attributes }
       end

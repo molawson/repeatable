@@ -21,7 +21,7 @@ module Repeatable
         end
       end
 
-      sig {returns(T::Hash[Symbol, T::Hash[Symbol, Integer]])}
+      sig {returns(T::Hash[Symbol,T.untyped])}
       def to_h
         args = { start_month: start_month }
         args[:end_month] = end_month unless end_month == start_month

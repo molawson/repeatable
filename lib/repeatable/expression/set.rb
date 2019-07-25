@@ -16,7 +16,7 @@ module Repeatable
         self
       end
 
-      sig {returns(T::Hash[Symbol, T::Hash[T.untyped, T.untyped]])}
+      sig {returns(T::Hash[Symbol,T.untyped])}
       def to_h
         { hash_key => elements.map(&:to_h) }
       end
