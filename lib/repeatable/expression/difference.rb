@@ -13,7 +13,7 @@ module Repeatable
         included.include?(date) && !excluded.include?(date)
       end
 
-      sig {implementation.returns(T::Hash[Symbol,T.untyped])}
+      sig {implementation.returns(T::Hash[Symbol, T.untyped])}
       def to_h
         { hash_key => { included: included.to_h, excluded: excluded.to_h } }
       end

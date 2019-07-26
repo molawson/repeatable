@@ -2,7 +2,7 @@
 module Repeatable
   module Expression
     class ExactDate < Date
-      sig {params(date: T.untyped).void}
+      sig {params(date: BasicObject).void}
       def initialize(date:)
         @date = T.let(Date(date), ::Date)
       end
@@ -14,7 +14,7 @@ module Repeatable
 
       private
 
-      sig {returns(T.untyped)}
+      sig {returns(::Date)}
       attr_reader :date
     end
   end

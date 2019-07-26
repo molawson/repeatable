@@ -20,7 +20,7 @@ module Repeatable
       sig {abstract.params(date: ::Date).returns(T::Boolean)}
       def include?(date); end
 
-      sig {abstract.returns(T::Hash[Symbol,T.untyped])}
+      sig {abstract.returns(T::Hash[Symbol, T.untyped])}
       def to_h; end
 
       sig {params(other: Expression::Base).returns(Expression::Union)}

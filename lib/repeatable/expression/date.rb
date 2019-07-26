@@ -4,7 +4,7 @@ module Repeatable
     class Date < Base
       abstract!
 
-      sig {implementation.overridable.returns(T::Hash[Symbol,T.untyped])}
+      sig {implementation.overridable.returns(T::Hash[Symbol, T.untyped])}
       def to_h
         { hash_key => attributes }
       end

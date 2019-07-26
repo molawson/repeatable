@@ -2,7 +2,7 @@
 module Repeatable
   module Expression
     class Biweekly < Date
-      sig {params(weekday: Integer, start_after: T.untyped).void}
+      sig {params(weekday: Integer, start_after: BasicObject).void}
       def initialize(weekday:, start_after: ::Date.today)
         @weekday = T.let(weekday, Integer)
         @start_after = T.let(Date(start_after), ::Date)
