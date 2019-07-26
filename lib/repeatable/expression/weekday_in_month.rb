@@ -1,4 +1,4 @@
-# typed: strict
+# typed: strong
 module Repeatable
   module Expression
     class WeekdayInMonth < Date

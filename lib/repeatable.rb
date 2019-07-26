@@ -1,4 +1,4 @@
-# typed: true
+# typed: strong
 require 'date'
 require 'sorbet-runtime'
 

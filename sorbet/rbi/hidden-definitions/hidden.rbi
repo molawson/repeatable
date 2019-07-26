@@ -49,6 +49,30 @@ class Binding
   def receiver(); end
 end
 
+class Bundler::CurrentRuby
+  def jruby_27?(); end
+
+  def maglev_27?(); end
+
+  def mingw_27?(); end
+
+  def mri_27?(); end
+
+  def mswin64_27?(); end
+
+  def mswin_27?(); end
+
+  def on_27?(); end
+
+  def rbx_27?(); end
+
+  def ruby_27?(); end
+
+  def truffleruby_27?(); end
+
+  def x64_mingw_27?(); end
+end
+
 Bundler::Deprecate = Gem::Deprecate
 
 class Bundler::Env
@@ -64,6 +88,8 @@ end
 
 class Bundler::FeatureFlag
   def github_https?(); end
+
+  def lockfile_upgrade_warning?(); end
 end
 
 class Bundler::Fetcher
@@ -285,7 +311,9 @@ class Bundler::GemHelper
 
   def sh(cmd, &block); end
 
-  def sh_with_code(cmd, &block); end
+  def sh_with_input(cmd); end
+
+  def sh_with_status(cmd, &block); end
 
   def spec_path(); end
 
@@ -626,10 +654,13 @@ class Bundler::Retry
 end
 
 class Bundler::RubyGemsGemInstaller
-  def initialize(gem, options=T.unsafe(nil)); end
 end
 
 class Bundler::RubyGemsGemInstaller
+end
+
+class Bundler::RubygemsIntegration::MoreFuture
+  def default_stubs(); end
 end
 
 class Bundler::Settings::Mirror
@@ -5699,6 +5730,8 @@ module MethodSource::CodeHelpers::IncompleteExpression
   RBX_ONLY_REGEXPS = ::T.let(nil, ::T.untyped)
 end
 
+Methods = T::Private::Methods
+
 class Module
   def deprecate_constant(*_); end
 
@@ -6615,6 +6648,15 @@ end
 
 class Regexp
   def self.union(*_); end
+end
+
+class Repeatable::Expression::Base
+  def initialize(*args, &blk); end
+end
+
+class Repeatable::Expression::Base
+  extend ::T::Private::Abstract::Hooks
+  extend ::T::InterfaceWrapper::Helpers
 end
 
 class RubyVM::Env

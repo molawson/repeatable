@@ -222,11 +222,23 @@
 # wrong constant name local_variable_get
 # wrong constant name local_variable_set
 # wrong constant name receiver
+# wrong constant name jruby_27?
+# wrong constant name maglev_27?
+# wrong constant name mingw_27?
+# wrong constant name mri_27?
+# wrong constant name mswin64_27?
+# wrong constant name mswin_27?
+# wrong constant name on_27?
+# wrong constant name rbx_27?
+# wrong constant name ruby_27?
+# wrong constant name truffleruby_27?
+# wrong constant name x64_mingw_27?
 # wrong constant name <static-init>
 # wrong constant name environment
 # wrong constant name report
 # wrong constant name write
 # wrong constant name github_https?
+# wrong constant name lockfile_upgrade_warning?
 # wrong constant name <Class:AuthenticationRequiredError>
 # wrong constant name <Class:BadAuthenticationError>
 # wrong constant name <Class:Base>
@@ -356,7 +368,8 @@
 # wrong constant name perform_git_push
 # wrong constant name rubygem_push
 # wrong constant name sh
-# wrong constant name sh_with_code
+# wrong constant name sh_with_input
+# wrong constant name sh_with_status
 # wrong constant name spec_path
 # wrong constant name tag_version
 # wrong constant name version
@@ -513,8 +526,11 @@
 # uninitialized constant Bundler::RubyGemsGemInstaller::ENV_PATHS
 # Did you mean?  Bundler::Env
 #                Bundler::RubyGemsGemInstaller::ENV_PATHS
-# wrong constant name initialize
 # wrong constant name <static-init>
+# uninitialized constant Bundler::RubygemsIntegration::MoreFuture::EXT_LOCK
+# Did you mean?  Bundler::RubygemsIntegration::MoreFuture::EXT_LOCK
+#                Bundler::RubygemsIntegration::EXT_LOCK
+# wrong constant name default_stubs
 # wrong constant name ==
 # wrong constant name fallback_timeout
 # wrong constant name fallback_timeout=
@@ -3682,6 +3698,7 @@
 # wrong constant name compile$2
 # wrong constant name last_match$2
 # wrong constant name union
+# wrong constant name initialize
 # uninitialized constant Ripper
 # uninitialized constant Ripper
 # wrong constant name <static-init>
