@@ -10,7 +10,7 @@ module Repeatable
         @count = T.let(count, Integer)
       end
 
-      sig {params(date: ::Date).returns(T::Boolean)}
+      sig {implementation.params(date: ::Date).returns(T::Boolean)}
       def include?(date)
         day_matches?(date) && week_matches?(date)
       end

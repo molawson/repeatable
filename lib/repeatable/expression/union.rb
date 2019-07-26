@@ -8,7 +8,7 @@ module Repeatable
         super(other_unions.flat_map(&:elements) + not_unions)
       end
 
-      sig {params(date: ::Date).returns(T::Boolean)}
+      sig {implementation.params(date: ::Date).returns(T::Boolean)}
       def include?(date)
         elements.any? { |e| e.include?(date) }
       end

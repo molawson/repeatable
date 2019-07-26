@@ -9,7 +9,7 @@ module Repeatable
         @day = T.let(day, Integer)
       end
 
-      sig {params(date: ::Date).returns(T::Boolean)}
+      sig {implementation.params(date: ::Date).returns(T::Boolean)}
       def include?(date)
         if day < 0
           date - last_date_of_month(date) - 1 == day

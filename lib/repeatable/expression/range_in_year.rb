@@ -10,7 +10,7 @@ module Repeatable
         @end_day = T.let(end_day, Integer)
       end
 
-      sig {params(date: ::Date).returns(T::Boolean)}
+      sig {implementation.params(date: ::Date).returns(T::Boolean)}
       def include?(date)
         return true if months_include?(date)
 
@@ -21,7 +21,7 @@ module Repeatable
         end
       end
 
-      sig {returns(T::Hash[Symbol,T.untyped])}
+      sig {override.returns(T::Hash[Symbol,T.untyped])}
       def to_h
         args = { start_month: start_month }
         args[:end_month] = end_month unless end_month == start_month

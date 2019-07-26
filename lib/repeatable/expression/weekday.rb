@@ -7,7 +7,7 @@ module Repeatable
         @weekday = T.let(weekday, Integer)
       end
 
-      sig {params(date: ::Date).returns(T::Boolean)}
+      sig {implementation.params(date: ::Date).returns(T::Boolean)}
       def include?(date)
         date.wday == weekday
       end

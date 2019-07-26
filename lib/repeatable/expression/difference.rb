@@ -8,12 +8,12 @@ module Repeatable
         @excluded = T.let(excluded, Expression::Base)
       end
 
-      sig {params(date: ::Date).returns(T::Boolean)}
+      sig {implementation.params(date: ::Date).returns(T::Boolean)}
       def include?(date)
         included.include?(date) && !excluded.include?(date)
       end
 
-      sig {returns(T::Hash[Symbol,T.untyped])}
+      sig {implementation.returns(T::Hash[Symbol,T.untyped])}
       def to_h
         { hash_key => { included: included.to_h, excluded: excluded.to_h } }
       end

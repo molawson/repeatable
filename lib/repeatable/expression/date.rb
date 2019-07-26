@@ -2,8 +2,9 @@
 module Repeatable
   module Expression
     class Date < Base
+      abstract!
 
-      sig {returns(T::Hash[Symbol,T.untyped])}
+      sig {implementation.overridable.returns(T::Hash[Symbol,T.untyped])}
       def to_h
         { hash_key => attributes }
       end
@@ -12,7 +13,6 @@ module Repeatable
       def ==(other)
         other.is_a?(self.class) && attributes == other.attributes
       end
-
       alias eql? ==
 
       sig {returns(Integer)}

@@ -7,7 +7,7 @@ module Repeatable
         @date = T.let(Date(date), ::Date)
       end
 
-      sig {params(other_date: T.untyped).returns(T::Boolean)}
+      sig {implementation.params(other_date: ::Date).returns(T::Boolean)}
       def include?(other_date)
         date == other_date
       end
