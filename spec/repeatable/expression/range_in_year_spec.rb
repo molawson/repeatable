@@ -5,7 +5,7 @@ module Repeatable
     describe RangeInYear do
       let(:args) { { start_month: 10 } }
 
-      subject { described_class.new(args) }
+      subject { described_class.new(**args) }
 
       it_behaves_like 'an expression'
 

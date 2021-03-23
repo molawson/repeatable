@@ -39,7 +39,7 @@ module Repeatable
           excluded: build_expression(value[:excluded])
         )
       else
-        klass.new(symbolize_keys(value))
+        klass.new(**symbolize_keys(value))
       end
     end
 
