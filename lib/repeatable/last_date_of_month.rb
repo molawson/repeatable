@@ -1,3 +1,4 @@
+# typed: true
 module Repeatable
   module LastDateOfMonth
     def last_date_of_month(date)

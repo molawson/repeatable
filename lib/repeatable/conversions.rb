@@ -1,3 +1,4 @@
+# typed: false
 module Repeatable
   module Conversions
     module_function

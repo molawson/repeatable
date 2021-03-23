@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     repeatable (1.0.0)
+      sorbet-runtime
 
 GEM
   remote: https://rubygems.org/
@@ -55,6 +56,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.2)
+    sorbet-runtime (0.5.6357)
     standard (1.0.4)
       rubocop (= 1.11.0)
       rubocop-performance (= 1.10.1)
@@ -73,4 +75,4 @@ DEPENDENCIES
   standard (~> 1.0)
 
 BUNDLED WITH
-   2.2.14
+   2.2.15

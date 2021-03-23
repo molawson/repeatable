@@ -1,3 +1,4 @@
+# typed: strict
 if ENV["COVERAGE"]
   require "simplecov"
   SimpleCov.start
