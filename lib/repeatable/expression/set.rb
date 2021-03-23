@@ -4,6 +4,8 @@ module Repeatable
     class Set < Base
       extend T::Sig
 
+      abstract!
+
       sig { returns(T::Array[Expression::Base]) }
       attr_reader :elements
 
@@ -18,7 +20,7 @@ module Repeatable
         self
       end
 
-      sig { returns(T::Hash[Symbol, T.untyped]) }
+      sig { override.returns(T::Hash[Symbol, T.untyped]) }
       def to_h
         Hash[hash_key, elements.map(&:to_h)]
       end

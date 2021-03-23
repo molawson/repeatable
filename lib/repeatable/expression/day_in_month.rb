@@ -10,7 +10,7 @@ module Repeatable
         @day = day
       end
 
-      sig { params(date: ::Date).returns(T::Boolean) }
+      sig { override.params(date: ::Date).returns(T::Boolean) }
       def include?(date)
         if day < 0
           date - last_date_of_month(date) - 1 == day

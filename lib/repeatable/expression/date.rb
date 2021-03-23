@@ -4,7 +4,9 @@ module Repeatable
     class Date < Base
       extend T::Sig
 
-      sig { returns(T::Hash[Symbol, T::Hash[Symbol, T.untyped]]) }
+      abstract!
+
+      sig { override.overridable.returns(T::Hash[Symbol, T::Hash[Symbol, T.untyped]]) }
       def to_h
         Hash[hash_key, attributes]
       end
@@ -13,7 +15,6 @@ module Repeatable
       def ==(other)
         other.is_a?(self.class) && attributes == other.attributes
       end
-
       alias_method :eql?, :==
 
       sig { returns(Integer) }

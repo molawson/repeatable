@@ -11,7 +11,7 @@ module Repeatable
         @_first_occurrence = T.let(find_first_occurrence, ::Date)
       end
 
-      sig { params(date: ::Date).returns(T::Boolean) }
+      sig { override.params(date: ::Date).returns(T::Boolean) }
       def include?(date)
         date >= start_after && (date - _first_occurrence) % 14 == 0
       end

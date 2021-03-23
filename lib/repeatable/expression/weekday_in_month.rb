@@ -11,7 +11,7 @@ module Repeatable
         @count = count
       end
 
-      sig { params(date: ::Date).returns(T::Boolean) }
+      sig { override.params(date: ::Date).returns(T::Boolean) }
       def include?(date)
         day_matches?(date) && week_matches?(date)
       end

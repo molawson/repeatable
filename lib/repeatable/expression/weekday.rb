@@ -9,7 +9,7 @@ module Repeatable
         @weekday = weekday
       end
 
-      sig { params(date: ::Date).returns(T::Boolean) }
+      sig { override.params(date: ::Date).returns(T::Boolean) }
       def include?(date)
         date.wday == weekday
       end

@@ -10,12 +10,12 @@ module Repeatable
         @excluded = excluded
       end
 
-      sig { params(date: ::Date).returns(T::Boolean) }
+      sig { override.params(date: ::Date).returns(T::Boolean) }
       def include?(date)
         included.include?(date) && !excluded.include?(date)
       end
 
-      sig { returns(T::Hash[Symbol, T::Hash[Symbol, T.untyped]]) }
+      sig { override.returns(T::Hash[Symbol, T::Hash[Symbol, T.untyped]]) }
       def to_h
         Hash[hash_key, {included: included.to_h, excluded: excluded.to_h}]
       end

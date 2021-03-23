@@ -9,7 +9,7 @@ module Repeatable
         @date = T.let(Conversions::Date(date), ::Date)
       end
 
-      sig { params(other_date: ::Date).returns(T::Boolean) }
+      sig { override.params(other_date: ::Date).returns(T::Boolean) }
       def include?(other_date)
         date == other_date
       end

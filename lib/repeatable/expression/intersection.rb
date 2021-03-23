@@ -11,7 +11,7 @@ module Repeatable
         super(other_intersections.flat_map(&:elements) + not_intersections)
       end
 
-      sig { params(date: ::Date).returns(T::Boolean) }
+      sig { override.params(date: ::Date).returns(T::Boolean) }
       def include?(date)
         elements.all? { |e| e.include?(date) }
       end

@@ -3,6 +3,9 @@ module Repeatable
   module Expression
     class Base
       extend T::Sig
+      extend T::Helpers
+
+      abstract!
 
       sig { params(other: Object).returns(T::Boolean) }
       def self.===(other)
@@ -14,20 +17,12 @@ module Repeatable
         end
       end
 
-      sig { params(_date: ::Date).returns(T::Boolean) }
-      def include?(_date)
-        fail(
-          NotImplementedError,
-          "Don't use Expression::Base directly. Subclasses must implement `#include?`"
-        )
+      sig { abstract.params(date: ::Date).returns(T::Boolean) }
+      def include?(date)
       end
 
-      sig { returns(T::Hash[Symbol, T.untyped]) }
+      sig { abstract.returns(T::Hash[Symbol, T.untyped]) }
       def to_h
-        fail(
-          NotImplementedError,
-          "Don't use Expression::Base directly. Subclasses must implement `#to_h`"
-        )
       end
 
       sig { params(other: Expression::Base).returns(Expression::Union) }

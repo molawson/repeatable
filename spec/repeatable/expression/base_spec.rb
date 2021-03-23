@@ -23,18 +23,6 @@ module Repeatable
         end
       end
 
-      describe "#include?" do
-        it "raises a NotImplemented Error" do
-          expect { subject.include?("anything") }.to raise_error(NotImplementedError)
-        end
-      end
-
-      describe "#to_h" do
-        it "raises a NotImplemented Error" do
-          expect { subject.to_h }.to raise_error(NotImplementedError)
-        end
-      end
-
       describe "set operators" do
         describe "#union, #+ and #|" do
           let(:saturdays) { Weekday.new(weekday: 6) }
