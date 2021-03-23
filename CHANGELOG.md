@@ -16,7 +16,7 @@ Chores:
 * Remove support for Ruby 2.1, 2.2, 2.3, 2.4
 * Add support for Ruby 2.5, 2.6, 2.7
 
-[Commits](https://github.com/molawson/repeatable/compare/v0.6.0...master)
+[Commits](https://github.com/molawson/repeatable/compare/v0.6.0...main)
 
 
 ### 0.6.0 (2017-05-04)
