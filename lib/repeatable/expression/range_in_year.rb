@@ -30,15 +30,6 @@ module Repeatable
         end
       end
 
-      sig { override.returns(T::Hash[Symbol, T::Hash[Symbol, Integer]]) }
-      def to_h
-        args = {start_month: start_month}
-        args[:end_month] = end_month unless end_month == start_month
-        args[:start_day] = start_day unless start_day.zero?
-        args[:end_day] = end_day unless end_day.zero?
-        {range_in_year: args}
-      end
-
       private
 
       sig { returns(Integer) }
@@ -66,6 +57,15 @@ module Repeatable
       sig { params(date: ::Date).returns(T::Boolean) }
       def end_month_include?(date)
         date.month == end_month && (end_day == 0 || date.day <= end_day)
+      end
+
+      sig { override.returns(T::Hash[Symbol, Integer]) }
+      def hash_value
+        args = {start_month: start_month}
+        args[:end_month] = end_month unless end_month == start_month
+        args[:start_day] = start_day unless start_day.zero?
+        args[:end_day] = end_day unless end_day.zero?
+        args
       end
     end
   end

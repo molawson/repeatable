@@ -6,11 +6,6 @@ module Repeatable
 
       abstract!
 
-      sig { override.overridable.returns(T::Hash[Symbol, T::Hash[Symbol, T.untyped]]) }
-      def to_h
-        Hash[hash_key, attributes]
-      end
-
       sig { params(other: Object).returns(T::Boolean) }
       def ==(other)
         other.is_a?(self.class) && attributes == other.attributes
@@ -32,6 +27,7 @@ module Repeatable
           hash[key.to_sym] = normalize_attribute_value(instance_variable_get(name))
         end
       end
+      alias_method :hash_value, :attributes
 
       sig { params(value: BasicObject).returns(T.untyped) }
       def normalize_attribute_value(value)

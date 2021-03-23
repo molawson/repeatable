@@ -15,11 +15,6 @@ module Repeatable
         included.include?(date) && !excluded.include?(date)
       end
 
-      sig { override.returns(T::Hash[Symbol, T::Hash[Symbol, T.untyped]]) }
-      def to_h
-        Hash[hash_key, {included: included.to_h, excluded: excluded.to_h}]
-      end
-
       sig { params(other: Object).returns(T::Boolean) }
       def ==(other)
         other.is_a?(self.class) &&
@@ -34,6 +29,11 @@ module Repeatable
 
       sig { returns(Expression::Base) }
       attr_reader :excluded
+
+      sig { override.returns(T::Hash[Symbol, T.untyped]) }
+      def hash_value
+        {included: included.to_h, excluded: excluded.to_h}
+      end
     end
   end
 end

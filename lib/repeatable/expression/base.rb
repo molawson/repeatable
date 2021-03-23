@@ -21,8 +21,19 @@ module Repeatable
       def include?(date)
       end
 
-      sig { abstract.returns(T::Hash[Symbol, T.untyped]) }
+      sig do
+        returns(
+          T::Hash[
+            Symbol,
+            T.any(
+              T::Hash[Symbol, T.untyped],
+              T::Array[T::Hash[Symbol, T.untyped]]
+            )
+          ]
+        )
+      end
       def to_h
+        {hash_key => hash_value}
       end
 
       sig { params(other: Expression::Base).returns(Expression::Union) }
@@ -46,12 +57,23 @@ module Repeatable
 
       private
 
-      sig { returns(T.untyped) }
+      sig { returns(Symbol) }
       def hash_key
         T.must(T.must(self.class.name).split("::").last)
           .gsub(/(?<!\b)[A-Z]/) { "_#{T.must(Regexp.last_match)[0]}" }
           .downcase
           .to_sym
+      end
+
+      sig do
+        abstract.returns(
+          T.any(
+            T::Hash[Symbol, T.untyped],
+            T::Array[T::Hash[Symbol, T.untyped]]
+          )
+        )
+      end
+      def hash_value
       end
     end
   end
