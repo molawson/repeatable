@@ -8,12 +8,12 @@ module Repeatable
       def initialize(weekday:, start_after: ::Date.today)
         @weekday = weekday
         @start_after = T.let(Conversions::Date(start_after), ::Date)
-        @first_occurrence = T.let(find_first_occurrence, ::Date)
+        @_first_occurrence = T.let(find_first_occurrence, ::Date)
       end
 
       sig { params(date: ::Date).returns(T::Boolean) }
       def include?(date)
-        date >= start_after && (date - first_occurrence) % 14 == 0
+        date >= start_after && (date - _first_occurrence) % 14 == 0
       end
 
       private
@@ -25,7 +25,7 @@ module Repeatable
       attr_reader :start_after
 
       sig { returns(::Date) }
-      attr_reader :first_occurrence
+      attr_reader :_first_occurrence
 
       sig { returns(::Date) }
       def find_first_occurrence

@@ -26,8 +26,9 @@ module Repeatable
       sig { returns(T::Hash[Symbol, T.untyped]) }
       def attributes
         instance_variables.each_with_object({}) do |name, hash|
-          key = name.to_s.gsub(/^@/, "").to_sym
-          hash[key] = normalize_attribute_value(instance_variable_get(name))
+          key = name.to_s.gsub(/^@/, "")
+          next if key.start_with?("_")
+          hash[key.to_sym] = normalize_attribute_value(instance_variable_get(name))
         end
       end
 
