@@ -19,7 +19,7 @@ module Repeatable
 
       protected
 
-      sig { returns(T::Hash[Symbol, T.untyped]) }
+      sig { returns(Types::SymbolHash) }
       def attributes
         instance_variables.each_with_object({}) do |name, hash|
           key = name.to_s.gsub(/^@/, "")

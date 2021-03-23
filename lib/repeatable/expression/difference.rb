@@ -30,7 +30,7 @@ module Repeatable
       sig { returns(Expression::Base) }
       attr_reader :excluded
 
-      sig { override.returns(T::Hash[Symbol, T.untyped]) }
+      sig { override.returns(Types::SymbolHash) }
       def hash_value
         {included: included.to_h, excluded: excluded.to_h}
       end

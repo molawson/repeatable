@@ -9,6 +9,8 @@ end
 
 require "repeatable/parse_error"
 
+require "repeatable/types"
+
 require "repeatable/conversions"
 require "repeatable/last_date_of_month"
 

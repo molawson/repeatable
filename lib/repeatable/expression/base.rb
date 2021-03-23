@@ -21,17 +21,7 @@ module Repeatable
       def include?(date)
       end
 
-      sig do
-        returns(
-          T::Hash[
-            Symbol,
-            T.any(
-              T::Hash[Symbol, T.untyped],
-              T::Array[T::Hash[Symbol, T.untyped]]
-            )
-          ]
-        )
-      end
+      sig { returns(T::Hash[Symbol, T.any(Types::SymbolHash, T::Array[Types::SymbolHash])]) }
       def to_h
         {hash_key => hash_value}
       end
@@ -65,14 +55,7 @@ module Repeatable
           .to_sym
       end
 
-      sig do
-        abstract.returns(
-          T.any(
-            T::Hash[Symbol, T.untyped],
-            T::Array[T::Hash[Symbol, T.untyped]]
-          )
-        )
-      end
+      sig { abstract.returns(T.any(Types::SymbolHash, T::Array[Types::SymbolHash])) }
       def hash_value
       end
     end

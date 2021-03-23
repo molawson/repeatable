@@ -29,7 +29,7 @@ module Repeatable
 
       private
 
-      sig { override.returns(T::Array[T::Hash[Symbol, T.untyped]]) }
+      sig { override.returns(T::Array[Types::SymbolHash]) }
       def hash_value
         elements.map(&:to_h)
       end
