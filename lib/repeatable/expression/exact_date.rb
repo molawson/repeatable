@@ -1,17 +1,22 @@
-# typed: true
+# typed: strict
 module Repeatable
   module Expression
     class ExactDate < Date
+      extend T::Sig
+
+      sig { params(date: Object).void }
       def initialize(date:)
-        @date = Conversions::Date(date)
+        @date = T.let(Conversions::Date(date), ::Date)
       end
 
+      sig { params(other_date: ::Date).returns(T::Boolean) }
       def include?(other_date)
         date == other_date
       end
 
       private
 
+      sig { returns(::Date) }
       attr_reader :date
     end
   end

@@ -1,8 +1,11 @@
-# typed: true
+# typed: strict
 module Repeatable
   module Conversions
+    extend T::Sig
+
     module_function
 
+    sig { params(arg: Object).returns(::Date) }
     def Date(arg)
       case arg
       when Date, Time
