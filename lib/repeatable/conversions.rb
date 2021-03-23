@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 module Repeatable
   module Conversions
     module_function
@@ -11,7 +11,7 @@ module Repeatable
         Date.parse(arg)
       end
     rescue ArgumentError
-      raise TypeError, "Cannot convert #{arg.inspect} to Date"
+      Kernel.raise TypeError, "Cannot convert #{arg.inspect} to Date"
     end
   end
 end

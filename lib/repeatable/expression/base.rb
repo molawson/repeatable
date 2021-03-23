@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 module Repeatable
   module Expression
     class Base
@@ -44,8 +44,8 @@ module Repeatable
       private
 
       def hash_key
-        self.class.name.split("::").last
-          .gsub(/(?<!\b)[A-Z]/) { "_#{Regexp.last_match[0]}" }
+        T.must(T.must(self.class.name).split("::").last)
+          .gsub(/(?<!\b)[A-Z]/) { "_#{T.must(Regexp.last_match)[0]}" }
           .downcase
           .to_sym
       end
