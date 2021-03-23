@@ -1,8 +1,8 @@
 # Repeatable
 
-[![Build Status](https://img.shields.io/travis/molawson/repeatable.svg)](https://travis-ci.org/molawson/repeatable)
-[![Code Climate](https://img.shields.io/codeclimate/github/molawson/repeatable.svg)](https://codeclimate.com/github/molawson/repeatable)
-[![Code Climate Coverage](https://img.shields.io/codeclimate/coverage/github/molawson/repeatable.svg)](https://codeclimate.com/github/molawson/repeatable)
+[![Build Status](https://travis-ci.org/molawson/repeatable.svg?branch=master)](https://travis-ci.org/molawson/repeatable)
+[![Maintainability](https://api.codeclimate.com/v1/badges/73707efd5eeffd364c0d/maintainability)](https://codeclimate.com/github/molawson/repeatable/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/73707efd5eeffd364c0d/test_coverage)](https://codeclimate.com/github/molawson/repeatable/test_coverage)
 
 Ruby implementation of Martin Fowler's [Recurring Events for Calendars](http://martinfowler.com/apsupp/recurring.pdf) paper.
 
