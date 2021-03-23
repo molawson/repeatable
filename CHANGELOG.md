@@ -6,10 +6,15 @@ Breaking Changes:
 
 * Change `Expression::DayInMonth` to take negative numbers instead of special `:last` symbol (or string)
 
+Changes:
+
+* Flatten nested `Expression::Union` elements during initialization ([@cmoel][])
+* Flatten nested `Expression::Intersection` elements during initialization
+
 Chores:
 
-* Remove support for Ruby 2.1.x
-* Add support for Ruby 2.4.x
+* Remove support for Ruby 2.1
+* Add support for Ruby 2.4, 2.5, 2.6, 2.7
 
 [Commits](https://github.com/molawson/repeatable/compare/v0.6.0...master)
 
@@ -91,3 +96,4 @@ Initial Release
 [@danott]: https://github.com/danott
 [@PatrickLerner]: https://github.com/PatrickLerner
 [@danielma]: https://github.com/danielma
+[@cmoel]: https://github.com/cmoel
