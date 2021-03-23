@@ -19,7 +19,7 @@ module Repeatable
         end
 
         context 'when there are Union elements' do
-          subject { described_class.new(twenty_third) + oct_thru_dec }
+          subject { described_class.new(twenty_third).union(oct_thru_dec) }
 
           specify do
             expected_hash = {
