@@ -1681,6 +1681,79 @@
 # uninitialized constant DBM
 # uninitialized constant DBMError
 # uninitialized constant DBMError
+# wrong constant name _dump
+# wrong constant name _load
+# wrong constant name alive?
+# wrong constant name close
+# wrong constant name initialize
+# wrong constant name send_message
+# wrong constant name uri
+# wrong constant name make_pool
+# wrong constant name open
+# wrong constant name stop_pool
+# wrong constant name dump
+# wrong constant name initialize
+# wrong constant name load
+# wrong constant name recv_reply
+# wrong constant name recv_request
+# wrong constant name send_reply
+# wrong constant name send_request
+# wrong constant name ==
+# wrong constant name eql?
+# wrong constant name initialize
+# wrong constant name prepare_backtrace
+# wrong constant name with_friend
+# wrong constant name auto_load
+# wrong constant name initialize
+# wrong constant name <Class:InvokeMethod>
+# wrong constant name <Class:InvokeMethod18Mixin>
+# wrong constant name initialize
+# wrong constant name safe_level
+# wrong constant name initialize
+# wrong constant name perform
+# wrong constant name <static-init>
+# wrong constant name block_yield
+# wrong constant name perform_with_block
+# wrong constant name <static-init>
+# wrong constant name default_safe_level
+# wrong constant name make_config
+# wrong constant name accept
+# wrong constant name alive?
+# wrong constant name close
+# wrong constant name initialize
+# wrong constant name peeraddr
+# wrong constant name recv_reply
+# wrong constant name recv_request
+# wrong constant name send_reply
+# wrong constant name send_request
+# wrong constant name set_sockopt
+# wrong constant name shutdown
+# wrong constant name stream
+# wrong constant name uri
+# wrong constant name getservername
+# wrong constant name open
+# wrong constant name open_server
+# wrong constant name open_server_inaddr_any
+# wrong constant name parse_uri
+# wrong constant name uri_option
+# wrong constant name ==
+# wrong constant name eql?
+# wrong constant name initialize
+# wrong constant name option
+# wrong constant name <static-init>
+# wrong constant name _dump
+# wrong constant name _dump
+# wrong constant name _load
+# wrong constant name _dump
+# wrong constant name initialize
+# wrong constant name _load
+# wrong constant name _execute
+# wrong constant name alive?
+# wrong constant name initialize
+# wrong constant name kill
+# wrong constant name method_missing
+# wrong constant name <static-init>
+# wrong constant name mutex
 # wrong constant name infinite?
 # wrong constant name initialize
 # wrong constant name class_name
@@ -1997,6 +2070,35 @@
 # wrong constant name suggestion=
 # wrong constant name <static-init>
 # wrong constant name <static-init>
+# wrong constant name d
+# wrong constant name dmp1
+# wrong constant name dmq1
+# wrong constant name e
+# wrong constant name export
+# wrong constant name initialize
+# wrong constant name iqmp
+# wrong constant name n
+# wrong constant name p
+# wrong constant name params
+# wrong constant name private?
+# wrong constant name private_decrypt
+# wrong constant name private_encrypt
+# wrong constant name public?
+# wrong constant name public_decrypt
+# wrong constant name public_encrypt
+# wrong constant name public_key
+# wrong constant name q
+# wrong constant name set_crt_params
+# wrong constant name set_factors
+# wrong constant name set_key
+# wrong constant name sign_pss
+# wrong constant name to_der
+# wrong constant name to_pem
+# wrong constant name to_s
+# wrong constant name to_text
+# wrong constant name verify_pss
+# wrong constant name <static-init>
+# wrong constant name generate
 # wrong constant name check_cert
 # wrong constant name check_chain
 # wrong constant name check_data
@@ -2171,8 +2273,6 @@
 # uninitialized constant Mutex_m
 # uninitialized constant NKF
 # uninitialized constant NKF
-# wrong constant name write_timeout
-# wrong constant name write_timeout=
 # uninitialized constant Net::DNS
 # uninitialized constant Net::DNS
 # uninitialized constant Net::FTP
@@ -2195,54 +2295,12 @@
 # Did you mean?  TypeError
 # uninitialized constant Net::FTPTempError
 # Did you mean?  TypeError
-# wrong constant name ipaddr
-# wrong constant name ipaddr=
-# wrong constant name max_retries
-# wrong constant name max_retries=
-# wrong constant name max_version
-# wrong constant name max_version=
-# wrong constant name min_version
-# wrong constant name min_version=
-# wrong constant name write_timeout
-# wrong constant name write_timeout=
 # uninitialized constant Net::HTTP::DigestAuth
 # uninitialized constant Net::HTTP::DigestAuth
-# uninitialized constant Net::HTTPAlreadyReported::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPAlreadyReported::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPEarlyHints::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPEarlyHints::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPLoopDetected::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPLoopDetected::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPMisdirectedRequest::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPMisdirectedRequest::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPNotExtended::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPNotExtended::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPPayloadTooLarge::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPPayloadTooLarge::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPProcessing::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPProcessing::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPRangeNotSatisfiable::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPRangeNotSatisfiable::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPURITooLong::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPURITooLong::CODE_TO_OBJ
-# wrong constant name <static-init>
-# uninitialized constant Net::HTTPVariantAlsoNegotiates::CODE_CLASS_TO_OBJ
-# uninitialized constant Net::HTTPVariantAlsoNegotiates::CODE_TO_OBJ
-# wrong constant name <static-init>
 # uninitialized constant Net::IMAP
 # uninitialized constant Net::IMAP
 # uninitialized constant Net::NTLM
 # uninitialized constant Net::NTLM
-# wrong constant name initialize
-# wrong constant name io
 # uninitialized constant Net::SMTP
 # uninitialized constant Net::SMTP
 # uninitialized constant Net::SMTPAuthenticationError
@@ -2267,8 +2325,6 @@
 # uninitialized constant Net::SMTPUnknownError
 # uninitialized constant Net::SMTPUnsupportedCommand
 # uninitialized constant Net::SMTPUnsupportedCommand
-# wrong constant name initialize
-# wrong constant name io
 # uninitialized constant Newton
 # uninitialized constant Newton
 # wrong constant name <static-init>
@@ -2280,12 +2336,6 @@
 # Did you mean?  OpenSSL
 # uninitialized constant Open3
 # Did you mean?  OpenSSL
-# wrong constant name indefinite_length
-# wrong constant name indefinite_length=
-# wrong constant name +@
-# wrong constant name -@
-# wrong constant name /
-# wrong constant name negative?
 # uninitialized constant OpenSSL::Digest::DSS
 # uninitialized constant OpenSSL::Digest::DSS
 # uninitialized constant OpenSSL::Digest::DSS1
@@ -2294,35 +2344,8 @@
 # Did you mean?  OpenSSL::Digest::SHA1
 # uninitialized constant OpenSSL::Digest::SHA
 # Did you mean?  OpenSSL::Digest::SHA1
-# wrong constant name <Class:KDFError>
-# wrong constant name <static-init>
-# wrong constant name <static-init>
-# wrong constant name hkdf
-# wrong constant name pbkdf2_hmac
-# wrong constant name scrypt
-# wrong constant name signed?
 # uninitialized constant OpenSSL::PKCS5::PKCS5Error
 # uninitialized constant OpenSSL::PKCS5::PKCS5Error
-# wrong constant name to_octet_string
-# wrong constant name add_certificate
-# wrong constant name alpn_protocols
-# wrong constant name alpn_protocols=
-# wrong constant name alpn_select_cb
-# wrong constant name alpn_select_cb=
-# wrong constant name enable_fallback_scsv
-# wrong constant name max_version=
-# wrong constant name min_version=
-# uninitialized constant OpenSSL::SSL::SSLSocket::BLOCK_SIZE
-# wrong constant name alpn_protocol
-# wrong constant name tmp_key
-# wrong constant name ==
-# wrong constant name ==
-# wrong constant name ==
-# wrong constant name to_utf8
-# wrong constant name ==
-# wrong constant name ==
-# wrong constant name to_der
-# wrong constant name fips_mode
 # uninitialized constant OpenURI
 # Did you mean?  OpenStruct
 # uninitialized constant OpenURI
@@ -2372,18 +2395,15 @@
 # uninitialized constant Proc8
 # uninitialized constant Proc9
 # uninitialized constant Proc9
+# uninitialized constant Pry::BasicObject::RUBYGEMS_ACTIVATION_MONITOR
 # uninitialized constant Pry::Command::COLORS
-# uninitialized constant Pry::Command::GemSearch::COLORS
-# Did you mean?  Pry::Command::COLORS
-# uninitialized constant Pry::Command::GemSearch::VOID_VALUE
-# Did you mean?  Pry::Command::VOID_VALUE
-# uninitialized constant Pry::Command::GemStat::COLORS
-# Did you mean?  Pry::Command::COLORS
-# uninitialized constant Pry::Command::GemStat::VOID_VALUE
-# Did you mean?  Pry::Command::VOID_VALUE
 # uninitialized constant Pry::Command::Ls::COLORS
 # Did you mean?  Pry::Command::COLORS
 # uninitialized constant Pry::Command::Ls::VOID_VALUE
+# Did you mean?  Pry::Command::VOID_VALUE
+# uninitialized constant Pry::Command::Wtf::COLORS
+# Did you mean?  Pry::Command::COLORS
+# uninitialized constant Pry::Command::Wtf::VOID_VALUE
 # Did you mean?  Pry::Command::VOID_VALUE
 # uninitialized constant Psych
 # uninitialized constant Psych
@@ -2393,7 +2413,9 @@
 # uninitialized constant REXML
 # uninitialized constant RSpec::Core::ExampleGroup::NOT_YET_IMPLEMENTED
 # uninitialized constant RSpec::Core::ExampleGroup::NO_REASON_GIVEN
+# uninitialized constant RSpec::Matchers::BuiltIn::BePredicate::UNDEFINED
 # uninitialized constant RSpec::Matchers::BuiltIn::Equal::UNDEFINED
+# uninitialized constant RSpec::Matchers::BuiltIn::Has::UNDEFINED
 # wrong constant name <Class:Differ>
 # wrong constant name color?
 # wrong constant name diff
@@ -2651,7 +2673,3 @@
 # uninitialized constant WEBrick
 # uninitialized constant WeakRef
 # uninitialized constant WeakRef
-# wrong constant name initialize
-# wrong constant name initialize
-# wrong constant name initialize
-# wrong constant name initialize

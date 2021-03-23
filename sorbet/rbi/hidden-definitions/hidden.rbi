@@ -2650,6 +2650,206 @@ end
 
 CodeRay::Styles::Style::PLUGIN_HOST = CodeRay::Styles
 
+class DRb::DRbArray
+  def _dump(lv); end
+end
+
+class DRb::DRbArray
+  def self._load(s); end
+end
+
+class DRb::DRbConn
+  def alive?(); end
+
+  def close(); end
+
+  def initialize(remote_uri); end
+
+  def send_message(ref, msg_id, arg, block); end
+
+  def uri(); end
+end
+
+class DRb::DRbConn
+  def self.make_pool(); end
+
+  def self.open(remote_uri); end
+
+  def self.stop_pool(); end
+end
+
+class DRb::DRbMessage
+  def dump(obj, error=T.unsafe(nil)); end
+
+  def initialize(config); end
+
+  def load(soc); end
+
+  def recv_reply(stream); end
+
+  def recv_request(stream); end
+
+  def send_reply(stream, succ, result); end
+
+  def send_request(stream, ref, msg_id, arg, b); end
+end
+
+class DRb::DRbObject
+  def ==(other); end
+
+  def eql?(other); end
+
+  def initialize(obj, uri=T.unsafe(nil)); end
+end
+
+class DRb::DRbObject
+  def self.prepare_backtrace(uri, result); end
+
+  def self.with_friend(uri); end
+end
+
+module DRb::DRbProtocol
+  def self.auto_load(uri); end
+end
+
+class DRb::DRbRemoteError
+  def initialize(error); end
+end
+
+class DRb::DRbServer
+  def initialize(uri=T.unsafe(nil), front=T.unsafe(nil), config_or_acl=T.unsafe(nil)); end
+
+  def safe_level(); end
+end
+
+class DRb::DRbServer::InvokeMethod
+  include ::DRb::DRbServer::InvokeMethod18Mixin
+  def initialize(drb_server, client); end
+
+  def perform(); end
+end
+
+class DRb::DRbServer::InvokeMethod
+end
+
+module DRb::DRbServer::InvokeMethod18Mixin
+  def block_yield(x); end
+
+  def perform_with_block(); end
+end
+
+module DRb::DRbServer::InvokeMethod18Mixin
+end
+
+class DRb::DRbServer
+  def self.default_safe_level(level); end
+
+  def self.make_config(hash=T.unsafe(nil)); end
+end
+
+class DRb::DRbTCPSocket
+  def accept(); end
+
+  def alive?(); end
+
+  def close(); end
+
+  def initialize(uri, soc, config=T.unsafe(nil)); end
+
+  def peeraddr(); end
+
+  def recv_reply(); end
+
+  def recv_request(); end
+
+  def send_reply(succ, result); end
+
+  def send_request(ref, msg_id, arg, b); end
+
+  def set_sockopt(soc); end
+
+  def shutdown(); end
+
+  def stream(); end
+
+  def uri(); end
+end
+
+class DRb::DRbTCPSocket
+  def self.getservername(); end
+
+  def self.open(uri, config); end
+
+  def self.open_server(uri, config); end
+
+  def self.open_server_inaddr_any(host, port); end
+
+  def self.parse_uri(uri); end
+
+  def self.uri_option(uri, config); end
+end
+
+class DRb::DRbURIOption
+  def ==(other); end
+
+  def eql?(other); end
+
+  def initialize(option); end
+
+  def option(); end
+end
+
+class DRb::DRbURIOption
+end
+
+module DRb::DRbUndumped
+  def _dump(dummy); end
+end
+
+class DRb::DRbUnknown
+  def _dump(lv); end
+end
+
+class DRb::DRbUnknown
+  def self._load(s); end
+end
+
+class DRb::DRbUnknownError
+  def _dump(lv); end
+
+  def initialize(unknown); end
+end
+
+class DRb::DRbUnknownError
+  def self._load(s); end
+end
+
+class DRb::ThreadObject
+  include ::MonitorMixin
+  def _execute(); end
+
+  def alive?(); end
+
+  def initialize(&blk); end
+
+  def kill(); end
+
+  def method_missing(msg, *arg, &blk); end
+end
+
+class DRb::ThreadObject
+end
+
+module DRb
+  def self.mutex(); end
+end
+
+DRbIdConv = DRb::DRbIdConv
+
+DRbObject = DRb::DRbObject
+
+DRbUndumped = DRb::DRbUndumped
+
 class Date
   def infinite?(); end
 end
@@ -3568,7 +3768,69 @@ end
 class Gem::Security::Exception
 end
 
-Gem::Security::KEY_ALGORITHM = OpenSSL::PKey::RSA
+class Gem::Security::KEY_ALGORITHM
+  def d(); end
+
+  def dmp1(); end
+
+  def dmq1(); end
+
+  def e(); end
+
+  def export(*_); end
+
+  def initialize(*_); end
+
+  def iqmp(); end
+
+  def n(); end
+
+  def p(); end
+
+  def params(); end
+
+  def private?(); end
+
+  def private_decrypt(*_); end
+
+  def private_encrypt(*_); end
+
+  def public?(); end
+
+  def public_decrypt(*_); end
+
+  def public_encrypt(*_); end
+
+  def public_key(); end
+
+  def q(); end
+
+  def set_crt_params(_, _1, _2); end
+
+  def set_factors(_, _1); end
+
+  def set_key(_, _1, _2); end
+
+  def sign_pss(*_); end
+
+  def to_der(); end
+
+  def to_pem(*_); end
+
+  def to_s(*_); end
+
+  def to_text(); end
+
+  def verify_pss(*_); end
+  NO_PADDING = ::T.let(nil, ::T.untyped)
+  PKCS1_OAEP_PADDING = ::T.let(nil, ::T.untyped)
+  PKCS1_PADDING = ::T.let(nil, ::T.untyped)
+  SSLV23_PADDING = ::T.let(nil, ::T.untyped)
+end
+
+class Gem::Security::KEY_ALGORITHM
+  def self.generate(*_); end
+end
 
 class Gem::Security::Policy
   include ::Gem::UserInteraction
@@ -3966,159 +4228,6 @@ class NameError
   include ::DidYouMean::Correctable
 end
 
-class Net::BufferedIO
-  def write_timeout(); end
-
-  def write_timeout=(write_timeout); end
-end
-
-class Net::HTTP
-  def ipaddr(); end
-
-  def ipaddr=(addr); end
-
-  def max_retries(); end
-
-  def max_retries=(retries); end
-
-  def max_version(); end
-
-  def max_version=(max_version); end
-
-  def min_version(); end
-
-  def min_version=(min_version); end
-
-  def write_timeout(); end
-
-  def write_timeout=(sec); end
-  ENVIRONMENT_VARIABLE_IS_MULTIUSER_SAFE = ::T.let(nil, ::T.untyped)
-end
-
-Net::HTTP::ProxyMod = Net::HTTP::ProxyDelta
-
-class Net::HTTPAlreadyReported
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPAlreadyReported
-end
-
-Net::HTTPClientError::EXCEPTION_TYPE = Net::HTTPServerException
-
-Net::HTTPClientErrorCode = Net::HTTPClientError
-
-class Net::HTTPEarlyHints
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPEarlyHints
-end
-
-Net::HTTPFatalErrorCode = Net::HTTPClientError
-
-Net::HTTPInformationCode = Net::HTTPInformation
-
-class Net::HTTPLoopDetected
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPLoopDetected
-end
-
-class Net::HTTPMisdirectedRequest
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPMisdirectedRequest
-end
-
-Net::HTTPMovedTemporarily = Net::HTTPFound
-
-Net::HTTPMultipleChoice = Net::HTTPMultipleChoices
-
-class Net::HTTPNotExtended
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPNotExtended
-end
-
-class Net::HTTPPayloadTooLarge
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPPayloadTooLarge
-end
-
-class Net::HTTPProcessing
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPProcessing
-end
-
-class Net::HTTPRangeNotSatisfiable
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPRangeNotSatisfiable
-end
-
-Net::HTTPRedirection::EXCEPTION_TYPE = Net::HTTPRetriableError
-
-Net::HTTPRedirectionCode = Net::HTTPRedirection
-
-Net::HTTPRequestURITooLarge = Net::HTTPURITooLong
-
-Net::HTTPResponceReceiver = Net::HTTPResponse
-
-Net::HTTPRetriableCode = Net::HTTPRedirection
-
-Net::HTTPServerError::EXCEPTION_TYPE = Net::HTTPFatalError
-
-Net::HTTPServerErrorCode = Net::HTTPServerError
-
-Net::HTTPSession = Net::HTTP
-
-Net::HTTPSuccess::EXCEPTION_TYPE = Net::HTTPError
-
-Net::HTTPSuccessCode = Net::HTTPSuccess
-
-class Net::HTTPURITooLong
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPURITooLong
-end
-
-Net::HTTPUnknownResponse::EXCEPTION_TYPE = Net::HTTPError
-
-class Net::HTTPVariantAlsoNegotiates
-  HAS_BODY = ::T.let(nil, ::T.untyped)
-end
-
-class Net::HTTPVariantAlsoNegotiates
-end
-
-Net::NetPrivate::HTTPRequest = Net::HTTPRequest
-
-Net::NetPrivate::Socket = Net::InternetMessageIO
-
-Net::ProtocRetryError = Net::ProtoRetriableError
-
-class Net::ReadTimeout
-  def initialize(io=T.unsafe(nil)); end
-
-  def io(); end
-end
-
-class Net::WriteTimeout
-  def initialize(io=T.unsafe(nil)); end
-
-  def io(); end
-end
-
 class NilClass
   include ::JSON::Ext::Generator::GeneratorMethods::NilClass
 end
@@ -4150,131 +4259,6 @@ class Object
   STDIN = ::T.let(nil, ::T.untyped)
   STDOUT = ::T.let(nil, ::T.untyped)
   TOPLEVEL_BINDING = ::T.let(nil, ::T.untyped)
-end
-
-class OpenSSL::ASN1::ASN1Data
-  def indefinite_length(); end
-
-  def indefinite_length=(indefinite_length); end
-end
-
-class OpenSSL::BN
-  def +@(); end
-
-  def -@(); end
-
-  def /(_); end
-
-  def negative?(); end
-end
-
-module OpenSSL::KDF
-end
-
-class OpenSSL::KDF::KDFError
-end
-
-class OpenSSL::KDF::KDFError
-end
-
-module OpenSSL::KDF
-  def self.hkdf(*_); end
-
-  def self.pbkdf2_hmac(*_); end
-
-  def self.scrypt(*_); end
-end
-
-class OpenSSL::OCSP::Request
-  def signed?(); end
-end
-
-OpenSSL::PKCS7::Signer = OpenSSL::PKCS7::SignerInfo
-
-class OpenSSL::PKey::EC
-  EXPLICIT_CURVE = ::T.let(nil, ::T.untyped)
-end
-
-class OpenSSL::PKey::EC::Point
-  def to_octet_string(_); end
-end
-
-module OpenSSL::SSL
-  OP_ALLOW_NO_DHE_KEX = ::T.let(nil, ::T.untyped)
-  OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION = ::T.let(nil, ::T.untyped)
-  OP_CRYPTOPRO_TLSEXT_BUG = ::T.let(nil, ::T.untyped)
-  OP_LEGACY_SERVER_CONNECT = ::T.let(nil, ::T.untyped)
-  OP_NO_ENCRYPT_THEN_MAC = ::T.let(nil, ::T.untyped)
-  OP_NO_RENEGOTIATION = ::T.let(nil, ::T.untyped)
-  OP_NO_TLSv1_3 = ::T.let(nil, ::T.untyped)
-  OP_SAFARI_ECDHE_ECDSA_BUG = ::T.let(nil, ::T.untyped)
-  OP_TLSEXT_PADDING = ::T.let(nil, ::T.untyped)
-  SSL2_VERSION = ::T.let(nil, ::T.untyped)
-  SSL3_VERSION = ::T.let(nil, ::T.untyped)
-  TLS1_1_VERSION = ::T.let(nil, ::T.untyped)
-  TLS1_2_VERSION = ::T.let(nil, ::T.untyped)
-  TLS1_3_VERSION = ::T.let(nil, ::T.untyped)
-  TLS1_VERSION = ::T.let(nil, ::T.untyped)
-end
-
-class OpenSSL::SSL::SSLContext
-  def add_certificate(*_); end
-
-  def alpn_protocols(); end
-
-  def alpn_protocols=(alpn_protocols); end
-
-  def alpn_select_cb(); end
-
-  def alpn_select_cb=(alpn_select_cb); end
-
-  def enable_fallback_scsv(); end
-
-  def max_version=(version); end
-
-  def min_version=(version); end
-  DEFAULT_TMP_DH_CALLBACK = ::T.let(nil, ::T.untyped)
-end
-
-class OpenSSL::SSL::SSLSocket
-  def alpn_protocol(); end
-
-  def tmp_key(); end
-end
-
-module OpenSSL::X509
-  V_FLAG_NO_CHECK_TIME = ::T.let(nil, ::T.untyped)
-  V_FLAG_TRUSTED_FIRST = ::T.let(nil, ::T.untyped)
-end
-
-class OpenSSL::X509::Attribute
-  def ==(other); end
-end
-
-class OpenSSL::X509::CRL
-  def ==(other); end
-end
-
-class OpenSSL::X509::Extension
-  def ==(other); end
-end
-
-class OpenSSL::X509::Name
-  def to_utf8(); end
-end
-
-class OpenSSL::X509::Request
-  def ==(other); end
-end
-
-class OpenSSL::X509::Revoked
-  def ==(other); end
-
-  def to_der(); end
-end
-
-module OpenSSL
-  def self.fips_mode(); end
 end
 
 class OpenStruct
@@ -4313,22 +4297,24 @@ end
 
 class Pry
   BINDING_METHOD_IMPL = ::T.let(nil, ::T.untyped)
-  CLIPPED_PRINT = ::T.let(nil, ::T.untyped)
   Commands = ::T.let(nil, ::T.untyped)
-  DEFAULT_CONTROL_D_HANDLER = ::T.let(nil, ::T.untyped)
-  DEFAULT_EXCEPTION_HANDLER = ::T.let(nil, ::T.untyped)
-  DEFAULT_EXCEPTION_WHITELIST = ::T.let(nil, ::T.untyped)
-  DEFAULT_HOOKS = ::T.let(nil, ::T.untyped)
-  DEFAULT_PRINT = ::T.let(nil, ::T.untyped)
-  DEFAULT_SYSTEM = ::T.let(nil, ::T.untyped)
   EMPTY_COMPLETIONS = ::T.let(nil, ::T.untyped)
-  HOME_RC_FILE = ::T.let(nil, ::T.untyped)
+  HAS_SAFE_LEVEL = ::T.let(nil, ::T.untyped)
   LOCAL_RC_FILE = ::T.let(nil, ::T.untyped)
-  SIMPLE_PRINT = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
+class Pry::BasicObject
+  ENV = ::T.let(nil, ::T.untyped)
+end
+
+Pry::BasicObject::Dir = Dir
+
+Pry::BasicObject::File = File
+
 Pry::BasicObject::Kernel = Kernel
+
+Pry::BasicObject::LoadError = LoadError
 
 Pry::BasicObject::Pry = Pry
 
@@ -4343,23 +4329,8 @@ class Pry::CodeFile
   INITIAL_PWD = ::T.let(nil, ::T.untyped)
 end
 
-class Pry::ColorPrinter
-  OBJ_COLOR = ::T.let(nil, ::T.untyped)
-end
-
 class Pry::Command
   VOID_VALUE = ::T.let(nil, ::T.untyped)
-end
-
-class Pry::Command::GemSearch
-  API_ENDPOINT = ::T.let(nil, ::T.untyped)
-end
-
-class Pry::Command::GemStat
-  FAIL_WHALE = ::T.let(nil, ::T.untyped)
-  STAT_HOST = ::T.let(nil, ::T.untyped)
-  STAT_PATH = ::T.let(nil, ::T.untyped)
-  STAT_PORT = ::T.let(nil, ::T.untyped)
 end
 
 class Pry::Command::Ls
@@ -4375,18 +4346,12 @@ class Pry::Command::Ls::Globals
   PSEUDO_GLOBALS = ::T.let(nil, ::T.untyped)
 end
 
-module Pry::Config::Behavior
-  ASSIGNMENT = ::T.let(nil, ::T.untyped)
-  INSPECT_REGEXP = ::T.let(nil, ::T.untyped)
-  NODUP = ::T.let(nil, ::T.untyped)
+class Pry::Command::Wtf
+  RUBY_FRAME_PATTERN = ::T.let(nil, ::T.untyped)
 end
 
-module Pry::Config::Convenience
-  SHORTCUTS = ::T.let(nil, ::T.untyped)
-end
-
-module Pry::Config::Memoization
-  MEMOIZED_METHODS = ::T.let(nil, ::T.untyped)
+module Pry::Helpers::DocumentationHelpers
+  YARD_TAGS = ::T.let(nil, ::T.untyped)
 end
 
 module Pry::Helpers::Text
@@ -4403,6 +4368,23 @@ class Pry::Indent
   STATEMENT_END_TOKENS = ::T.let(nil, ::T.untyped)
 end
 
+class Pry::InputCompleter
+  ARRAY_REGEXP = ::T.let(nil, ::T.untyped)
+  CONSTANT_OR_METHOD_REGEXP = ::T.let(nil, ::T.untyped)
+  CONSTANT_REGEXP = ::T.let(nil, ::T.untyped)
+  GLOBALVARIABLE_REGEXP = ::T.let(nil, ::T.untyped)
+  HEX_REGEXP = ::T.let(nil, ::T.untyped)
+  NUMERIC_REGEXP = ::T.let(nil, ::T.untyped)
+  PROC_OR_HASH_REGEXP = ::T.let(nil, ::T.untyped)
+  REGEX_REGEXP = ::T.let(nil, ::T.untyped)
+  RESERVED_WORDS = ::T.let(nil, ::T.untyped)
+  SYMBOL_METHOD_CALL_REGEXP = ::T.let(nil, ::T.untyped)
+  SYMBOL_REGEXP = ::T.let(nil, ::T.untyped)
+  TOPLEVEL_LOOKUP_REGEXP = ::T.let(nil, ::T.untyped)
+  VARIABLE_REGEXP = ::T.let(nil, ::T.untyped)
+  WORD_ESCAPE_STR = ::T.let(nil, ::T.untyped)
+end
+
 class Pry::Inspector
   MAP = ::T.let(nil, ::T.untyped)
 end
@@ -4411,13 +4393,8 @@ class Pry::ObjectPath
   SPECIAL_TERMS = ::T.let(nil, ::T.untyped)
 end
 
-class Pry::PluginManager
-  PRY_PLUGIN_PREFIX = ::T.let(nil, ::T.untyped)
-end
-
-module Pry::Prompt
-  DEFAULT_NAME = ::T.let(nil, ::T.untyped)
-  SAFE_CONTEXTS = ::T.let(nil, ::T.untyped)
+class Pry::Output
+  DEFAULT_SIZE = ::T.let(nil, ::T.untyped)
 end
 
 class Pry::Slop
@@ -4494,6 +4471,13 @@ module RSpec::Core::Formatters::Helpers
   SUB_SECOND_PRECISION = ::T.let(nil, ::T.untyped)
 end
 
+class RSpec::Core::Formatters::HtmlPrinter
+  GLOBAL_SCRIPTS = ::T.let(nil, ::T.untyped)
+  GLOBAL_STYLES = ::T.let(nil, ::T.untyped)
+  HTML_HEADER = ::T.let(nil, ::T.untyped)
+  REPORT_HEADER = ::T.let(nil, ::T.untyped)
+end
+
 module RSpec::Core::Formatters::SyntaxHighlighter::CodeRayImplementation
   RESET_CODE = ::T.let(nil, ::T.untyped)
 end
@@ -4558,8 +4542,20 @@ class RSpec::Matchers::BuiltIn::BaseMatcher
   UNDEFINED = ::T.let(nil, ::T.untyped)
 end
 
+class RSpec::Matchers::BuiltIn::BePredicate
+  REGEX = ::T.let(nil, ::T.untyped)
+end
+
 class RSpec::Matchers::BuiltIn::Equal
   LITERAL_SINGLETONS = ::T.let(nil, ::T.untyped)
+end
+
+class RSpec::Matchers::BuiltIn::Has
+  REGEX = ::T.let(nil, ::T.untyped)
+end
+
+class RSpec::Matchers::BuiltIn::RaiseError
+  UndefinedValue = ::T.let(nil, ::T.untyped)
 end
 
 RSpec::Matchers::BuiltIn::SpecificValuesChange::MATCH_ANYTHING = BasicObject
@@ -4582,10 +4578,6 @@ end
 
 class RSpec::Mocks::AnyInstance::PositiveExpectationChain
   ExpectationInvocationOrder = ::T.let(nil, ::T.untyped)
-end
-
-class RSpec::Mocks::AnyInstance::Recorder
-  include ::T::CompatibilityPatches::RSpecCompatibility::RecorderExtensions
 end
 
 class RSpec::Mocks::AnyInstance::StubChain
@@ -4617,10 +4609,6 @@ class RSpec::Mocks::Matchers::HaveReceived
   ARGS_CONSTRAINTS = ::T.let(nil, ::T.untyped)
   CONSTRAINTS = ::T.let(nil, ::T.untyped)
   COUNT_CONSTRAINTS = ::T.let(nil, ::T.untyped)
-end
-
-class RSpec::Mocks::MethodDouble
-  include ::T::CompatibilityPatches::RSpecCompatibility::MethodDoubleExtensions
 end
 
 class RSpec::Mocks::ObjectReference
@@ -4663,8 +4651,6 @@ class RSpec::Support::Differ
 end
 
 class RSpec::Support::EncodedString
-  ENCODE_NO_CONVERTER = ::T.let(nil, ::T.untyped)
-  ENCODE_UNCONVERTABLE_BYTES = ::T.let(nil, ::T.untyped)
   REPLACE = ::T.let(nil, ::T.untyped)
   US_ASCII = ::T.let(nil, ::T.untyped)
   UTF_8 = ::T.let(nil, ::T.untyped)
@@ -4674,7 +4660,9 @@ class RSpec::Support::MethodSignature
   INFINITY = ::T.let(nil, ::T.untyped)
 end
 
-RSpec::Support::Mutex = Thread::Mutex
+class RSpec::Support::Mutex
+  NEW_MUTEX_METHOD = ::T.let(nil, ::T.untyped)
+end
 
 class RSpec::Support::ObjectFormatter
   ELLIPSIS = ::T.let(nil, ::T.untyped)
@@ -5256,18 +5244,3 @@ module Warning
   extend ::Warning
 end
 
-class Zlib::Deflate
-  def initialize(*_); end
-end
-
-class Zlib::GzipReader
-  def initialize(*_); end
-end
-
-class Zlib::GzipWriter
-  def initialize(*_); end
-end
-
-class Zlib::Inflate
-  def initialize(*_); end
-end

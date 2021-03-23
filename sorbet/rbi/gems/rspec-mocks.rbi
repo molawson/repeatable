@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/rspec-mocks/all/rspec-mocks.rbi
 #
-# rspec-mocks-3.8.1
+# rspec-mocks-3.10.2
 
 module RSpec
 end
@@ -200,6 +200,7 @@ class RSpec::Mocks::Proxy
   def as_null_object; end
   def build_expectation(method_name); end
   def check_for_unexpected_arguments(expectation); end
+  def ensure_can_be_proxied!(object); end
   def ensure_implemented(*_args); end
   def find_almost_matching_expectation(method_name, *args); end
   def find_almost_matching_stub(method_name, *args); end
@@ -334,6 +335,7 @@ class RSpec::Mocks::MessageExpectation
   def once(&block); end
   def ordered(&block); end
   def thrice(&block); end
+  def time(&block); end
   def times(&block); end
   def to_s; end
   def twice(&block); end
@@ -853,6 +855,7 @@ module RSpec::Mocks::AnyInstance::Chain::Customizations
   def once(*args, &block); end
   def self.record(method_name); end
   def thrice(*args, &block); end
+  def time(*args, &block); end
   def times(*args, &block); end
   def twice(*args, &block); end
   def with(*args, &block); end
@@ -1004,6 +1007,7 @@ class RSpec::Mocks::Matchers::HaveReceived
   def setup_expectation(subject, &block); end
   def setup_negative_expectation(subject, &block); end
   def thrice(*args); end
+  def time(*args); end
   def times(*args); end
   def twice(*args); end
   def with(*args); end
@@ -1045,6 +1049,7 @@ class RSpec::Mocks::Matchers::Receive
   def setup_mock_proxy_method_substitute(subject, method, block); end
   def setup_negative_expectation(subject, &block); end
   def thrice(*args, &block); end
+  def time(*args, &block); end
   def times(*args, &block); end
   def twice(*args, &block); end
   def warn_if_any_instance(expression, subject); end
