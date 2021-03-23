@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 module Repeatable
   class Parser
     def initialize(hash)
