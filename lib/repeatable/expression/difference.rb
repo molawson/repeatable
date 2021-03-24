@@ -11,7 +11,7 @@ module Repeatable
       end
 
       def to_h
-        Hash[hash_key, { included: included.to_h, excluded: excluded.to_h }]
+        Hash[hash_key, {included: included.to_h, excluded: excluded.to_h}]
       end
 
       def ==(other)

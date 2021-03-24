@@ -15,7 +15,7 @@ module Repeatable
       start_date = Conversions::Date(start_date)
       end_date = Conversions::Date(end_date)
 
-      fail(ArgumentError, 'end_date must be equal to or after start_date') if end_date < start_date
+      fail(ArgumentError, "end_date must be equal to or after start_date") if end_date < start_date
 
       (start_date..end_date).select { |date| include?(date) }
     end

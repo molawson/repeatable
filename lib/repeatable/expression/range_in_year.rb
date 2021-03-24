@@ -19,11 +19,11 @@ module Repeatable
       end
 
       def to_h
-        args = { start_month: start_month }
+        args = {start_month: start_month}
         args[:end_month] = end_month unless end_month == start_month
         args[:start_day] = start_day unless start_day.zero?
         args[:end_day] = end_day unless end_day.zero?
-        { range_in_year: args }
+        {range_in_year: args}
       end
 
       private

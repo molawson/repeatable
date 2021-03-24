@@ -1,22 +1,22 @@
 module ScheduleArguments
   def simple_range_hash
-    { range_in_year: { start_month: 10, end_month: 12 } }
+    {range_in_year: {start_month: 10, end_month: 12}}
   end
 
   def set_expression_hash
     {
       union: [
-        { day_in_month: { day: 23 } },
-        { range_in_year: { start_month: 10, end_month: 12 } }
+        {day_in_month: {day: 23}},
+        {range_in_year: {start_month: 10, end_month: 12}}
       ]
     }
   end
 
   def stringified_set_expression_hash
     {
-      'union' => [
-        { 'day_in_month' => { 'day' => 23 } },
-        { 'range_in_year' => { 'start_month' => 10, 'end_month' => 12 } }
+      "union" => [
+        {"day_in_month" => {"day" => 23}},
+        {"range_in_year" => {"start_month" => 10, "end_month" => 12}}
       ]
     }
   end
@@ -26,11 +26,11 @@ module ScheduleArguments
       intersection: [
         {
           union: [
-            { day_in_month: { day: 23 } },
-            { day_in_month: { day: 24 } }
+            {day_in_month: {day: 23}},
+            {day_in_month: {day: 24}}
           ]
         },
-        { range_in_year: { start_month: 10, end_month: 12 } }
+        {range_in_year: {start_month: 10, end_month: 12}}
       ]
     }
   end
@@ -38,13 +38,13 @@ module ScheduleArguments
   def nested_union_expression_hash
     {
       union: [
-        { day_in_month: { day: 23 } },
+        {day_in_month: {day: 23}},
         union: [
-          { day_in_month: { day: 24 } },
+          {day_in_month: {day: 24}},
           union: [
-            { day_in_month: { day: 25 } },
+            {day_in_month: {day: 25}},
             union: [
-              { day_in_month: { day: 26 } }
+              {day_in_month: {day: 26}}
             ]
           ]
         ]
@@ -55,11 +55,11 @@ module ScheduleArguments
   def reordered_nested_set_expression_hash
     {
       intersection: [
-        { range_in_year: { start_month: 10, end_month: 12 } },
+        {range_in_year: {start_month: 10, end_month: 12}},
         {
           union: [
-            { day_in_month: { day: 24 } },
-            { day_in_month: { day: 23 } }
+            {day_in_month: {day: 24}},
+            {day_in_month: {day: 23}}
           ]
         }
       ]
@@ -69,11 +69,11 @@ module ScheduleArguments
   def difference_expression_hash
     {
       difference: {
-        included: { weekday: { weekday: 1 } },
+        included: {weekday: {weekday: 1}},
         excluded: {
           union: [
-            { day_in_month: { day: 4} },
-            { day_in_month: { day: 11} },
+            {day_in_month: {day: 4}},
+            {day_in_month: {day: 11}}
           ]
         }
       }

@@ -27,23 +27,23 @@ module Repeatable
       def union(other)
         Union.new(self, other)
       end
-      alias + union
-      alias | union
+      alias_method :+, :union
+      alias_method :|, :union
 
       def intersection(other)
         Intersection.new(self, other)
       end
-      alias & intersection
+      alias_method :&, :intersection
 
       def difference(other)
         Difference.new(included: self, excluded: other)
       end
-      alias - difference
+      alias_method :-, :difference
 
       private
 
       def hash_key
-        self.class.name.split('::').last
+        self.class.name.split("::").last
           .gsub(/(?<!\b)[A-Z]/) { "_#{Regexp.last_match[0]}" }
           .downcase
           .to_sym

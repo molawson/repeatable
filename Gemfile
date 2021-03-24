@@ -1,13 +1,13 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 # Specify your gem's dependencies in repeatable.gemspec
 gemspec
 
-gem 'pry', '~> 0.13'
-gem 'rake', '>= 12.3.3'
-gem 'standard', '~> 1.0'
+gem "pry", "~> 0.13"
+gem "rake", ">= 12.3.3"
+gem "standard", "~> 1.0"
 
 group :test do
-  gem 'rspec', '~> 3.0'
-  gem 'simplecov', '~> 0.18'
+  gem "rspec", "~> 3.0"
+  gem "simplecov", "~> 0.18"
 end
