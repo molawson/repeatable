@@ -6,6 +6,7 @@ Breaking Changes:
 
 * Change `Expression::DayInMonth` to take negative numbers instead of special `:last` symbol (or string)
 * Stop including `Conversions` in top level namespace (must now be accessed via `Repeatable::Conversions::Date()` or by calling `include Repeatable::Conversions` in whatever namespace(s) it's needed)
+* Require Ruby 2.5.0 or greater
 
 Changes:
 
@@ -14,7 +15,6 @@ Changes:
 
 Chores:
 
-* Remove support for Ruby 2.1, 2.2, 2.3, 2.4
 * Add support for Ruby 2.5, 2.6, 2.7, 3.0
 
 [Commits](https://github.com/molawson/repeatable/compare/v0.6.0...main)

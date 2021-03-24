@@ -12,6 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Ruby implementation of Martin Fowler's 'Recurring Events for Calendars' paper."
   spec.homepage      = 'https://github.com/molawson/repeatable'
   spec.license       = 'MIT'
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.require_paths = ['lib']
