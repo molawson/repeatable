@@ -2,7 +2,7 @@ module Repeatable
   module Expression
     class ExactDate < Date
       def initialize(date:)
-        @date = Date(date)
+        @date = Conversions::Date(date)
       end
 
       def include?(other_date)

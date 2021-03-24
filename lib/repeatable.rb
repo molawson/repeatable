@@ -2,14 +2,12 @@ require 'date'
 
 require 'repeatable/version'
 
-require 'repeatable/conversions'
-include Repeatable::Conversions
-
 module Repeatable
 end
 
 require 'repeatable/parse_error'
 
+require 'repeatable/conversions'
 require 'repeatable/last_date_of_month'
 
 require 'repeatable/expression'

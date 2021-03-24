@@ -12,8 +12,8 @@ module Repeatable
     end
 
     def occurrences(start_date, end_date)
-      start_date = Date(start_date)
-      end_date = Date(end_date)
+      start_date = Conversions::Date(start_date)
+      end_date = Conversions::Date(end_date)
 
       fail(ArgumentError, 'end_date must be equal to or after start_date') if end_date < start_date
 
@@ -21,7 +21,7 @@ module Repeatable
     end
 
     def next_occurrence(start_date = Date.today, include_start: false, limit: 36525)
-      date = Date(start_date)
+      date = Conversions::Date(start_date)
 
       return date if include_start && include?(date)
 
@@ -34,7 +34,7 @@ module Repeatable
     end
 
     def include?(date = Date.today)
-      date = Date(date)
+      date = Conversions::Date(date)
       expression.include?(date)
     end
 

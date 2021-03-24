@@ -5,6 +5,7 @@
 Breaking Changes:
 
 * Change `Expression::DayInMonth` to take negative numbers instead of special `:last` symbol (or string)
+* Stop including `Conversions` in top level namespace (must now be accessed via `Repeatable::Conversions::Date()` or by calling `include Repeatable::Conversions` in whatever namespace(s) it's needed)
 
 Changes:
 

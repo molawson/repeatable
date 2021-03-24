@@ -3,7 +3,7 @@ module Repeatable
     class Biweekly < Date
       def initialize(weekday:, start_after: ::Date.today)
         @weekday = weekday
-        @start_after = Date(start_after)
+        @start_after = Conversions::Date(start_after)
       end
 
       def include?(date)
