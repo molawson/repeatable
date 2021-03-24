@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'pry', '~> 0.13'
+gem 'rake', '>= 12.3.3'
 
 group :test do
+  gem 'rspec', '~> 3.0'
   gem 'simplecov', '~> 0.18'
 end
