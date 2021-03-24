@@ -230,7 +230,7 @@ module Repeatable
         end
 
         it "returns nil if the limit is reached before an occurrence is found" do
-          expect(subject.next_occurrence(start_date, limit: 365.25 * 3)).to be_nil
+          expect(subject.next_occurrence(start_date, limit: 365 * 3)).to be_nil
         end
       end
     end
