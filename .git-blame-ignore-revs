@@ -1,0 +1,13 @@
+# These commits should be ignored by git-blame, making it much easier to step through the history
+# of a line without hitting formatting commits (esp. large, update-all-the-files sorts of commits).
+#
+# For git-blame to ignore these revisions, you'll need to tell it about this file.
+#
+# You can either pass it to the command each time:
+#   git blame --ignore-rev-file=.git-blame-ignore-revs -L 12,14 lib/repeatable/conversions.rb
+#
+# Or you can set it as a config value, which will be used by all git-blame commands henceforth:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# Initial style fix after introducing Standard
+80611e9be4fe12e6b9bdb937d37902c12ac3a53b
