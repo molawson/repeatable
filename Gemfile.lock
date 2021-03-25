@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    repeatable (0.6.0)
+    repeatable (1.0.0)
 
 GEM
   remote: https://rubygems.org/

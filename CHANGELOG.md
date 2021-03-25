@@ -2,6 +2,10 @@
 
 ### Unreleased
 
+[Commits](https://github.com/molawson/repeatable/compare/v1.0.0...main)
+
+### 1.0.0 (2021-03-25)
+
 Breaking Changes:
 
 * Change `Expression::DayInMonth` to take negative numbers instead of special `:last` symbol (or string)
@@ -18,7 +22,7 @@ Chores:
 * Add support for Ruby 2.5, 2.6, 2.7, 3.0
 * Introduce [standard](https://github.com/testdouble/standard) for code formatting
 
-[Commits](https://github.com/molawson/repeatable/compare/v0.6.0...main)
+[Commits](https://github.com/molawson/repeatable/compare/v0.6.0...v1.0.0)
 
 
 ### 0.6.0 (2017-05-04)
