@@ -16,6 +16,7 @@ Changes:
 Chores:
 
 * Add support for Ruby 2.5, 2.6, 2.7, 3.0
+* Introduce [standard](https://github.com/testdouble/standard) for code formatting
 
 [Commits](https://github.com/molawson/repeatable/compare/v0.6.0...main)
 
