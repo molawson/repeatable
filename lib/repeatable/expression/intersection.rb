@@ -2,8 +2,6 @@
 module Repeatable
   module Expression
     class Intersection < Set
-      extend T::Sig
-
       sig { params(elements: Expression::Base).void }
       def initialize(*elements)
         other_intersections, not_intersections = elements.partition { |e| e.is_a?(self.class) }

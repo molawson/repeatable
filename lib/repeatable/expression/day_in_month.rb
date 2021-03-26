@@ -2,7 +2,6 @@
 module Repeatable
   module Expression
     class DayInMonth < Date
-      extend T::Sig
       include LastDateOfMonth
 
       sig { params(day: Integer).void }

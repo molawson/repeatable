@@ -2,8 +2,6 @@
 module Repeatable
   module Expression
     class ExactDate < Date
-      extend T::Sig
-
       sig { params(date: Object).void }
       def initialize(date:)
         @date = T.let(Conversions::Date(date), ::Date)

@@ -2,8 +2,6 @@
 module Repeatable
   module Expression
     class Difference < Base
-      extend T::Sig
-
       sig { params(included: Expression::Base, excluded: Expression::Base).void }
       def initialize(included:, excluded:)
         @included = included

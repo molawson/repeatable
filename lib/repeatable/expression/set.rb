@@ -2,8 +2,6 @@
 module Repeatable
   module Expression
     class Set < Base
-      extend T::Sig
-
       abstract!
 
       sig { returns(T::Array[Expression::Base]) }

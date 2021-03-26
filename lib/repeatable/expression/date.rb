@@ -2,8 +2,6 @@
 module Repeatable
   module Expression
     class Date < Base
-      extend T::Sig
-
       abstract!
 
       sig { params(other: Object).returns(T::Boolean) }

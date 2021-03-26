@@ -2,7 +2,6 @@
 module Repeatable
   module Expression
     class WeekdayInMonth < Date
-      extend T::Sig
       include LastDateOfMonth
 
       sig { params(weekday: Integer, count: Integer).void }

@@ -2,8 +2,6 @@
 module Repeatable
   module Expression
     class Weekday < Date
-      extend T::Sig
-
       sig { params(weekday: Integer).void }
       def initialize(weekday:)
         @weekday = weekday

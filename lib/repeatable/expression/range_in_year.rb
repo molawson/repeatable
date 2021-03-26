@@ -2,8 +2,6 @@
 module Repeatable
   module Expression
     class RangeInYear < Date
-      extend T::Sig
-
       sig do
         params(
           start_month: Integer,
