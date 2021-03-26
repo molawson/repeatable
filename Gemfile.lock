@@ -60,12 +60,14 @@ GEM
       sorbet-static (= 0.5.6357)
     sorbet-runtime (0.5.6357)
     sorbet-static (0.5.6357-universal-darwin-19)
+    sorbet-static (0.5.6357-x86_64-linux)
     standard (1.0.4)
       rubocop (= 1.11.0)
       rubocop-performance (= 1.10.1)
     unicode-display_width (2.0.0)
 
 PLATFORMS
+  linux
   x86_64-darwin-19
   x86_64-linux
 
