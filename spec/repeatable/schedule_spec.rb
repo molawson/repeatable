@@ -211,6 +211,10 @@ module Repeatable
               .to eq(Date.today)
           end
         end
+
+        it "raises TypeError when include_start isn't a boolean" do
+          expect { subject.next_occurrence(include_start: "asdf") }.to raise_error(TypeError)
+        end
       end
 
       context "limit option" do
