@@ -2,6 +2,8 @@
 
 ### Unreleased
 
+* Add sorbet for type checking
+
 [Commits](https://github.com/molawson/repeatable/compare/v1.0.0...main)
 
 ### 1.0.0 (2021-03-25)

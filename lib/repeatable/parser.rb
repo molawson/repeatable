@@ -1,3 +1,4 @@
+# typed: false
 module Repeatable
   class Parser
     def initialize(hash)
@@ -50,7 +51,7 @@ module Repeatable
     def expression_klass(string)
       camel_cased_string = string
         .capitalize
-        .gsub(/(?:_)(?<word>[a-z\d]+)/i) { Regexp.last_match[:word].capitalize }
+        .gsub(/(?:_)(?<word>[a-z\d]+)/i) { T.must(Regexp.last_match)[:word]&.capitalize }
       Repeatable::Expression.const_get(camel_cased_string)
     rescue NameError => e
       raise if e.name && e.name.to_s != camel_cased_string

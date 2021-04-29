@@ -1,3 +1,4 @@
+# typed: false
 require "spec_helper"
 
 module Repeatable
@@ -210,6 +211,10 @@ module Repeatable
               .to eq(Date.today)
           end
         end
+
+        it "raises TypeError when include_start isn't a boolean" do
+          expect { subject.next_occurrence(include_start: "asdf") }.to raise_error(TypeError)
+        end
       end
 
       context "limit option" do
@@ -229,7 +234,7 @@ module Repeatable
         end
 
         it "returns nil if the limit is reached before an occurrence is found" do
-          expect(subject.next_occurrence(start_date, limit: 365.25 * 3)).to be_nil
+          expect(subject.next_occurrence(start_date, limit: 365 * 3)).to be_nil
         end
       end
     end

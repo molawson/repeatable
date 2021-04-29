@@ -1,4 +1,6 @@
+# typed: strict
 require "date"
+require "sorbet-runtime"
 
 require "repeatable/version"
 
@@ -6,6 +8,8 @@ module Repeatable
 end
 
 require "repeatable/parse_error"
+
+require "repeatable/types"
 
 require "repeatable/conversions"
 require "repeatable/last_date_of_month"

@@ -1,3 +1,4 @@
+# typed: true
 module ScheduleArguments
   def simple_range_hash
     {range_in_year: {start_month: 10, end_month: 12}}

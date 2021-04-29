@@ -1,7 +1,11 @@
+# typed: strict
 module Repeatable
   module Conversions
+    extend T::Sig
+
     module_function
 
+    sig { params(arg: Object).returns(::Date) }
     def Date(arg)
       case arg
       when Date, Time
@@ -10,7 +14,7 @@ module Repeatable
         Date.parse(arg)
       end
     rescue ArgumentError
-      raise TypeError, "Cannot convert #{arg.inspect} to Date"
+      Kernel.raise TypeError, "Cannot convert #{arg.inspect} to Date"
     end
   end
 end
