@@ -1,6 +1,6 @@
 # Repeatable
 
-[![Build Status](https://travis-ci.org/molawson/repeatable.svg?branch=main)](https://travis-ci.org/molawson/repeatable)
+[![Build Status](https://app.travis-ci.com/molawson/repeatable.svg?branch=main)](https://app.travis-ci.com/molawson/repeatable)
 [![Maintainability](https://api.codeclimate.com/v1/badges/73707efd5eeffd364c0d/maintainability)](https://codeclimate.com/github/molawson/repeatable/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/73707efd5eeffd364c0d/test_coverage)](https://codeclimate.com/github/molawson/repeatable/test_coverage)
 
