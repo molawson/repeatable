@@ -35,9 +35,9 @@ module Repeatable
           end
         end
 
-        context 'when there is an array of elements' do
+        context "when there is an array of elements" do
           subject { described_class.new([twenty_third, oct_thru_dec]) }
-          it 'returns elements in array' do
+          it "returns elements in array" do
             expected_hash = {
               intersection: [
                 {day_in_month: {day: 23}},
