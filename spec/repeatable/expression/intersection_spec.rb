@@ -34,6 +34,19 @@ module Repeatable
             expect(subject.to_h).to eq(expected_hash)
           end
         end
+
+        context 'when there is an array of elements' do
+          subject { described_class.new([twenty_third, oct_thru_dec]) }
+          it 'returns elements in array' do
+            expected_hash = {
+              intersection: [
+                {day_in_month: {day: 23}},
+                {range_in_year: {start_month: 10, end_month: 12}}
+              ]
+            }
+            expect(subject.to_h).to eq(expected_hash)
+          end
+        end
       end
 
       describe "#include?" do
