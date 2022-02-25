@@ -22,10 +22,6 @@ Or install it yourself as:
 
     $ gem install repeatable
 
-## Requirements
-
-Because this gem relies heavily on required keyword arguments, especially to make dumping and parsing of schedules simpler, this code will only work on **Ruby 2.2** and higher.
-
 ## Usage
 
 ### Building a Schedule
@@ -185,6 +181,17 @@ Repeatable::Schedule.new(union) == Repeatable::Schedule.new(another_union)
   # => true (their expressions are equivalent, so they'll produce the same results)
 
 ```
+
+## Ruby version support
+
+Currently tested and supported: 
+- 2.5
+- 2.6
+- 2.7
+- 3.0
+- 3.1
+
+The supported versions will roughly track with versions that are currently maintained by the Ruby core team.
 
 ## Development
 
