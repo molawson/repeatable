@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/repeatable/all/repeatable.rbi
 #
-# repeatable-1.0.0
+# repeatable-1.1.0
 
 module Repeatable
 end

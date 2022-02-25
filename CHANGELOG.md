@@ -2,6 +2,10 @@
 
 ### Unreleased
 
+[Commits](https://github.com/molawson/repeatable/compare/v1.1.0...main)
+
+### 1.1.0 (2022-02-25)
+
 Changes:
 
 * Add [sorbet](https://sorbet.org) for type checking
@@ -15,7 +19,7 @@ Chores:
 * Add support for Ruby 3.1
 * Deprecate support for Ruby 2.5
 
-[Commits](https://github.com/molawson/repeatable/compare/v1.0.0...main)
+[Commits](https://github.com/molawson/repeatable/compare/v1.0.0...v1.1.0)
 
 ### 1.0.0 (2021-03-25)
 
