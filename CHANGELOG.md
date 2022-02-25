@@ -2,7 +2,16 @@
 
 ### Unreleased
 
-* Add sorbet for type checking
+Changes:
+
+* Add [sorbet](https://sorbet.org) for type checking
+
+Bug Fixes:
+
+* Ensure `first_occurrence` is never part of `#to_h` output for `Expression::Biweekly`
+
+Chores:
+
 * Add support for Ruby 3.1
 * Deprecate support for Ruby 2.5
 
