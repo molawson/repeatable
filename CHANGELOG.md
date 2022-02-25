@@ -3,6 +3,7 @@
 ### Unreleased
 
 * Add sorbet for type checking
+* Add support for Ruby 3.1
 
 [Commits](https://github.com/molawson/repeatable/compare/v1.0.0...main)
 
