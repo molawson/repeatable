@@ -1,14 +1,19 @@
 # typed: false
 module Repeatable
   class Parser
+    extend T::Sig
+
+    sig { params(hash: T::Hash[T.any(String, Symbol), T.untyped]).void }
     def initialize(hash)
       @hash = hash
     end
 
+    sig { params(hash: T::Hash[T.any(String, Symbol), T.untyped]).returns(Expression::Base) }
     def self.call(hash)
       new(hash).call
     end
 
+    sig { returns(Expression::Base) }
     def call
       build_expression(hash)
     end

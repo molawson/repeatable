@@ -20,13 +20,15 @@ module Repeatable
   end
 
   class Parser
-    sig { params(hash: T.untyped).returns(T.untyped) }
+    extend T::Sig
+
+    sig { params(hash: T::Hash[T.any(String, Symbol), T.untyped]).void }
     def initialize(hash); end
 
-    sig { params(hash: T.untyped).returns(T.untyped) }
+    sig { params(hash: T::Hash[T.any(String, Symbol), T.untyped]).returns(Expression::Base) }
     def self.call(hash); end
 
-    sig { returns(T.untyped) }
+    sig { returns(Expression::Base) }
     def call; end
 
     sig { returns(T.untyped) }
