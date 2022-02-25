@@ -610,6 +610,7 @@ module RuboCop::AST::CollectionNode
   def <<(*args, &block); end
   def [](*args, &block); end
   def []=(*args, &block); end
+  def abbrev(*args, &block); end
   def all?(*args, &block); end
   def any?(*args, &block); end
   def append(*args, &block); end
