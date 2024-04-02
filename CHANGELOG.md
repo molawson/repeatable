@@ -2,6 +2,10 @@
 
 ### Unreleased
 
+Changes:
+
+* Add `Daily` expression
+
 [Commits](https://github.com/molawson/repeatable/compare/v1.1.0...main)
 
 ### 1.1.0 (2022-02-25)

@@ -18,6 +18,7 @@ require "repeatable/expression"
 require "repeatable/expression/base"
 
 require "repeatable/expression/date"
+require "repeatable/expression/daily"
 require "repeatable/expression/exact_date"
 require "repeatable/expression/weekday"
 require "repeatable/expression/biweekly"

@@ -81,6 +81,10 @@ Repeatable::Expression::Difference.new(included: expression, excluded: another_e
 
 # DATES
 
+# Every day
+{ daily: {} }
+Repeatable::Expression::Daily.new
+
 # Every Sunday
 { weekday: { weekday: 0 } }
 Repeatable::Expression::Weekday.new(weekday: 0)
