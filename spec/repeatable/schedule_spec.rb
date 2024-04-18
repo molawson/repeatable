@@ -328,6 +328,14 @@ module Repeatable
       end
     end
 
+    describe "pattern matching" do
+      let(:arg) { nested_set_expression_hash }
+
+      it "can #deconstruct_keys" do
+        expect(subject.deconstruct_keys(nil)).to eq subject.to_h
+      end
+    end
+
     describe "#==" do
       it "returns true if the schedules have the same identity" do
         schedule = described_class.new(nested_set_expression_object)

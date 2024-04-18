@@ -159,6 +159,21 @@ schedule.to_h
   #    can be used to recreate an identical Schedule object at a later time
 ```
 
+#### Pattern Matching
+
+Both `Repeatable::Schedule` and all `Repeatable::Expression` classes support Ruby 2.7+ [pattern matching][ruby-pattern-matching] which is particularly useful for parsing or presenting an existing schedule.
+
+```ruby
+case schedule
+in weekday: { weekday: }
+  "Weekly on #{Date::DAYNAMES[weekday]}"
+in day_in_month: { day: }
+  "Every month on the #{day.ordinalize}"
+in weekday_in_month: { weekday:, count: }
+  "Every month on the #{count.ordinalize} #{Date::DAYNAMES[weekday]}"
+end
+```
+
 #### Equivalence
 
 Both `Repeatable::Schedule` and all `Repeatable::Expression` classes have equivalence `#==` defined according to what's appropriate for each class, so regardless of the order of arguments passed to each, you can tell whether one object is equivalent to the other in terms of whether or not, when asked the same questions, you'd receive the same results from each.
@@ -218,3 +233,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Repeatable project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/molawson/repeatable/blob/main/CODE_OF_CONDUCT.md).
+
+[ruby-pattern-matching]: https://docs.ruby-lang.org/en/3.0/syntax/pattern_matching_rdoc.html

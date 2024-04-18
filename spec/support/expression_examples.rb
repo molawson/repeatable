@@ -11,4 +11,10 @@ shared_examples "an expression" do
       expect { subject.to_h }.not_to raise_error
     end
   end
+
+  describe "pattern matching" do
+    it "can #deconstruct_keys" do
+      expect(subject.deconstruct_keys(nil)).to be_a(Hash)
+    end
+  end
 end
