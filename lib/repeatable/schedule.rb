@@ -54,6 +54,11 @@ module Repeatable
       expression.to_h
     end
 
+    sig { params(_keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.any(Types::SymbolHash, T::Array[Types::SymbolHash])]) }
+    def deconstruct_keys(_keys)
+      to_h
+    end
+
     sig { params(other: Object).returns(T::Boolean) }
     def ==(other)
       other.is_a?(self.class) && expression == other.expression

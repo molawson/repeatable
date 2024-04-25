@@ -26,6 +26,11 @@ module Repeatable
         {hash_key => hash_value}
       end
 
+      sig { params(_keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.any(Types::SymbolHash, T::Array[Types::SymbolHash])]) }
+      def deconstruct_keys(_keys)
+        to_h
+      end
+
       sig { params(other: Expression::Base).returns(Expression::Union) }
       def union(other)
         Union.new(self, other)
