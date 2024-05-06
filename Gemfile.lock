@@ -64,12 +64,15 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    sorbet (0.5.9672)
-      sorbet-static (= 0.5.9672)
-    sorbet-runtime (0.5.6357)
-    sorbet-static (0.5.9672-universal-darwin-19)
-    sorbet-static (0.5.9672-universal-darwin-21)
-    sorbet-static (0.5.9672-x86_64-linux)
+    sorbet (0.5.11370)
+      sorbet-static (= 0.5.11370)
+    sorbet-runtime (0.5.11370)
+    sorbet-static (0.5.11370-aarch64-linux)
+    sorbet-static (0.5.11370-universal-darwin)
+    sorbet-static (0.5.11370-x86_64-linux)
+    sorbet-static-and-runtime (0.5.11370)
+      sorbet (= 0.5.11370)
+      sorbet-runtime (= 0.5.11370)
     standard (1.0.4)
       rubocop (= 1.11.0)
       rubocop-performance (= 1.10.1)
@@ -77,6 +80,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-23
   linux
   x86_64-darwin-19
   x86_64-linux
@@ -88,7 +92,7 @@ DEPENDENCIES
   repeatable!
   rspec (~> 3.0)
   simplecov (~> 0.18)
-  sorbet
+  sorbet-static-and-runtime
   standard (~> 1.0)
 
 BUNDLED WITH

@@ -6,7 +6,7 @@ gemspec
 gem "parlour"
 gem "pry", "~> 0.13"
 gem "rake", ">= 12.3.3"
-gem "sorbet"
+gem "sorbet-static-and-runtime"
 gem "standard", "~> 1.0"
 
 group :test do
