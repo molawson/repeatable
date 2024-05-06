@@ -1,4 +1,5 @@
 # typed: strict
+
 module Repeatable
   module Expression
     class Union < Set

@@ -1,4 +1,5 @@
 # typed: strict
+
 module Repeatable
   class Schedule
     extend T::Sig

@@ -1,4 +1,5 @@
 # typed: false
+
 shared_examples "an expression" do
   describe "#include?" do
     it "must be implemented" do

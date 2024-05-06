@@ -1,4 +1,5 @@
 # typed: strict
+
 require "date"
 require "sorbet-runtime"
 
