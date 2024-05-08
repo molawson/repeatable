@@ -9,6 +9,7 @@ module Repeatable
       let(:oct_thru_dec) { Repeatable::Expression::RangeInYear.new(start_month: 10, end_month: 12) }
 
       it_behaves_like "an expression"
+      it_behaves_like "a set expression"
 
       describe "#initialize" do
         context "when there are no Union elements" do

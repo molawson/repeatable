@@ -11,6 +11,7 @@ module Repeatable
       subject { described_class.new(twenty_third, oct_thru_dec) }
 
       it_behaves_like "an expression"
+      it_behaves_like "a set expression"
 
       describe "#initialize" do
         context "when there are no Intersection elements" do

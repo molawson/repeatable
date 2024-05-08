@@ -18,7 +18,7 @@ module Repeatable
 
         context "other is an instance of a class" do
           it "uses default ==== (is_a?) behavior" do
-            expect(described_class === Repeatable::Expression::Set.new).to eq(true)
+            expect(described_class === Repeatable::Expression::Intersection.new).to eq(true)
             expect(described_class === "").to eq(false)
           end
         end
