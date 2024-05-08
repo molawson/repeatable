@@ -65,6 +65,9 @@ module Repeatable
     sig { returns(T::Hash[Symbol, T.any(Types::SymbolHash, T::Array[Types::SymbolHash])]) }
     def to_h; end
 
+    sig { params(_keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.any(Types::SymbolHash, T::Array[Types::SymbolHash])]) }
+    def deconstruct_keys(_keys); end
+
     sig { params(other: Object).returns(T::Boolean) }
     def ==(other); end
 
@@ -91,6 +94,9 @@ module Repeatable
 
       sig { returns(T::Hash[Symbol, T.any(Types::SymbolHash, T::Array[Types::SymbolHash])]) }
       def to_h; end
+
+      sig { params(_keys: T.nilable(T::Array[Symbol])).returns(T::Hash[Symbol, T.any(Types::SymbolHash, T::Array[Types::SymbolHash])]) }
+      def deconstruct_keys(_keys); end
 
       sig { params(other: Expression::Base).returns(Expression::Union) }
       def union(other); end
@@ -241,8 +247,8 @@ module Repeatable
       sig { returns(T::Array[Expression::Base]) }
       attr_reader :elements
 
-      sig { params(elements: T.any(Expression::Base, T::Array[Expression::Base])).void }
-      def initialize(*elements); end
+      sig { params(elements: T::Array[Expression::Base]).void }
+      def initialize(elements); end
 
       sig { params(element: T.untyped).returns(Repeatable::Expression::Set) }
       def <<(element); end
