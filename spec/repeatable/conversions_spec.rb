@@ -5,6 +5,16 @@ require "spec_helper"
 class DummyKlass
 end
 
+class ActsLikeAString
+  def initialize(value)
+    @value = value
+  end
+
+  def to_str
+    @value.to_s
+  end
+end
+
 shared_examples "possible date conversion" do
   subject { Date(arg) }
 
@@ -68,6 +78,12 @@ describe DummyKlass do
       it_behaves_like "impossible date conversion" do
         let(:arg) { "asdf" }
       end
+    end
+  end
+
+  context "instance of class with implicit String conversion" do
+    it_behaves_like "possible date conversion" do
+      let(:arg) { ActsLikeAString.new(:"2015-01-10") }
     end
   end
 
