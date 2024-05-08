@@ -26,6 +26,9 @@ jobs:
             coverage: 'true'
     steps:
       - uses: actions/checkout@v2
+      - name: Remove Gemfile.lock for older Ruby versions
+        if: ${{ fromJSON(matrix.ruby-version) < 3.1 }}
+        run: rm Gemfile.lock
       - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
