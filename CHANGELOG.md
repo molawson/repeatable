@@ -2,6 +2,11 @@
 
 ### Unreleased
 
+Chores:
+
+* Add support for Ruby 3.2 and 3.3
+* Deprecate support for Ruby 2.6, 2.7, and 3.0
+
 [Commits](https://github.com/molawson/repeatable/compare/v1.2.0...main)
 
 ### 1.2.0 (2024-05-09)
