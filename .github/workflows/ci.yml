@@ -27,7 +27,7 @@ jobs:
           - ruby-version: '3.3'
             coverage: 'true'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Remove Gemfile.lock for older Ruby versions
         if: ${{ fromJSON(matrix.ruby-version) < 3.1 }}
         run: rm Gemfile.lock
@@ -36,7 +36,7 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
-      - uses: amancevice/setup-code-climate@v0
+      - uses: amancevice/setup-code-climate@v2
         name: CodeClimate setup
         if: ${{ matrix.coverage == 'true' }}
         with:
@@ -56,7 +56,7 @@ jobs:
   Standard:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -67,7 +67,7 @@ jobs:
   Sorbet:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
