@@ -2,11 +2,16 @@
 
 ### Unreleased
 
+[Commits](https://github.com/molawson/repeatable/compare/v1.2.0...main)
+
+### 1.2.0 (2024-04-25)
+
 Changes:
 
 * Support pattern matching for `Expression` and `Schedule`
+* Support more recent versions of sorbet
 
-[Commits](https://github.com/molawson/repeatable/compare/v1.1.0...main)
+[Commits](https://github.com/molawson/repeatable/compare/v1.1.0...v1.2.0)
 
 ### 1.1.0 (2022-02-25)
 
