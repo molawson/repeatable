@@ -22,10 +22,13 @@ jobs:
           - '3.0'
           - '3.1'
         include:
-          - ruby-version: '3.0'
+          - ruby-version: '3.1'
             coverage: 'true'
     steps:
       - uses: actions/checkout@v2
+      - name: Remove Gemfile.lock for older Ruby versions
+        if: ${{ fromJSON(matrix.ruby-version) < 3.1 }}
+        run: rm Gemfile.lock
       - name: Set up Ruby ${{ matrix.ruby-version }}
         uses: ruby/setup-ruby@v1
         with:
@@ -55,7 +58,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0'
+          ruby-version: '3.1'
           bundler-cache: true
       - name: Run Standard
         run: bundle exec rake standard
@@ -66,7 +69,9 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.0'
+          ruby-version: '3.1'
           bundler-cache: true
+      - name: Check gem RBI files
+        run: bin/tapioca gems --verify
       - name: Run Sorbet
         run: bundle exec rake sorbet

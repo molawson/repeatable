@@ -1,4 +1,5 @@
 # typed: strict
+
 module Repeatable
   module Expression
     class Set < Base
@@ -7,8 +8,8 @@ module Repeatable
       sig { returns(T::Array[Expression::Base]) }
       attr_reader :elements
 
-      sig { params(elements: T.any(Expression::Base, T::Array[Expression::Base])).void }
-      def initialize(*elements)
+      sig { params(elements: T::Array[Expression::Base]).void }
+      def initialize(elements)
         @elements = T.let(elements.flatten.uniq, T::Array[Expression::Base])
       end
 

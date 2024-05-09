@@ -1,4 +1,5 @@
 # typed: strict
+
 module Repeatable
   module Conversions
     extend T::Sig
@@ -11,7 +12,7 @@ module Repeatable
       when Date, Time
         arg.to_date
       else
-        Date.parse(arg)
+        Date.parse(T.let(arg, T.untyped))
       end
     rescue ArgumentError
       Kernel.raise TypeError, "Cannot convert #{arg.inspect} to Date"

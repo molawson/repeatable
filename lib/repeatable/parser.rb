@@ -1,4 +1,5 @@
 # typed: false
+
 module Repeatable
   class Parser
     extend T::Sig
