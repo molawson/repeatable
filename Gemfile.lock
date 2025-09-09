@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    repeatable (1.2.0)
+    repeatable (1.2.1)
       sorbet-runtime
 
 GEM

@@ -2,12 +2,20 @@
 
 ### Unreleased
 
+[Commits](https://github.com/molawson/repeatable/compare/v1.2.1...main)
+
+### 1.2.1 (2025-09-09)
+
 Chores:
 
-* Add support for Ruby 3.2 and 3.3
-* Deprecate support for Ruby 2.6, 2.7, and 3.0
+* Add support for Ruby 3.2, 3.3, and 3.4
+* Deprecate support for Ruby 2.6, 2.7, 3.0, and 3.1
 
-[Commits](https://github.com/molawson/repeatable/compare/v1.2.0...main)
+Bug Fixes:
+
+* Correct method visibility for `Expression::RangeInYear` ([@joeltjames][])
+
+[Commits](https://github.com/molawson/repeatable/compare/v1.2.0...v1.2.1)
 
 ### 1.2.0 (2024-05-09)
 
@@ -134,3 +142,4 @@ Initial Release
 [@PatrickLerner]: https://github.com/PatrickLerner
 [@danielma]: https://github.com/danielma
 [@cmoel]: https://github.com/cmoel
+[@joeltjames]: https://github.com/joeltjames

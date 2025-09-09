@@ -1,6 +1,6 @@
 # typed: strong
 module Repeatable
-  VERSION = "1.2.0"
+  VERSION = "1.2.1"
 
   module Conversions
     extend T::Sig
