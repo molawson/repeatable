@@ -1,8 +1,8 @@
 # Repeatable
 
 [![CI](https://github.com/molawson/repeatable/actions/workflows/ci.yml/badge.svg)](https://github.com/molawson/repeatable/actions/workflows/ci.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/73707efd5eeffd364c0d/maintainability)](https://codeclimate.com/github/molawson/repeatable/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/73707efd5eeffd364c0d/test_coverage)](https://codeclimate.com/github/molawson/repeatable/test_coverage)
+[![Maintainability](https://qlty.sh/gh/molawson/projects/repeatable/maintainability.svg)](https://qlty.sh/gh/molawson/projects/repeatable)
+[![Test Coverage](https://qlty.sh/gh/molawson/projects/repeatable/coverage.svg)](https://qlty.sh/gh/molawson/projects/repeatable)
 
 Ruby implementation of Martin Fowler's [Recurring Events for Calendars](http://martinfowler.com/apsupp/recurring.pdf) paper.
 
