@@ -195,7 +195,7 @@ class Rake::Application
 
   # Add a file to the list of files to be imported.
   #
-  # source://rake//lib/rake/application.rb#770
+  # source://rake//lib/rake/application.rb#777
   def add_import(fn); end
 
   # Add a loader to handle imported files ending in the extension
@@ -213,13 +213,13 @@ class Rake::Application
   # recognised command-line options, which OptionParser.parse will
   # have taken care of already.
   #
-  # source://rake//lib/rake/application.rb#751
+  # source://rake//lib/rake/application.rb#758
   def collect_command_line_tasks(args); end
 
   # Default task name ("default").
   # (May be overridden by subclasses)
   #
-  # source://rake//lib/rake/application.rb#765
+  # source://rake//lib/rake/application.rb#772
   def default_task_name; end
 
   # Warn about deprecated usage.
@@ -277,14 +277,14 @@ class Rake::Application
   # source://rake//lib/rake/application.rb#201
   def exit_because_of_exception(ex); end
 
-  # source://rake//lib/rake/application.rb#671
+  # source://rake//lib/rake/application.rb#678
   def find_rakefile_location; end
 
   # Read and handle the command line options.  Returns the command line
   # arguments that we didn't understand, which should (in theory) be just
   # task names and env vars.
   #
-  # source://rake//lib/rake/application.rb#637
+  # source://rake//lib/rake/application.rb#644
   def handle_options(argv); end
 
   # @return [Boolean]
@@ -310,7 +310,7 @@ class Rake::Application
 
   # Load the pending list of imported files.
   #
-  # source://rake//lib/rake/application.rb#775
+  # source://rake//lib/rake/application.rb#782
   def load_imports; end
 
   # Find the rakefile and then load it and any pending imports.
@@ -336,13 +336,13 @@ class Rake::Application
   # source://rake//lib/rake/application.rb#163
   def parse_task_string(string); end
 
-  # source://rake//lib/rake/application.rb#683
+  # source://rake//lib/rake/application.rb#690
   def print_rakefile_directory(location); end
 
   # Similar to the regular Ruby +require+ command, but will check
   # for *.rake files in addition to *.rb files.
   #
-  # source://rake//lib/rake/application.rb#657
+  # source://rake//lib/rake/application.rb#664
   def rake_require(file_name, paths = T.unsafe(nil), loaded = T.unsafe(nil)); end
 
   # Name of the actual rakefile used.
@@ -350,10 +350,10 @@ class Rake::Application
   # source://rake//lib/rake/application.rb#30
   def rakefile; end
 
-  # source://rake//lib/rake/application.rb#791
+  # source://rake//lib/rake/application.rb#798
   def rakefile_location(backtrace = T.unsafe(nil)); end
 
-  # source://rake//lib/rake/application.rb#688
+  # source://rake//lib/rake/application.rb#695
   def raw_load_rakefile; end
 
   # Run the Rake application.  The run method performs the following
@@ -375,7 +375,7 @@ class Rake::Application
   # source://rake//lib/rake/application.rb#122
   def run_with_threads; end
 
-  # source://rake//lib/rake/application.rb#800
+  # source://rake//lib/rake/application.rb#807
   def set_default_options; end
 
   # Provide standard exception handling for the given block.
@@ -391,7 +391,7 @@ class Rake::Application
 
   # The directory path containing the system wide rakefiles.
   #
-  # source://rake//lib/rake/application.rb#720
+  # source://rake//lib/rake/application.rb#727
   def system_dir; end
 
   # Number of columns on the terminal
@@ -460,7 +460,7 @@ class Rake::Application
 
   private
 
-  # source://rake//lib/rake/application.rb#714
+  # source://rake//lib/rake/application.rb#721
   def glob(path, &block); end
 
   # Does the exception have a task invocation chain?
@@ -470,16 +470,16 @@ class Rake::Application
   # source://rake//lib/rake/application.rb#267
   def has_chain?(exception); end
 
-  # source://rake//lib/rake/application.rb#613
+  # source://rake//lib/rake/application.rb#620
   def select_tasks_to_show(options, show_tasks, value); end
 
-  # source://rake//lib/rake/application.rb#620
+  # source://rake//lib/rake/application.rb#627
   def select_trace_output(options, trace_option, value); end
 
   # source://rake//lib/rake/application.rb#393
   def sort_options(options); end
 
-  # source://rake//lib/rake/application.rb#737
+  # source://rake//lib/rake/application.rb#744
   def standard_system_dir; end
 end
 
@@ -2854,14 +2854,14 @@ class Rake::ThreadHistoryDisplay
   def threads; end
 end
 
-# source://rake//lib/rake/thread_pool.rb#8
+# source://rake//lib/rake/thread_pool.rb#7
 class Rake::ThreadPool
   # Creates a ThreadPool object.  The +thread_count+ parameter is the size
   # of the pool.
   #
   # @return [ThreadPool] a new instance of ThreadPool
   #
-  # source://rake//lib/rake/thread_pool.rb#12
+  # source://rake//lib/rake/thread_pool.rb#11
   def initialize(thread_count); end
 
   # Creates a future executed by the +ThreadPool+.

@@ -10,64 +10,64 @@
 # source://rspec-expectations//lib/rspec/matchers/english_phrasing.rb#1
 module RSpec
   class << self
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#70
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#70
     def clear_examples; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#85
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#85
     def configuration; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#49
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#49
     def configuration=(_arg0); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#97
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#97
     def configure; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#168
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#168
     def const_missing(name); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def context(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#122
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#122
     def current_example; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#128
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#128
     def current_example=(example); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def describe(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def example_group(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def fcontext(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def fdescribe(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#58
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#58
     def reset; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.10.2/lib/rspec/core/shared_example_group.rb#110
     def shared_context(name, *args, &block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.10.2/lib/rspec/core/shared_example_group.rb#110
     def shared_examples(name, *args, &block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.10.2/lib/rspec/core/shared_example_group.rb#110
     def shared_examples_for(name, *args, &block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#134
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#134
     def world; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#49
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#49
     def world=(_arg0); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def xcontext(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def xdescribe(*args, &example_group_block); end
   end
 end
@@ -735,7 +735,7 @@ module RSpec::Expectations::ExpectationTarget::InstanceMethods
   # @example
   #   expect(value).not_to eq(5)
   # @param matcher [Matcher]
-  # @param message [String or Proc] optional message to display when the expectation fails
+  # @param message [String, Proc] optional message to display when the expectation fails
   # @return [Boolean] false if the negative expectation succeeds (else raises)
   # @see RSpec::Matchers
   #
@@ -748,7 +748,7 @@ module RSpec::Expectations::ExpectationTarget::InstanceMethods
   #   expect(value).to eq(5)
   #   expect { perform }.to raise_error
   # @param matcher [Matcher]
-  # @param message [String or Proc] optional message to display when the expectation fails
+  # @param message [String, Proc] optional message to display when the expectation fails
   # @return [Boolean] true if the expectation succeeds (else raises)
   # @see RSpec::Matchers
   #
@@ -760,7 +760,7 @@ module RSpec::Expectations::ExpectationTarget::InstanceMethods
   # @example
   #   expect(value).not_to eq(5)
   # @param matcher [Matcher]
-  # @param message [String or Proc] optional message to display when the expectation fails
+  # @param message [String, Proc] optional message to display when the expectation fails
   # @return [Boolean] false if the negative expectation succeeds (else raises)
   # @see RSpec::Matchers
   #
@@ -6131,105 +6131,110 @@ class RSpec::Matchers::BuiltIn::RaiseError
   private
 
   # @api private
+  #
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#113
+  def actual_error_message; end
+
+  # @api private
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#121
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#127
   def block_matches?; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#117
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#123
   def error_and_message_match?; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#129
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#135
   def eval_block; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#113
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#119
   def expectation_matched?; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#210
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#216
   def expected_error; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#241
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#247
   def expecting_specific_exception?; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#225
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#231
   def format_backtrace(backtrace); end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#230
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#236
   def given_error; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#160
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#166
   def handle_warning(message); end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#245
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#251
   def raise_message_already_set; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#125
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#131
   def ready_to_eval_block?; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#139
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#145
   def verify_message; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#172
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#178
   def warn_about_bare_error!; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#164
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#170
   def warn_about_bare_error?; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#198
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#204
   def warn_about_negative_false_positive!(expression); end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#185
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#191
   def warn_about_nil_error!; end
 
   # @api private
   # @return [Boolean]
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#168
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#174
   def warn_about_nil_error?; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#144
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#150
   def warn_for_negative_false_positives!; end
 
   # @api private
   #
-  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#250
+  # source://rspec-expectations//lib/rspec/matchers/built_in/raise_error.rb#256
   def warning; end
 end
 

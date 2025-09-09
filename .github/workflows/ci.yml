@@ -67,6 +67,6 @@ jobs:
           ruby-version: '3.3'
           bundler-cache: true
       - name: Check gem RBI files
-        run: bin/tapioca gems --verify
+        run: bin/tapioca gem --verify
       - name: Run Sorbet
         run: bundle exec rake sorbet

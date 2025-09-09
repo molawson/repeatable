@@ -9,64 +9,64 @@ module RSpec
   extend ::RSpec::Support::Warnings
 
   class << self
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#70
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#70
     def clear_examples; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#85
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#85
     def configuration; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#49
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#49
     def configuration=(_arg0); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#97
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#97
     def configure; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#168
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#168
     def const_missing(name); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def context(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#122
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#122
     def current_example; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#128
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#128
     def current_example=(example); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def describe(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def example_group(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def fcontext(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def fdescribe(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#58
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#58
     def reset; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.10.2/lib/rspec/core/shared_example_group.rb#110
     def shared_context(name, *args, &block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.10.2/lib/rspec/core/shared_example_group.rb#110
     def shared_examples(name, *args, &block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/shared_example_group.rb#110
+    # source://rspec-core/3.10.2/lib/rspec/core/shared_example_group.rb#110
     def shared_examples_for(name, *args, &block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#134
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#134
     def world; end
 
-    # source://rspec-core/3.10.1/lib/rspec/core.rb#49
+    # source://rspec-core/3.10.2/lib/rspec/core.rb#49
     def world=(_arg0); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def xcontext(*args, &example_group_block); end
 
-    # source://rspec-core/3.10.1/lib/rspec/core/dsl.rb#42
+    # source://rspec-core/3.10.2/lib/rspec/core/dsl.rb#42
     def xdescribe(*args, &example_group_block); end
   end
 end
@@ -851,10 +851,10 @@ end
 
 # On 1.9 and up, this is in core, so we just use the real one
 #
-# source://rspec-support//lib/rspec/support/reentrant_mutex.rb#46
+# source://rspec-support//lib/rspec/support/reentrant_mutex.rb#63
 class RSpec::Support::Mutex < ::Thread::Mutex
   class << self
-    # source://rspec-support//lib/rspec/support/reentrant_mutex.rb#51
+    # source://rspec-support//lib/rspec/support/reentrant_mutex.rb#68
     def new; end
   end
 end
@@ -862,7 +862,7 @@ end
 # If you mock Mutex.new you break our usage of Mutex, so
 # instead we capture the original method to return Mutexs.
 #
-# source://rspec-support//lib/rspec/support/reentrant_mutex.rb#49
+# source://rspec-support//lib/rspec/support/reentrant_mutex.rb#66
 RSpec::Support::Mutex::NEW_MUTEX_METHOD = T.let(T.unsafe(nil), Method)
 
 # Provides query methods for different OS or OS features.
@@ -1315,10 +1315,10 @@ class RSpec::Support::ReentrantMutex
 
   private
 
-  # source://rspec-support//lib/rspec/support/reentrant_mutex.rb#30
+  # source://rspec-support//lib/rspec/support/reentrant_mutex.rb#33
   def enter; end
 
-  # source://rspec-support//lib/rspec/support/reentrant_mutex.rb#36
+  # source://rspec-support//lib/rspec/support/reentrant_mutex.rb#38
   def exit; end
 end
 
