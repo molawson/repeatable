@@ -58,6 +58,8 @@ module Repeatable
         date.month == end_month && (end_day == 0 || date.day <= end_day)
       end
 
+      protected
+
       sig { override.returns(T::Hash[Symbol, Integer]) }
       def hash_value
         args = {start_month: start_month}
