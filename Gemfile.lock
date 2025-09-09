@@ -124,6 +124,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-23
+  arm64-darwin-24
   linux
   x86_64-darwin-19
   x86_64-linux
@@ -135,6 +136,7 @@ DEPENDENCIES
   repeatable!
   rspec (~> 3.0)
   simplecov (~> 0.18)
+  simplecov_json_formatter (~> 0.1.4)
   sorbet-static-and-runtime
   standard (~> 1.0)
   tapioca

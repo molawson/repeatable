@@ -2,7 +2,12 @@
 
 if ENV["COVERAGE"] == "true"
   require "simplecov"
-  SimpleCov.start
+  require "simplecov_json_formatter"
+
+  SimpleCov.start do
+    SimpleCov.formatter SimpleCov::Formatter::JSONFormatter
+    SimpleCov.add_filter "/spec/"
+  end
 end
 
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)

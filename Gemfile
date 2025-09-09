@@ -13,4 +13,5 @@ gem "tapioca"
 group :test do
   gem "rspec", "~> 3.0"
   gem "simplecov", "~> 0.18"
+  gem "simplecov_json_formatter", "~> 0.1.4"
 end
