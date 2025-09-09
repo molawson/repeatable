@@ -200,15 +200,16 @@ Repeatable::Schedule.new(union) == Repeatable::Schedule.new(another_union)
 ## Ruby version support
 
 Currently tested and supported: 
-- 3.1
 - 3.2
 - 3.3
+- 3.4
 
 Deprecated (currently tested but have reached EOL and will be unsupported in the next major version):
 - 2.5
 - 2.6
 - 2.7
 - 3.0
+- 3.1
 
 The supported versions will roughly track with versions that are currently maintained by the Ruby core team.
 
